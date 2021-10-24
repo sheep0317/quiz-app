@@ -1,0 +1,21 @@
+<p>signin-form works!</p>
+<div class="wrap-box">
+    <h1>Sign In</h1>
+    <div class="signin-form">
+        <div class="input-field">
+            <p class="title">email:</p><input #email class="form-control" type="email" placeholder="example@mail.com" [required]>
+            <p class="title">display name:</p><input #displayName class="form-control" type="text" placeholder="enter name you want display" [required]>
+            <p class="title">password:</p><input #password class="form-control" type="password"  placeholder="password" [required] [minLength]='6'>
+            <p class="title">confirm password:</p><input #confirmPassword class="form-control" type="password"  placeholder="confirm your password" [required] [minLength]='6'>
+            <p class="title">i sign as:</p>
+            <select #role id="select" class="form-control">
+                <option value="0">Teacher</option>
+                <option value="1">Student</option>
+            </select>
+            <button class="btn form-control" (click)="signin(email.value, password.value, displayName.value, confirmPassword.value, role.value)">Sign In</button>
+        </div>
+       
+        
+    </div>
+    <a href="#">i forget my password</a>
+</div>

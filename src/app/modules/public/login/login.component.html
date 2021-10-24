@@ -1,0 +1,14 @@
+<p>login-form works!</p>
+<div class="wrap-box">
+    <h1>Login</h1>
+    <div class="login-form">
+        <div class="input-field">
+            <p class="title">email:</p><input #email class="form-control" type="email" placeholder="example@mail.com" [required]>
+            <p class="title">password:</p><input #password class="form-control" type="password"  placeholder="******" [required] [minLength]='6'>
+            <button  routerLink="/student" routerLinkActive="active" class="btn form-control" (click)="login(email.value, password.value)">Login</button>
+        </div>
+       
+        
+    </div>
+    <a href="#">i forget my password</a>
+</div>

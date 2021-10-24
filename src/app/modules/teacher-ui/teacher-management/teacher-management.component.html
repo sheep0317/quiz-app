@@ -1,0 +1,69 @@
+<p>teacher-management works!</p>
+<div class="section-group">
+    <div id="accordion">
+
+        <div class="card">
+          <div class="card-header">
+            <div class="section" id="" data-bs-toggle="collapse" href="#sectionOne">
+                <div class="section-name" >
+                   Section Name........
+                </div>
+                
+            </div>
+            <div class="section-func">
+                <button class="btn">Access</button>
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteSection">Delete</button>
+            </div>
+          </div>
+          <div id="sectionOne" class="collapse " data-bs-parent="#accordion">
+            <div class="quiz" id="">
+                <div class="quiz-name" >
+                   Quiz Name........
+                </div>
+                <div class="quiz-func">
+                    <button class="btn">Edit</button>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteQuiz" (click)="deleteQuiz()">Delete</button>
+                </div>
+            </div>
+            <div class="quiz" id="">
+                <div class="quiz-name" >
+                   Quiz Name........
+                </div>
+                <div class="quiz-func">
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
+                    
+                </div>
+            </div>
+            <div class="quiz" id="">
+                <div class="quiz-name" >
+                   Quiz Name........
+                </div>
+                <div class="quiz-func">
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="deleteSection">
+    <div class="modal-dialog">
+      <div class="modal-content">  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Are you sure?
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

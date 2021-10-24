@@ -1,0 +1,65 @@
+<p>student-profile works!</p>
+<div class="grid">
+    <div class="avatar-function">
+        <div class="avatar-frame">
+            <img src="" alt="">
+        </div>
+        <div class="btn-function">
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+        </div>
+    </div>
+    <div class="profile-detail">
+        <p class="title">Ten:</p><p class="info">Tran Quoc Viet</p>
+        <p class="title">Ho va chu lot</p> <p class="info">Tran Quoc</p>
+        <p class="title">Ngay sinh</p><p class="info">15/03/2000</p>
+        <p class="title">Email</p><p class="info">tranvietmar15@gmail.com</p>
+        <p class="title">So dien thoai</p><p class="info">0838224577</p>
+        <p class="title">Dia chi</p><p class="info">51 Đường 6 TĐC</p>
+        <p class="title">Gioi tinh</p><p class="info">Nam</p>
+        
+    </div>
+</div>
+
+<!--Edit Profile Modal-->
+<div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="change-password">
+            <p for="currentpassword">current password</p>
+            <input #curPass class="form-control" placeholder="current password" type="password" required minlength="6">
+            <p for="newpassword">new password</p>
+            <input #newPass class="form-control" placeholder="new password" type="password" required minlength="6">
+            <p for="confirmpassword">confirm password</p>
+            <input #cfPass class="form-control" placeholder="confirm password" type="password" required minlength="6"> 
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="changePassword(curPass.value, newPass.value, cfPass.value)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+.section-group{
+    padding: 0px 10px;
+}
+.section{
+    display: flex;
+    justify-content: flex-start;
+}   
+.section-func{
+    margin-left: auto;
+}
+.quiz{  
+    margin:10px;
+    padding-left:5% ;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px;
+    display: flex;
+    justify-content: flex-start;
+    height: 65px;
+}
+.quiz .quiz-func{
+  margin-left: auto;
+  padding-right: 20px;
+}
+.quiz-func .btn{
+    margin-left: 20px;
+}
