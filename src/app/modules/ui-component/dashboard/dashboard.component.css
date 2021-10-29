@@ -1,0 +1,109 @@
+.sidebar {
+    position: -webkit-sticky;
+    display: flex;
+    flex-direction: column;
+}
+
+.not-collapse {
+    width: 256px;
+    transition: width 0.3s;
+}
+
+.collapse {
+    width: 75px;
+    transition: width 0.3s;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #051e34;
+    background-image: url(./../../../../assets/img/nav-bg.png);
+    width: 100%;
+    height: 100vh;
+    padding:0px 0px;
+    padding-left: 5px;
+}
+
+.sidebar nav .btn-a {
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    padding: 1em;
+    border-color: transparent;
+    border-radius: 10px 0 0 10px;
+    font-size: 1em;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.sidebar nav .btn-a>i{
+    font-size: 1.5em;
+}
+.sidebar nav .btn-a >span{
+    margin-left: 16px;
+    overflow: hidden;
+    text-overflow: clip;
+    min-width: 100px;
+}
+
+.sidebar nav .btn-a:active {
+    background-color: #253D53;
+    color: white;
+    border: transparent;
+}
+
+.sidebar nav .btn-a:hover {
+    background-color: #122C44;
+    color: white;
+    border: transparent;
+}
+
+/* .sidebar nav .btn-a:focus {
+    outline: none !important;
+     transition: ; 
+    
+    background-color: #253D53;
+    color: white;
+    border: transparent;
+} */
+
+.sidebar nav .btn-home {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    padding: 1em 0em 1em 0em;
+    border-color: transparent;
+    border-radius: 10px 0 0 10px;
+    font-size: 1em;
+    transition: 0.3s;
+    overflow: hidden;
+    display: flex;
+    
+}
+.sidebar nav .btn-home>i{
+    font-size: 1.5em;
+}
+.sidebar nav .btn-home >span{
+    margin-left: 16px;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100px;
+}
+
+.icon-realquizzonl {
+    background-image : url(./../../../../assets/img/pain_tako.png);
+    background-size: cover;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+}
+
+.nav-item-grp {
+    box-shadow: 0px -2px 0px #122C44;
+}

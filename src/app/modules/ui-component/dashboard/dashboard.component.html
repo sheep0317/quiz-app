@@ -1,0 +1,53 @@
+<div class="sidebar" [ngClass]="isOpen? 'not-collapse' : 'collapse' ">
+    <nav id="nav-btn">
+
+        <div class="btn-home-grp">
+            <button class="btn-home" type="button">
+                <i class="fa icon-realquizzonl"></i>
+                <span *ngIf='isOpen'>RealQuizOnl</span>
+
+            </button>
+        </div>
+
+        <div class="nav-item-grp">
+            <button class="btn btn-a" type="button" [routerLink]="'profile'" routerLinkActive="active"
+                data-mdb-ripple-color="white">
+                <i class="fa fa-user"></i>
+                <span *ngIf='isOpen'>
+                    Profile
+                </span>
+            </button>
+            <button class="btn btn-a" type="button" [routerLink]="'manage'" data-mdb-ripple-color="white">
+                <i class="fa fa-book"></i>
+                <span *ngIf='isOpen'>Manage</span>
+            </button>
+
+            <button class="btn btn-a" type="button" data-bs-toggle="modal" data-bs-target="#Logout"
+                data-mdb-ripple-color="white">
+                <i class="fa fa-sign-out"></i>
+                <span *ngIf='isOpen'>Sign out</span>
+            </button>
+        </div>
+
+    </nav>
+
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="Logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

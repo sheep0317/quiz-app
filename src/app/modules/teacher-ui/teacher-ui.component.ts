@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-teacher-ui',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherUiComponent implements OnInit {
 
+  @Input() isOpen:boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggle_navbar(){
+    this.isOpen = !this.isOpen;
   }
 
 }

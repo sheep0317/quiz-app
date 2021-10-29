@@ -9,6 +9,8 @@ import { LoginComponent } from './modules/public/login/login.component';
 import { SigninComponent } from './modules/public/signin/signin.component';
 import { StudentUiModule } from './modules/student-ui/student-ui.module';
 import { TeacherUiModule } from './modules/teacher-ui/teacher-ui.module';
+import { DashboardComponent } from './modules/ui-component/dashboard/dashboard.component';
+import { MenuComponent } from './modules/ui-component/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { TeacherUiModule } from './modules/teacher-ui/teacher-ui.module';
     TeacherUiComponent,
     HomepageComponent,
     LoginComponent,
-    SigninComponent
+    SigninComponent,
+    DashboardComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
