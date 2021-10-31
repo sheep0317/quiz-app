@@ -11,6 +11,8 @@ import { StudentUiModule } from './modules/student-ui/student-ui.module';
 import { TeacherUiModule } from './modules/teacher-ui/teacher-ui.module';
 import { DashboardComponent } from './modules/ui-component/dashboard/dashboard.component';
 import { MenuComponent } from './modules/ui-component/menu/menu.component';
+import { ClassItemComponent } from './modules/ui-component/class-item/class-item.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { MenuComponent } from './modules/ui-component/menu/menu.component';
     LoginComponent,
     SigninComponent,
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    ClassItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StudentUiModule,
-    TeacherUiModule
+    TeacherUiModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

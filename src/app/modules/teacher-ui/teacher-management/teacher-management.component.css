@@ -1,27 +1,87 @@
-.section-group{
-    padding: 0px 10px;
+.grid {
+    margin: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    align-items: flex-start;
 }
-.section{
-    display: flex;
-    justify-content: flex-start;
-}   
-.section-func{
-    margin-left: auto;
+
+.grid .class-card {
+    border: none;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border-radius: 20px;
+    width: 250px;
+    transition: transform .3s;
 }
-.quiz{  
-    margin:10px;
-    padding-left:5% ;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px;
-    display: flex;
-    justify-content: flex-start;
-    height: 65px;
+
+.grid .class-card:hover {
+    transform: translateY(5px);
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.3);
 }
-.quiz .quiz-func{
-  margin-left: auto;
-  padding-right: 20px;
+
+.grid .class-card .img-container img {
+    width: 100%;
+    /* max-width: 250px; */
 }
-.quiz-func .btn{
-    margin-left: 20px;
+
+.grid .class-card .img-container {
+    background: white;
+    opacity: 0.3;
+    backdrop-filter: blur(10px);
+}
+
+.grid .class-card .card-title {
+    margin-top: 20px;
+    padding: 0px 20px 20px;
+}
+
+.test-glass {
+    width: 250px;
+    position: relative;
+    margin: 0;
+    background: #edc0bf;
+    background: linear-gradient(90deg, #edc0bf 0,#c4caef 58%);
+    font-family: 'Inter', sans-serif;
+    border: none;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    width: 250px;
+    top: 0%;
+    left: 0%;
+    transition: transform .5s ease;
+}
+
+.card {
+    width: 250px;
+    height: 154.5px;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.test-glass:hover .card{
+    visibility: visible;
+    opacity: 1;
+}
+
+.test-glass:hover .shape{
+    transform: scale(1.5);
+}
+
+p{
+    font-size: 1.5rem;
 }
