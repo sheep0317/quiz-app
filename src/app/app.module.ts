@@ -6,12 +6,15 @@ import { StudentUiComponent } from './modules/student-ui/student-ui.component';
 import { TeacherUiComponent } from './modules/teacher-ui/teacher-ui.component';
 import { HomepageComponent } from './modules/public/homepage/homepage.component';
 import { LoginComponent } from './modules/public/login/login.component';
-import { SigninComponent } from './modules/public/signin/signin.component';
+import { SignUpComponent } from './modules/public/signup/signup.component';
 import { StudentUiModule } from './modules/student-ui/student-ui.module';
 import { TeacherUiModule } from './modules/teacher-ui/teacher-ui.module';
 import { DashboardComponent } from './modules/ui-component/dashboard/dashboard.component';
 import { MenuComponent } from './modules/ui-component/menu/menu.component';
-
+import { AboutComponent } from './modules/public/about/about.component';
+import { HeaderComponent } from './modules/public/header/header.component';
+import { FooterComponent } from './modules/public/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +22,19 @@ import { MenuComponent } from './modules/ui-component/menu/menu.component';
     TeacherUiComponent,
     HomepageComponent,
     LoginComponent,
-    SigninComponent,
+    SignUpComponent,
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    AboutComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StudentUiModule,
-    TeacherUiModule
+    TeacherUiModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+.app-name{
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+    padding: 10px 20px 10px 20px;
+    background-color: #fefefe;
+}
+nav{
+    font-family: Roboto, sans-serif;
+    padding-left: 10px;
+    background-color: #5375e2;
+    box-shadow: 0px 1px 1px #5c616e, 0px 2px 2px #5375e2;
+}
+.nav-item{
+    padding-left: 10px;
+}
