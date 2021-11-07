@@ -15,6 +15,8 @@ import { AboutComponent } from './modules/public/about/about.component';
 import { HeaderComponent } from './modules/public/header/header.component';
 import { FooterComponent } from './modules/public/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +36,12 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     StudentUiModule,
     TeacherUiModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
