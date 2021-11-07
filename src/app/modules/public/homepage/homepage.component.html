@@ -1,5 +1,5 @@
-<app-header></app-header>
-<body>
+<!-- <app-header></app-header> -->
+<!-- <body>
     <div class="container-fluid">
         <div class="mt-4 p-5 text-white rounded bg-blue">
             <h1>Just Do Quiz</h1>
@@ -13,7 +13,87 @@
     <div id="login-box">
         <app-login></app-login>
     </div>
-</body>
+</body> -->
 
+<section>
+    <div class="circle">
 
-
+    </div>
+    <header>
+        <a href="#"><img src="./../../../../assets/img/pain_tako.png" class="logo"></a>
+        <ul>
+            <li><a href="#">Github</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Info</a></li>
+        </ul>
+    </header>
+    <div class="content">
+        <div class="textBox">
+            <h2>Just do it<br>Believe in your self and <br><span>Just Do Quiz</span></h2>
+        </div>
+        <div class="login-card">
+            
+            
+            <div class="btn-box" [ngClass]="isLogin? 'isLogin' : 'isRegister' ">
+                <button type="button" class="toggle-btn login" (click)="toggle_login_register(true)">Log in</button>
+                <button type="button" class="toggle-btn register" (click)="toggle_login_register(false)">Register</button>
+                <div class="btn-bg"></div>
+            </div>
+            <form [formGroup]='loginForm' *ngIf="isLogin" @fadeInOut (ngSubmit)="onLogin()"  ngNativeValidate>
+                <div class="inputBox">
+                    <input type="text" name="username" required autocomplete="off" formControlName="username">
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" required formControlName="password">
+                    <label>Password</label>
+                </div>
+                <input class="btn" type="submit" name="btnLogin" value="Log in" >
+            </form>
+            <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()" ngNativeValidate>
+                <div class="inputBox">
+                    <input type="text" name="username" required autocomplete="off" formControlName="username">
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="fullname" required autocomplete="off" formControlName="fullname">
+                    <label>Full name</label>
+                </div>
+                <div class="inputBox">
+                    <input type="email" name="email" required autocomplete="off" formControlName="email">
+                    <label>Email</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" required autocomplete="off" formControlName="password">
+                    <label>Password</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password2" required autocomplete="off" formControlName="repeatpassword">
+                    <label>Repeat password</label>
+                </div>
+                <div class="radioBox">
+                    <label>Gender: </label>
+                    <span>Male</span>
+                    <input type="radio" name="gender" required checked value="true" formControlName="gender">
+                    <span>Female</span>
+                    <input type="radio" name="gender" required value="false" formControlName="gender">
+                    
+                </div>
+                <div class="radioBox">
+                    <label>Role: </label>
+                    <span>Student</span>
+                    <input type="radio" name="role" required checked value="student" formControlName="role">
+                    <span>Teacher</span>
+                    <input type="radio" name="role" required value="teacher" formControlName="role">
+                    
+                </div>
+                <input class="btn" type="submit" name="btnRegister" value="Submit">
+            </form>
+        </div>
+    </div>
+    <ul class="sci">
+        <li><a href="#"><img src="./../../../../assets/img/facebook.png"></a></li>
+        <li><a href="#"><img src="./../../../../assets/img/twitter.png"></a></li>
+        <li><a href="#"><img src="./../../../../assets/img/instagram.png"></a></li>
+    </ul>
+</section>

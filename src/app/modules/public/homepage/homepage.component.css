@@ -1,7 +1,318 @@
-.bg-blue{
-    background-color: #5375e2
-    ;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
-body{
-    background-color: #fefefe;
+
+section
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-width: min-content;
+    height: 100%;
+    padding: 30px 150px 30px 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("./../../../../assets/img/blob-scene-haikei6.svg");
+    background-size:cover;
+}
+
+header
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    max-width: 80px;
+}
+
+header ul{
+    position: relative;
+    display: flex;
+}
+
+header ul li{
+    list-style: none;
+}
+
+header ul li a{
+    display: inline-block;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    min-width: min-content;
+    display: flex;
+    margin:0px 10% 0px 10%;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgb(0, 0, 0,0.5);
+    
+}
+
+.content .textBox{
+    position: relative;
+    margin-left: 40px;
+    margin-right: 80px;
+    width: 40%;
+}
+
+.content .textBox h2{
+    color: #333;
+    font-size: 3em;
+    line-height: 1.4em;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.content .textBox h2 span{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 900;
+    text-shadow: 0px 1px 2px #2b6777;
+    pointer-events: none;
+    /* text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff; */
+}
+
+/* login card */
+.login-card{
+    width: 400px;
+    min-width: 380px;
+    height: 600px;
+    min-height: min-content;
+    padding: 50px;
+    box-shadow: -5px 0px #2b6777;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    justify-content: flex-start;
+
+    /* background: rgba(255, 255, 255, 0.5); */
+    
+}
+
+.login-card h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.login-card .btn-box{
+    width: 220px;
+    margin: 0px auto;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 0 1px 1px #f2f2f2 ;
+    border-radius: 30px;
+    display: flex;
+}
+
+.login-card .btn-box .toggle-btn{
+    width: 50%;
+    padding: 10px 30px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #fff;
+}
+
+.btn-bg{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right,#2b6777, #52ab98);
+    border-radius: 30px;
+    transition: 0.3s;
+    z-index: -1;
+    
+}
+
+.btn-box.isLogin .btn-bg{
+    left: 0px;
+}
+.btn-box.isRegister .btn-bg{
+    left: 110px;
+}
+.btn-box.isLogin .login{
+    font-size: 18px;
+}
+.btn-box.isRegister .register{
+    font-size: 18px;
+}
+.login-card .inputBox{
+    position: relative;
+}
+
+.login-card .inputBox input
+{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-card .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #c8d8e4;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.login-card .inputBox input:focus ~ label,
+.login-card .inputBox input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: #c8d8e4;
+    font-size: 14px;
+}
+
+.login-card input[type="submit"]
+{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #52ab98;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0px auto;
+    text-transform: none;
+}
+
+.login-card form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* end login card */
+
+/* register card */
+.radioBox{
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.radioBox span{
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+    margin: 0px 5px;
+}
+
+.radioBox label{
+    letter-spacing: 1px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+    margin: 0px 5px;
+    font-weight: 500;
+}
+/* end of register card */
+
+.sci{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+.sci li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    
+}
+
+
+.sci img:hover{
+    transform: translateY(-20px) scale(1.2);
+    box-shadow: 0px 2px 4px black;
+}
+
+.sci img{
+    max-width: 60px;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+/* bỏ autofill bg color của browers */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000000s ease-in-out 0s;
+}
+
+@media(max-width: 900px){
+
+    .circle{
+        display: none;
+    }
+
+    section{
+        padding: 110px 10px;
+        background-image: url("./../../../../assets/img/stacked-waves-haikei.svg");
+    }
+
+    .content{
+        margin:0px;
+    }
+
+    .content .textBox{
+        display: none;
+    }
+
+    .login-card{
+        box-shadow: none;  
+    }
+
+    header{
+        padding: 20px 40px;
+    }
+    
 }

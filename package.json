@@ -21,15 +21,14 @@
     "@angular/router": "~12.2.0",
     "@fortawesome/fontawesome-free": "~5.6.3",
     "@types/chart.js": "^2.7.40",
+    "@types/mongodb": "^4.0.7",
     "angular-bootstrap-md": "^12.0.0",
     "animate.css": "~3.7.2",
     "bootstrap": "^5.1.3",
-<<<<<<< HEAD
-    "ngx-cookie-service": "^12.0.3",
-=======
     "chart.js": "^2.7.2",
     "hammerjs": "~2.0.8",
->>>>>>> 4f66d2c55c253930893c96bbfc96f94ca2c56e22
+    "ngx-cookie-service": "^12.0.3",
+    "ngx-toastr": "^14.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -47,5 +46,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.5"
+  },
+  "brower": {
+    "crypto": false
   }
 }

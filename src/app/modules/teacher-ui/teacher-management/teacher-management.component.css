@@ -1,9 +1,14 @@
+.container{
+    margin: 0px;
+    justify-content: flex-start;
+}
 .grid {
-    margin: 80px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    align-items: flex-start;
+    margin: 80px 40px 0px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-row-gap: 30px;
+    grid-column-gap: 30px;
+    justify-content: flex-start;
 }
 
 .grid .class-card {
@@ -11,18 +16,17 @@
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     text-align: center;
     border-radius: 20px;
-    width: 250px;
+    width: 300px;
     transition: transform .3s;
 }
 
 .grid .class-card:hover {
-    transform: translateY(5px);
+    transform: translateY(10px);
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
 .grid .class-card .img-container img {
-    width: 100%;
-    /* max-width: 250px; */
+     max-width: 300px; 
 }
 
 .grid .class-card .img-container {
@@ -37,7 +41,7 @@
 }
 
 .test-glass {
-    width: 250px;
+    width: 300px;
     position: relative;
     margin: 0;
     background: #edc0bf;
@@ -48,18 +52,19 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .shape {
     position: absolute;
-    width: 250px;
+    width: 300px;
     top: 0%;
     left: 0%;
     transition: transform .5s ease;
 }
 
 .card {
-    width: 250px;
+    width: 300px;
     height: 154.5px;
     background: rgba(255, 255, 255, 0.4);
     opacity: 0;

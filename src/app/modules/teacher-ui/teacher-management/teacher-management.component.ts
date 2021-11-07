@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ObjectId } from 'bson';
+import { Class } from 'src/app/model/Class';
 
 
 @Component({
@@ -10,11 +12,15 @@ export class TeacherManagementComponent implements OnInit {
 
   imgUrl = "https://images.pexels.com/photos/9441882/pexels-photo-9441882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
-  listQuiz: { id: number, name: string , imgurl: string}[] = [
-    { "id": 0, "name": "Available" ,"imgurl": this.imgUrl},
-    { "id": 1, "name": "Ready" , "imgurl":this.imgUrl},
-    { "id": 2, "name": "Started" , "imgurl":this.imgUrl}
-]; // test
+  listQuiz:Class[] = [
+    new Class(new ObjectId(), "Available", this.imgUrl, ""),
+    new Class(new ObjectId(), "Available", this.imgUrl, ""),
+    new Class(new ObjectId(), "Available", this.imgUrl, ""),
+    new Class(new ObjectId(), "Available", this.imgUrl, ""),
+    new Class(new ObjectId(), "Available", this.imgUrl, ""),
+    new Class(new ObjectId(), "Available", this.imgUrl, "")
+  ]
+
 
 
   constructor() { }

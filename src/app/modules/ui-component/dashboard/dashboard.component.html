@@ -10,20 +10,18 @@
         </div>
 
         <div class="nav-item-grp">
-            <button class="btn btn-a" type="button" [routerLink]="'profile'" routerLinkActive="active"
-                data-mdb-ripple-color="white">
+            <button class="btn btn-a" type="button" [routerLink]="'profile'" routerLinkActive="active">
                 <i class="fa fa-user"></i>
                 <span *ngIf='isOpen'>
                     Profile
                 </span>
             </button>
-            <button class="btn btn-a" type="button" [routerLink]="'manage'" data-mdb-ripple-color="white">
+            <button class="btn btn-a" type="button" [routerLink]="'manage'" >
                 <i class="fa fa-book"></i>
                 <span *ngIf='isOpen'>Manage</span>
             </button>
 
-            <button class="btn btn-a" type="button" data-bs-toggle="modal" data-bs-target="#Logout"
-                data-mdb-ripple-color="white">
+            <button class="btn btn-a" type="button" data-bs-toggle="modal" data-bs-target="#Logout">
                 <i class="fa fa-sign-out"></i>
                 <span *ngIf='isOpen'>Sign out</span>
             </button>
@@ -52,9 +50,9 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-</script>
+</script> -->
