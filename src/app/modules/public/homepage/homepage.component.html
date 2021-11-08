@@ -47,7 +47,7 @@
                 <div class="inputBox">
                     <input type="password" name="password" required formControlName="password">
                     <label>Password <small *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmit[0])" class="text-danger">*required, min length is 8</small></label>
-                </div>)
+                </div>
                 <input class="btn" type="submit" name="btnLogin" value="Log in" >
             </form>
             <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password2" required autocomplete="off" formControlName="repeatpassword">
-                    <label>Repeat password <small *ngIf="registerForm.get('repeatpassword')?.invalid && (registerForm.get('repeatpassword')?.touched || isSubmit[1])" class="text-danger">*required, min length is </small></label>
+                    <label>Repeat password <small *ngIf="registerForm.get('repeatpassword')?.invalid && (registerForm.get('repeatpassword')?.touched || isSubmit[1])" class="text-danger">*required, min length is 8</small></label>
                 </div>
                 <div class="radioBox">
                     <label>Gender: </label>
