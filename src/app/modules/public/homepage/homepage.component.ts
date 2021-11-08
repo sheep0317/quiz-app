@@ -31,27 +31,35 @@ import { ToastrService } from 'ngx-toastr';
 export class HomepageComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ])
   });
 
   registerForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
-      Validators.minLength(4)
+      Validators.minLength(6)
     ]),
     password: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(8)
     ]),
-    repeatpassword: new FormControl(''),
-    email: new FormControl(''),
-    fullname: new FormControl(''),
-    gender: new FormControl('true'),
-    role: new FormControl('student')
+    repeatpassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    fullname: new FormControl('', Validators.required),
+    gender: new FormControl('true', Validators.required),
+    role: new FormControl('student', Validators.required)
   });
 
   isLogin: boolean = true;
   passwdConfirmCorrect: boolean = true;
+  isSubmit: any = [ false, false]
 
   constructor(private authService: AuthServiceService, private toastr: ToastrService) { }
   title = 'Homepage';
@@ -64,54 +72,64 @@ export class HomepageComponent implements OnInit {
 
   onLogin() {
     console.log(this.loginForm.value);
-    this.authService.login(this.loginForm.value).subscribe(
-      data => {
-
-        console.log(data)
-      },
-      err => {
-        console.error("error:" + err);
-      }
-    )
+    this.isSubmit[0] = true;
+    if(this.loginForm.valid)
+    {
+      this.authService.login(this.loginForm.value).subscribe(
+        data => {
+  
+          console.log(data)
+          this.showToastr(true, data.body.message);
+        },
+        err => {
+          console.error("error:" + err);
+          this.showToastr(false, err.error.message);
+        }
+      )
+    }
+    
   }
 
   onRegiste() {
     console.log(this.registerForm.value);
-    if (this.registerForm.value.password != this.registerForm.value.repeatpassword) {
-      this.passwdConfirmCorrect = false;
-      console.log("password not match")
-    }
-    else {
-      this.authService.register(this.registerForm.value).subscribe(
-        (data) => {
-          console.log(data)
-          if (data.status == 208) {
-            console.log(data.status)
-          }
-          this.isLogin = true;
-          this.showToastr(true,data.body.message);
-        },
-        (err: HttpErrorResponse) => {
-          console.log(err.error);
-          console.log(err.status);
-          this.showToastr(false,err.error.message);
+    this.isSubmit[1] = true;
+    if (this.registerForm.valid)
+      if (this.registerForm.value.password != this.registerForm.value.repeatpassword) {
+        this.passwdConfirmCorrect = false;
+        console.log("password not match")
+        this.showToastr(false, "Password is not matched");
+      }
+      else {
+        this.authService.register(this.registerForm.value).subscribe(
+          (data) => {
+            console.log(data)
+            if (data.status == 208) {
+              console.log(data.status)
+            }
+            this.isLogin = true;
+            this.showToastr(true, data.body.message);
+          },
+          (err: HttpErrorResponse) => {
+            console.log(err.error);
+            console.log(err.status);
+            this.showToastr(false, err.error.message);
 
-        }
-      )
-    }
+          }
+        )
+      }
 
   }
 
 
-  showToastr(success: boolean, message: any){
-    if(success){
-      this.toastr.success(message,"",{
+  showToastr(success: boolean, message: any) {
+    if (success) {
+      this.toastr.success(message, "", {
         timeOut: 5000,
         progressBar: true
       })
     }
-    else{
-      this.toastr.error(message,"",{
+    else {
+      this.toastr.error(message, "", {
         timeOut: 5000,
         progressBar: true
       })

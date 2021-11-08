@@ -39,37 +39,37 @@
                 <button type="button" class="toggle-btn register" (click)="toggle_login_register(false)">Register</button>
                 <div class="btn-bg"></div>
             </div>
-            <form [formGroup]='loginForm' *ngIf="isLogin" @fadeInOut (ngSubmit)="onLogin()"  ngNativeValidate>
+            <form [formGroup]='loginForm' *ngIf="isLogin" @fadeInOut (ngSubmit)="onLogin()">
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username <small class="text-danger">*cannot be empty</small></label>
+                    <label>Username <small *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.touched || isSubmit[0])" class="text-danger">*required, min length is 6</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required formControlName="password">
-                    <label>Password <small class="text-danger">*cannot be empty</small></label>
-                </div>
+                    <label>Password <small *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmit[0])" class="text-danger">*required, min length is 8</small></label>
+                </div>)
                 <input class="btn" type="submit" name="btnLogin" value="Log in" >
             </form>
-            <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()" ngNativeValidate>
+            <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()">
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username <small class="text-danger">*cannot be empty</small></label>
+                    <label>Username <small *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.touched || isSubmit[1])" class="text-danger">*required, min length is 6</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="text" name="fullname" required autocomplete="off" formControlName="fullname">
-                    <label>Full name <small class="text-danger">*cannot be empty</small></label>
+                    <label>Full name <small *ngIf="registerForm.get('fullname')?.invalid && (registerForm.get('fullname')?.touched || isSubmit[1])" class="text-danger">*required</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="email" name="email" required autocomplete="off" formControlName="email">
-                    <label>Email <small class="text-danger">*cannot be empty</small></label>
+                    <label>Email <small *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || isSubmit[1])" class="text-danger" >*required, email format</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required autocomplete="off" formControlName="password">
-                    <label>Password <small class="text-danger">*cannot be empty</small></label>
+                    <label>Password <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || isSubmit[1])" class="text-danger">*required, min length is 8</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password2" required autocomplete="off" formControlName="repeatpassword">
-                    <label>Repeat password <small class="text-danger">*cannot be empty</small></label>
+                    <label>Repeat password <small *ngIf="registerForm.get('repeatpassword')?.invalid && (registerForm.get('repeatpassword')?.touched || isSubmit[1])" class="text-danger">*required, min length is </small></label>
                 </div>
                 <div class="radioBox">
                     <label>Gender: </label>
