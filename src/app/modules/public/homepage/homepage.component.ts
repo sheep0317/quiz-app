@@ -46,8 +46,8 @@ export class HomepageComponent implements OnInit {
     repeatpassword: new FormControl(''),
     email: new FormControl(''),
     fullname: new FormControl(''),
-    gender: new FormControl(''),
-    role: new FormControl('')
+    gender: new FormControl('true'),
+    role: new FormControl('student')
   });
 
   isLogin: boolean = true;

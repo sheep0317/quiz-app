@@ -45,12 +45,13 @@ import { ClassItemComponent } from './modules/ui-component/class-item/class-item
     TeacherUiModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
   providers: [
     CookieService,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     HttpClientModule,
   ],
   bootstrap: [AppComponent]

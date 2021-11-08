@@ -42,34 +42,34 @@
             <form [formGroup]='loginForm' *ngIf="isLogin" @fadeInOut (ngSubmit)="onLogin()"  ngNativeValidate>
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username</label>
+                    <label>Username <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required formControlName="password">
-                    <label>Password</label>
+                    <label>Password <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <input class="btn" type="submit" name="btnLogin" value="Log in" >
             </form>
             <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()" ngNativeValidate>
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username</label>
+                    <label>Username <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="text" name="fullname" required autocomplete="off" formControlName="fullname">
-                    <label>Full name</label>
+                    <label>Full name <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="email" name="email" required autocomplete="off" formControlName="email">
-                    <label>Email</label>
+                    <label>Email <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required autocomplete="off" formControlName="password">
-                    <label>Password</label>
+                    <label>Password <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password2" required autocomplete="off" formControlName="repeatpassword">
-                    <label>Repeat password</label>
+                    <label>Repeat password <small class="text-danger">*cannot be empty</small></label>
                 </div>
                 <div class="radioBox">
                     <label>Gender: </label>
