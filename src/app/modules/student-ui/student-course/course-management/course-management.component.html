@@ -1,0 +1,24 @@
+<div class="wrap-box">
+    <!--Template access-->
+    <div id="accordion">
+      <div class="card">
+        <!--Card Header data-bs-toggle dùng để collapse href id để xác định chính xác để đóng mở -->
+        <div class="card-header"  data-bs-toggle="collapse" href="#collapseOne">
+          <div class="header-left">
+            Collapsible Group Item #1
+          </div>
+          <div class="header-right done" id="isDoneQuiz">
+            Not Assign / Assigned
+          </div>
+        </div>
+        <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+          <div class="card-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+          <div class="card-footer">
+            <button class="btn" target="_blank" href="https://google.com" (click) = "doQuiz()" [routerLink]="'courseid_quiz'" >Do Quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

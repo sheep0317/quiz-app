@@ -1,0 +1,36 @@
+<h1>Danh sách lớp học</h1>
+<div class="container">
+  <div class="grid">
+    <div class="class-card" *ngFor="let quiz of listQuiz">
+      <div class="test-glass" [routerLink]="'classid_testeditor'" >
+        <img class="shape" src="https://images.pexels.com/photos/9441882/pexels-photo-9441882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="https://images.pexels.com/photos/9441882/pexels-photo-9441882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+        <div class="card">
+          <p>Xem chi tiết</p>
+        </div>
+      </div>
+
+      <div class="card-title h3" [innerHTML]="quiz.name"></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--Modal-->
+<div class="modal fade" id="deleteSection">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure?
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>

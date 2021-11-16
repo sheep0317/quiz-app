@@ -11,15 +11,5 @@ export class StudentCourseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  doQuiz(){
-    //success => change color
-    var isDoneQuiz= document.getElementById("isDoneQuiz");
-    if (isDoneQuiz?.classList.contains('done')){
-      isDoneQuiz.classList.add('undone');
-      isDoneQuiz.classList.remove('done');
-    }else{
-      isDoneQuiz?.classList.add('done');
-      isDoneQuiz?.classList.remove('undone');
-    }
-  }
+ 
 }
