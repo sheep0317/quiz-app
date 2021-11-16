@@ -11,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthServiceService } from 'src/app/service/auth-service.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -61,7 +62,8 @@ export class HomepageComponent implements OnInit {
   passwdConfirmCorrect: boolean = true;
   isSubmit: any = [ false, false]
 
-  constructor(private authService: AuthServiceService, private toastr: ToastrService) { }
+  constructor(private authService: AuthServiceService, private toastr: ToastrService, private route: ActivatedRoute,
+    private router: Router) { }
   title = 'Homepage';
   ngOnInit(): void {
   }
@@ -79,7 +81,15 @@ export class HomepageComponent implements OnInit {
         data => {
   
           console.log(data)
-          this.showToastr(true, data.body.message);
+          this.showToastr(true, data.body.role);
+          if(data.body.role =="student")
+          {
+            this.router.navigate(['/student']);
+          }
+          else if(data.body.role == "teacher")
+          {
+            this.router.navigate(['/teacher']);
+          }
         },
         err => {
           console.error("error:" + err);
