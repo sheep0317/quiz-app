@@ -12,6 +12,15 @@ export class TeacherUiComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let jwt = localStorage.getItem("jwt");
+    if(jwt == null)
+    {
+      console.log("jwt null");
+    }
+    else
+    {
+      console.log(jwt);
+    }
   }
 
   toggle_navbar(){

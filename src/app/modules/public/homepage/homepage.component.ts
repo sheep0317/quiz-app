@@ -82,8 +82,10 @@ export class HomepageComponent implements OnInit {
   
           console.log(data)
           this.showToastr(true, data.body.role);
+          localStorage.setItem("jwt",data.body.accessToken)
           if(data.body.role =="student")
           {
+            
             this.router.navigate(['/student']);
           }
           else if(data.body.role == "teacher")

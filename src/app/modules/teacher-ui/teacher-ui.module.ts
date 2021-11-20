@@ -5,6 +5,8 @@ import { TeacherManagementComponent } from './teacher-management/teacher-managem
 import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 import { TestManagementComponent } from './teacher-management/test-management/test-management.component';
 import { ClassManagementComponent } from './teacher-management/class-management/class-management.component';
+import { TestCreateComponent } from './teacher-management/test-create/test-create.component';
+import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import { ClassManagementComponent } from './teacher-management/class-management/
     TeacherManagementComponent,
     TeacherProfileComponent,
     TestManagementComponent,
-    ClassManagementComponent
+    ClassManagementComponent,
+    TestCreateComponent,
+    ClassDetailComponent
   ],
   imports: [
     CommonModule,

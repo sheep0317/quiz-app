@@ -1,6 +1,8 @@
 .container{
+    min-width: 100%;
     margin: 0px;
     justify-content: flex-start;
+    margin-right: 30px;
 }
 .grid {
     margin: 80px 40px 0px 80px;
@@ -89,4 +91,13 @@
 
 p{
     font-size: 1.5rem;
+}
+
+
+
+/* responsive */
+@media(max-width: 1481px){
+    .grid{
+        grid-template-columns: min-content min-content min-content;
+    }
 }

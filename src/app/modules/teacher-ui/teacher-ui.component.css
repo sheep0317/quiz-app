@@ -1,6 +1,24 @@
 .teacher {
     display: grid;
     grid-template-columns: min-content auto;
+    overflow:hidden;
+    
+}
+
+.teacher .navigation {
+    height: 100%;
+}
+
+.teacher .teacher-body{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.teacher .teacher-body div{
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 /* .aside {
@@ -16,4 +34,3 @@
 .offcanvas-body a {
     padding-left: 15px;
 }
-

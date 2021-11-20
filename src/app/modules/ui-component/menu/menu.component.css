@@ -1,13 +1,19 @@
 .menu {
+    height: 4em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0.5em 0.5em;
+    background: #2b6777;
+    padding: 0 1em;
+
+    
 }
 
 .btn-menu {
     font-size: 2em;
-    color: #0E0E18;
+    background: transparent;
+    color: white;
+    border: none;
 }
 
 .btn-profile {
@@ -15,7 +21,12 @@
     height: fit-content;
     margin-right: 1em;
     font-size: 1em;
-    color: #0E0E18;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-profile:hover {
+    color: #2b6777;
 }
 
 .btn-profile .fa {
