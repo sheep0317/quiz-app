@@ -13,7 +13,7 @@ export class TeacherServiceService {
 
     return tokens ? new HttpHeaders().set('Authorization', 'Bearer ' + tokens) : null;
   }
-
+  
   getListClass() {
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)

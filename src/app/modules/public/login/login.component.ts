@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthServiceService } from '../../../service/auth-service.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,17 +8,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, ) { }
-  url= ``
+  constructor(private auth: AuthServiceService ) { }
+  url= `http://localhost:8080/login`
+  package = {
+    username: '',
+    password: ''
+  }
   ngOnInit(): void {
   }
-  login(email:String, pass: String){
+  login(username: string, pass: string){
+    this.package.username = username;
+    this.package.password = pass;
     /*
-     this.http.get(this.url).subscribe(data => {
-      console.log(data)
-      localStorage.setItem('token', data.toString())
-    })   
+    this.auth.login(this.package).subscribe(data => {
+      
+    })
      */
-   
   }
 }

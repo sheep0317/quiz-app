@@ -7,6 +7,7 @@ import { TestManagementComponent } from './teacher-management/test-management/te
 import { ClassManagementComponent } from './teacher-management/class-management/class-management.component';
 import { TestCreateComponent } from './teacher-management/test-create/test-create.component';
 import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { ClassDetailComponent } from './teacher-management/class-detail/class-de
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     TeacherUiRoutingModule
   ]
 })
