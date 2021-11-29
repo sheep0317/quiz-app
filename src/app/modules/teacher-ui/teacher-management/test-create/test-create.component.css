@@ -1,0 +1,13 @@
+.container-fluid{
+    padding: 30px;
+    margin: 30px;
+    float: left;
+}
+
+.container-fluid .box{
+    display: flex;
+}
+
+.create-test .test-detail{
+    display: block;
+}

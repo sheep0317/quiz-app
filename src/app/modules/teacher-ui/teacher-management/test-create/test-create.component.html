@@ -1,64 +1,38 @@
-<button data-toggle="modal" data-target="#addtest">
-    add Test
-</button>
-<button (click)="check()">
-    Check
-</button>
-<h1>Addtest</h1>
-<div class="modal-content">
-    <div class="modal-body">
-      <input type="text" class="form-control" placeholder="Enter Test Name" #testName>
-      <input type="number" class="form-control" placeholder="Enter Number Retry" #testNoRetry>
-      <input type="number" class="form-control" placeholder="Enter Time to do" #testTime>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary" (click)="addTest(testName.value, testNoRetry.value, testTime.value)">Save changes</button>
-    </div>
-  </div>
-
-
-  
-  <div *ngFor="let test of Tests">
-      <div id="{{test._id}}">
-          <h2>
-            {{test | json}}
-          </h2>
-        
-        <div *ngFor="let quiz of test.quizs">
-            <h2>
-                {{quiz | json}}
-            </h2>
-            <div> 
-                <h2>add answer</h2>
-                <h1>quizID: {{quiz.id}}</h1>
-                <div class="modal-body">
-                    <input type="text" #answerContent class="form-control"><br>
-                    is Answer is true?
-                    <!--
-                        cái checkbox này sẽ bị dính thông qua nhiều cái quiz
-                        Đè xuất: chỉ hiển thị 1 quiz duy nhất lúc đó chỉ có duy nhất 1 checkbox được chọn
-                    -->
-                    <input type="checkbox" #answerCorrect (change)="isCheckboxChecked($event, quiz.id)"><br>
-                </div>
-                <div class="modal-footer">
-                    <button (click)="addAnswer(answerContent.value, test._id, quiz.id)">ADD Answer</button>
+<div class="container-fluid">
+    <h1 class="title">Tạo test mới</h1>
+    <div class="box">
+        <form>
+            <div [innerHTML]='test | json'></div>
+            <div class="test-detail">
+                <h1>Thông tin bài test</h1>
+                <p>Tên:</p>
+                <input type="text" name="testName" [(ngModel)]="test.name">
+                <p>Số lần thử:</p>
+                <input type="number" name="numRetry" [(ngModel)]="test.numberRetry">
+                <p>Thời gian làm bài:</p>
+                <input type="number" name="time" [(ngModel)]="test.time">
+            </div>
+            <h3>Các câu hỏi</h3>
+            <div class="quizs" *ngFor="let quiz of test.quizs; let i = index">
+                <div class="quiz-box">
+                    <p>Câu hỏi {{i}}</p>
+                    <input type="text" name="quizname{{i}}" [(ngModel)]="test.quizs[i].content">
+                    <p>Dạng câu hỏi</p>
+                    <div>
+                        <span>Single choice</span>
+                        <input type="radio" name="quizType{{i}}" [(ngModel)]="test.quizs[i].quizType" [value]="false">
+                        <span>Multi choice</span>
+                        <input type="radio" name="quizType{{i}}" [(ngModel)]="test.quizs[i].quizType" [value]="true">
+                    </div>
+                    <div class="answers" *ngFor="let answer of quiz.answers; let j = index">
+                        <div class="answer-box">
+                            <label>{{j}}</label>
+                            <input type="text" name="answerContent{{i}}-{{j}}" [(ngModel)]="test.quizs[i].answers[j].content">
+                            <input [type]="quiz.quizType?'checkbox':'radio'" id="isCorrect{{i}}-{{j}}" name="isCorrect{{i}}-{{j}}" [checked]="answer.isCorrect" (change)="onItemChange(quiz.quizType,i,j)">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <h2>addQuiz</h2>
-            <div class="modal-body">
-                <input type="text" #quizContent class="form-control" placeholder="quizContent">
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary "(click)="addQuiz(quizContent.value, test._id)">ADD Quiz</button>
-            </div>
-            
-            
-           
-        </div>
-       
-      </div>
-     
-  </div>
+        </form>
+    </div>
+</div>

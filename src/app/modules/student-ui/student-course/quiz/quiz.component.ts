@@ -24,18 +24,22 @@ export class QuizComponent implements OnInit {
           {
             id: '11',
             content: 'Đáp án 1',
+            isCorrect:false
           },
           {
             id: '12',
             content: 'Đáp án 2',
+            isCorrect:false
           },
           {
             id: '13',
             content: 'Đáp án 3',
+            isCorrect:false
           },
           {
             id: '14',
             content: 'Đáp án 4',
+            isCorrect:false
           }
         ]
       },
@@ -47,14 +51,17 @@ export class QuizComponent implements OnInit {
           {
             id: '21',
             content: 'Đáp án 1',
+            isCorrect:false
           },
           {
             id: '22',
             content: 'Đáp án 2',
+            isCorrect:false
           },
           {
             id: '23',
             content: 'Đáp án 3',
+            isCorrect:false
           },
           {
             id: '24',
@@ -64,6 +71,7 @@ export class QuizComponent implements OnInit {
             has survived not only five centuries, but also the leap into electronic typesetting, remaining ess
             entially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
              Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+             isCorrect:false
           }
         ]
       }
