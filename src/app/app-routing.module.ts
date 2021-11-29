@@ -12,22 +12,26 @@ const routes: Routes = [
   {
     path:'home',
     component:HomepageComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { breadcrumb: 'Home'}
   },
   {
     path:'about',
     component:AboutComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { breadcrumb: 'About'}
   }, 
   {
     path:'student',
     redirectTo: '/student',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { breadcrumb: 'Student'}
   },
   {
     path:'teacher',
     redirectTo: '/teacher',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { breadcrumb: 'Teacher'}
   },
 ];
 

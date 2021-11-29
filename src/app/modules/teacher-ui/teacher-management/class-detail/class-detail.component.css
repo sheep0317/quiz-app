@@ -18,3 +18,17 @@
     width: 70%;
     z-index: 0;
 }
+
+@media(max-width: 768px) {
+    .container-fluid{
+        margin: 0;
+    }
+    .class-detail{
+        display: block;
+        margin: auto;
+    }
+    .class-detail .right{
+        width: 100%;
+    }
+
+}

@@ -12,14 +12,16 @@ const routes: Routes = [
   {
     path:'teacher',
     component:TeacherUiComponent,
+    data: { breadcrumb: 'Teacher'},
     children:[
       {
         path:'',
         component: TeacherProfileComponent
       },
       {
-        path:'manage',
+        path:'course',
         component: TeacherManagementComponent,
+        data: { breadcrumb: 'Course'},
         children:[
           {
             path:'',
@@ -31,17 +33,20 @@ const routes: Routes = [
           },
           {
             path:'create_test',
-            component: TestCreateComponent
+            component: TestCreateComponent,
+            data: { breadcrumb: 'Create Test'}
           },
           {
             path: 'class',
-            component: ClassDetailComponent
+            component: ClassDetailComponent,
+            data: { breadcrumb: 'Detail'}
           }
         ]
       },
       {
         path:'profile',
-        component:TeacherProfileComponent
+        component:TeacherProfileComponent,
+        data: { breadcrumb: 'Profile'}
       }
     ]
   }

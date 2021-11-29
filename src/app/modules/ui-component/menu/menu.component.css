@@ -9,6 +9,25 @@
     
 }
 
+.menu .left-menu{
+    display: flex;
+}
+
+.breadcrumb{
+    background: transparent;
+    font-size: 1.5em;
+    align-items: center;
+    margin: 0;
+}
+
+.breadcrumb li > a{
+    color: white;
+}
+
+.breadcrumb .active{
+    color: #52ab98;
+}
+
 .btn-menu {
     font-size: 2em;
     background: transparent;
@@ -66,4 +85,10 @@
 
 .dropdown-menu .dropdown-item {
     color: #9a9a9a;
+}
+
+@media(max-width: 768px) {
+    .menu .left-menu .breadcrumb-container{
+        display: none;
+    }
 }

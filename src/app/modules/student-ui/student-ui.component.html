@@ -1,30 +1,22 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-    <div class="student">
-        <div class="sidebar">
-            <nav id="nav-btn">
-                <button class="btn-a" type="button" [routerLink]="'profile'" routerLinkActive="active">
-                    <i class="fa fa-user"></i><p>Profile</p>
-                </button>
-                <button class="btn-a" type="button" data-bs-toggle="offcanvas" data-bs-target="#course">
-                    <i class="fa fa-book"></i><p>Course</p>
-                </button>
-               
-                <button class="btn-a"  type="button" data-bs-toggle="modal" data-bs-target="#Logout">
-                    <i class="fa fa-sign-out"></i><p>SignOut</p>
-                </button>
-            </nav>
-        </div>
-        <div class="student-body">
-            <router-outlet></router-outlet>
-        
-        </div>
+<div class="student wrapper" >
+  <div class="navigation">
+    <app-dashboard [isOpen]='isOpen'></app-dashboard>
+  </div>
+
+  <div class="student-body">
+    <div>
+      <app-menu (toggleNav)='toggle_navbar()'></app-menu>
     </div>
-</body>
+    
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
 <!-- Modal -->
-<div class="modal fade" id="Logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="Logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -52,4 +44,4 @@
           <p><a [routerLink]="'course'" routerLinkActive="active" data-bs-dismiss="offcanvas">Class Name 1</a></p>
           <p><a [routerLink]="'course'" routerLinkActive="active" data-bs-dismiss="offcanvas">Class Name 2</a></p>
         </div>
-      </div>
+      </div> -->

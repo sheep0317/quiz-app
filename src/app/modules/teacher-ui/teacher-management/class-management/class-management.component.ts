@@ -9,7 +9,7 @@ import { Class } from 'src/app/model/Class';
 })
 export class ClassManagementComponent implements OnInit {
   
-  imgUrl = "https://images.pexels.com/photos/9441882/pexels-photo-9441882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+  imgUrl = "./../../../../assets/img/smol_gura.jpeg";
 
   listQuiz:Class[] = [
     new Class(new ObjectId(), "Available", this.imgUrl, ""),

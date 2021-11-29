@@ -1,142 +1,148 @@
-<body>
-    <div class="row" id="profile">
-      <div class="col-lg-5">
-        <div class="left-col">
-          <div class="profile-img">
-            <img src="{{img}}" class="img-fluid">
-          </div>
-          <h1 class="name">{{userInformation.name}}</h1>
-          <div class="email-contact">
-            <h2 class="email"><span class="email-img">@</span>{{userInformation.email}}</h2>
-          </div>
-          <div class="function">
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
-          </div>
-        </div>
-        
+<div class="row" id="profile">
+  <div class="col-lg-5">
+    <div class="left-col">
+      <div class="profile-img">
+        <img src="{{img}}" class="img-fluid">
       </div>
-      <div class="col-lg-7">
-        <div class="right-col">
-          <div class="phone info">
-            <label for="phone-number">Phone <i class='fas fa-phone-alt'></i> </label>
-            <div id="phone-number">{{userInformation.phone}}</div>
-          </div>
-          <div class="gender info">
-            <label for="gender">Gender <i class='fas fa-transgender-alt'></i></label>
-            <div *ngIf="userInformation.gender == true; else elseBlock">
-              <div id="gender">Male</div>
-            </div>
-            <ng-template #elseBlock><div id="gender">Female</div></ng-template>
-          </div>
-          <div class="day-of-birth info">
-            <label for="birthday">birthday <i class='far fa-calendar-alt'></i></label>
-            <div id="birthday">{{userInformation.birthday}}</div>
-          </div>
-          <div class="role info">
-            <label for="role">Role <i class='fas fa-user'></i></label>
-            <div id="role">{{userInformation.role}}</div>
-          </div>
-          <div class="address info-xl">
-            <label for="address">Address <i class='fas fa-address-book'></i></label>
-            <div id="address">{{userInformation.address}}</div>
-          </div>
-        </div>
+      <h1 class="name">{{userInformation.name}}</h1>
+      <div class="email-contact">
+        <h2 class="email"><span class="email-img">@</span>{{userInformation.email}}</h2>
+      </div>
+      <div class="function">
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
       </div>
     </div>
-    <div class="row" id="activity">
-      <h1>Activity</h1>
-    </div>
-  </body>
-  
-  
-  <!--Edit Profile Modal-->
-  <div class="modal fade" id="editProfile" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="edit-profile">
-              <input #phone class="" placeholder="input phone number" type="text">
-              <select name="gender" id="gender" #gender >
-                <option value="" selected hidden>Select Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
-              </select>
-              <input #birthday class="" placeholder="birthday" type="date"> 
-              <textarea #address class="" placeholder="your address" type="text"></textarea>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="editProfile(phone.value, gender.value, birthday.value, address.value)">Save changes</button>
-          </div>
-        </div>
-      </div>
+
   </div>
-  <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><strong>Change Password</strong></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="change-password">
-             <form [formGroup] = 'changepassForm' (ngSubmit)="changePassword()">
-              <div class="form-group">
-                <label for="current-password">Current Password</label>
-                <input type="password" class="form-control" id="current-password" placeholder="Current Password" formControlName="currentPassword">
-                <div class="invalid-feedback">
-                  <div *ngIf="changepassForm.controls['currentPassword'].hasError('required')">
-                    Current Password is required
-                  </div>
-                  <div *ngIf="changepassForm.controls['currentPassword'].hasError('minlength')">
-                    Current Password must be at least 6 characters
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="new-password">New Password</label>
-                <input type="password" class="form-control" id="new-password" placeholder="New Password" formControlName="newPassword">
-                <div class="invalid-feedback">
-                  <div *ngIf="changepassForm.controls['newPassword'].hasError('required')">
-                    New Password is required
-                  </div>
-                  <div *ngIf="changepassForm.controls['newPassword'].hasError('minlength')">
-                    New Password must be at least 6 characters
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password" formControlName="confirmPassword">
-                <div class="invalid-feedback">
-                  <div *ngIf="changepassForm.controls['confirmPassword'].hasError('required') && changepassForm.controls.confirmPassword.touched">
-                    Confirm Password is required
-                  </div>
-                  <div *ngIf="changepassForm.controls['confirmPassword'].hasError('minlength')">
-                    Confirm Password must be at least 6 characters
-                  </div>
-                  <div *ngIf="changepassForm.controls['confirmPassword'].hasError('mismatchedPasswords')">
-                    Password does not match
-                  </div>
-                </div>
-              </div>
-              <div class="change-button">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" [disabled]="!changepassForm.valid">Sign Up</button>
-              </div>
-              
-             </form>
-              
-            </div>
-          </div>
-          
+  <div class="col-lg-7">
+    <div class="right-col">
+      <div class="phone info">
+        <label for="phone-number">Phone <i class='fas fa-phone-alt'></i> </label>
+        <div id="phone-number">{{userInformation.phone}}</div>
+      </div>
+      <div class="gender info">
+        <label for="gender">Gender <i class='fas fa-transgender-alt'></i></label>
+        <div *ngIf="userInformation.gender == true; else elseBlock">
+          <div id="gender">Male</div>
         </div>
+        <ng-template #elseBlock>
+          <div id="gender">Female</div>
+        </ng-template>
+      </div>
+      <div class="day-of-birth info">
+        <label for="birthday">birthday <i class='far fa-calendar-alt'></i></label>
+        <div id="birthday">{{userInformation.birthday}}</div>
+      </div>
+      <div class="role info">
+        <label for="role">Role <i class='fas fa-user'></i></label>
+        <div id="role">{{userInformation.role}}</div>
+      </div>
+      <div class="address info-xl">
+        <label for="address">Address <i class='fas fa-address-book'></i></label>
+        <div id="address">{{userInformation.address}}</div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row" id="activity">
+  <h1>Activity</h1>
+</div>
+
+
+
+<!--Edit Profile Modal-->
+<div class="modal fade" id="editProfile" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="edit-profile">
+          <input #phone class="" placeholder="input phone number" type="text">
+          <select name="gender" id="gender" #gender>
+            <option value="" selected hidden>Select Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="3">Other</option>
+          </select>
+          <input #birthday class="" placeholder="birthday" type="date">
+          <textarea #address class="" placeholder="your address" type="text"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"
+          (click)="editProfile(phone.value, gender.value, birthday.value, address.value)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><strong>Change Password</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="change-password">
+          <form [formGroup]='changepassForm' (ngSubmit)="changePassword()">
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input type="password" class="form-control" id="current-password" placeholder="Current Password"
+                formControlName="currentPassword">
+              <div class="invalid-feedback">
+                <div *ngIf="changepassForm.controls['currentPassword'].hasError('required')">
+                  Current Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['currentPassword'].hasError('minlength')">
+                  Current Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" class="form-control" id="new-password" placeholder="New Password"
+                formControlName="newPassword">
+              <div class="invalid-feedback">
+                <div *ngIf="changepassForm.controls['newPassword'].hasError('required')">
+                  New Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['newPassword'].hasError('minlength')">
+                  New Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password"
+                formControlName="confirmPassword">
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="changepassForm.controls['confirmPassword'].hasError('required') && changepassForm.controls.confirmPassword.touched">
+                  Confirm Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['confirmPassword'].hasError('minlength')">
+                  Confirm Password must be at least 6 characters
+                </div>
+                <div *ngIf="changepassForm.controls['confirmPassword'].hasError('mismatchedPasswords')">
+                  Password does not match
+                </div>
+              </div>
+            </div>
+            <div class="change-button">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!changepassForm.valid">Sign Up</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

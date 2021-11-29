@@ -1,8 +1,18 @@
 <div class="menu">
-    <div>
+    <div class = "left-menu">
         <button class="btn-menu" (click)="toggle_navbar()">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
+        <breadcrumb class="breadcrumb-container" #parent>  
+            <ol class="breadcrumb">
+              <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+                <li *ngIf="!route.terminal" class="breadcrumb-item">
+                  <a href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+                </li>
+                <li *ngIf="route.terminal" class="breadcrumb-item active" aria-current="page">{{ route.displayName }}</li>
+              </ng-template>
+            </ol>
+          </breadcrumb>  
     </div>
 
     <div class="dropdown">

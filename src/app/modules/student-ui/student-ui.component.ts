@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-student-ui',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentUiComponent implements OnInit {
 
+  @Input() isOpen:boolean = true;
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +20,10 @@ export class StudentUiComponent implements OnInit {
     {
       console.log(jwt);
     }
+  }
+
+  toggle_navbar(){
+    this.isOpen = !this.isOpen;
   }
 
 }

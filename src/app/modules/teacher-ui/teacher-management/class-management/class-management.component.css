@@ -1,11 +1,19 @@
-.container{
+.container {
     min-width: 100%;
     margin: 0px;
     justify-content: flex-start;
     margin-right: 30px;
 }
+h1{
+    overflow: hidden;
+    min-width: fit-content;
+    min-height: min-content;
+    white-space: nowrap;
+    margin-left: 80px;
+}
+
 .grid {
-    margin: 80px 40px 0px 80px;
+    margin: 20px 40px 0px 80px;
     display: flex;
     flex-wrap: wrap;
     grid-row-gap: 30px;
@@ -28,7 +36,7 @@
 }
 
 .grid .class-card .img-container img {
-     max-width: 300px; 
+    max-width: 300px;
 }
 
 .grid .class-card .img-container {
@@ -47,7 +55,7 @@
     position: relative;
     margin: 0;
     background: #edc0bf;
-    background: linear-gradient(90deg, #edc0bf 0,#c4caef 58%);
+    background: linear-gradient(90deg, #edc0bf 0, #c4caef 58%);
     font-family: 'Inter', sans-serif;
     border: none;
     text-align: center;
@@ -80,24 +88,40 @@
     transition: visibility 0.3s linear, opacity 0.3s linear;
 }
 
-.test-glass:hover .card{
+.test-glass:hover .card {
     visibility: visible;
     opacity: 1;
 }
 
-.test-glass:hover .shape{
+.test-glass:hover .shape {
     transform: scale(1.5);
 }
 
-p{
+p {
     font-size: 1.5rem;
 }
 
 
 
 /* responsive */
-@media(max-width: 1481px){
-    .grid{
-        grid-template-columns: min-content min-content min-content;
+@media(max-width: 500px) {
+    .h1{
+        margin: 0;
+    }
+    .grid {
+        width: 100%;
+        margin: 0 0 30px 0;
+        padding: 0;
+    }
+    .grid .class-card {
+        width: 90%;
+        margin: auto;
+        min-width: fit-content;
+    }
+    .test-glass {
+        width: 100%;
+    }
+    .shape{
+        width: 100%;
     }
 }

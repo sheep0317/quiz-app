@@ -1,38 +1,26 @@
-.student{
+.student {
     display: grid;
-    grid-template-columns: 78px auto;
-}
-nav{
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-    width: 100%;
-    height: 100vh;
-    padding: 30px 0;
-    padding-left: 5px;
-}
-nav .btn-a{
-    width: 75px;
-    background-color:transparent;
-    color: white;
-    text-align: center;
-    margin: 10px 0;
-    padding: 0;
-    border-color: transparent;
-    border-radius: 10px 0 0 10px;
+    grid-template-columns: min-content auto;
+    overflow:hidden;
     
 }
-nav .btn-a:active{
-    background-color: white;
-    color: black;
-    border: transparent;
+
+.student .navigation {
+    height: 100%;
 }
 
-nav .btn-a:focus{
-    outline: none !important;
-    transition: none;
-    border: transparent;
+.student .student-body{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
 }
+
+.student .student-body div{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 .offcanvas-body a{
     padding-left: 15px;
 }
