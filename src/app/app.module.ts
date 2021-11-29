@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {BreadcrumbModule} from 'angular-crumbs';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AboutComponent } from './modules/public/about/about.component';
 import { HeaderComponent } from './modules/public/header/header.component';
@@ -48,7 +49,8 @@ import { ClassItemComponent } from './modules/ui-component/class-item/class-item
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BreadcrumbModule
+    BreadcrumbModule,
+    NgxPaginationModule
   ],
   providers: [
     CookieService,

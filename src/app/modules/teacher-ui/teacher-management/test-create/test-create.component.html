@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <h1 class="title">Tạo test mới</h1>
-    <div class="box">
-        <form>
-            <div [innerHTML]='test | json'></div>
+    <div [innerHTML]='test | json'></div>
+    <form class="box">
+        <div class="left">
             <div class="test-detail">
                 <h1>Thông tin bài test</h1>
                 <p>Tên:</p>
@@ -11,28 +11,36 @@
                 <input type="number" name="numRetry" [(ngModel)]="test.numberRetry">
                 <p>Thời gian làm bài:</p>
                 <input type="number" name="time" [(ngModel)]="test.time">
+                <pagination-controls id="listing_pagination" (pageChange)="p = $event"></pagination-controls>
             </div>
-            <h3>Các câu hỏi</h3>
-            <div class="quizs" *ngFor="let quiz of test.quizs; let i = index">
-                <div class="quiz-box">
-                    <p>Câu hỏi {{i}}</p>
-                    <input type="text" name="quizname{{i}}" [(ngModel)]="test.quizs[i].content">
-                    <p>Dạng câu hỏi</p>
+        </div>
+
+        <div class="right">
+            <div class="quizs card" 
+                *ngFor="let quiz of test.quizs | paginate: {id: 'listing_pagination', itemsPerPage: 1, currentPage: p }">
+                <p class="card-header">Câu hỏi {{p}}</p>
+                <div class="quiz-box card-body">
+                    <textarea class="quiz-content" type="text" name="quizname{{p-1}}" [(ngModel)]="test.quizs[p-1].content" rows="2"></textarea>
                     <div>
                         <span>Single choice</span>
-                        <input type="radio" name="quizType{{i}}" [(ngModel)]="test.quizs[i].quizType" [value]="false">
+                        <input type="radio" name="quizType{{p-1}}" [(ngModel)]="test.quizs[p-1].quizType"
+                            [value]="false">
                         <span>Multi choice</span>
-                        <input type="radio" name="quizType{{i}}" [(ngModel)]="test.quizs[i].quizType" [value]="true">
+                        <input type="radio" name="quizType{{p-1}}" [(ngModel)]="test.quizs[p-1].quizType"
+                            [value]="true">
                     </div>
                     <div class="answers" *ngFor="let answer of quiz.answers; let j = index">
                         <div class="answer-box">
                             <label>{{j}}</label>
-                            <input type="text" name="answerContent{{i}}-{{j}}" [(ngModel)]="test.quizs[i].answers[j].content">
-                            <input [type]="quiz.quizType?'checkbox':'radio'" id="isCorrect{{i}}-{{j}}" name="isCorrect{{i}}-{{j}}" [checked]="answer.isCorrect" (change)="onItemChange(quiz.quizType,i,j)">
+                            <textarea type="text" name="answerContent{{p-1}}-{{j}}"
+                                [(ngModel)]="test.quizs[p-1].answers[j].content" rows="1"></textarea>
+                            <input [type]="quiz.quizType?'checkbox':'radio'" id="isCorrect{{p-1}}-{{j}}"
+                                name="isCorrect{{p-1}}-{{j}}" [checked]="answer.isCorrect"
+                                (change)="onItemChange(quiz.quizType,p-1,j)">
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>

@@ -1,13 +1,50 @@
-.container-fluid{
+.container-fluid {
     padding: 30px;
     margin: 30px;
     float: left;
 }
 
-.container-fluid .box{
+.container-fluid .box {
     display: flex;
+    width: 100%;
 }
 
-.create-test .test-detail{
-    display: block;
+.box .left {
+    width: 30%;
+}
+
+.box .right {
+    width: 60%;
+    height: 500px;
+    margin: auto;
+}
+
+.box .right .card{
+    height: 100%;
+}
+
+textarea.quiz-content {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+textarea{
+    width: 70%;
+    padding: 5px;
+}
+
+@media(max-width: 1024px)
+{
+    .container-fluid{
+        margin: 0;
+    }
+    .container-fluid .box {
+        display: block;
+        display: block;
+        margin: auto;
+    }
+    .box .right{
+        width: 100%;
+        margin: auto;
+    }
 }

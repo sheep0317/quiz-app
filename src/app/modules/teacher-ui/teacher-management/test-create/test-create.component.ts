@@ -20,52 +20,12 @@ export class TestCreateComponent implements OnInit {
     numberRetry: 0,
     quizs: []
   };
+  p: number = 1;
 
   constructor() {
-    this.test.quizs.push({
-      id: '',
-      content: '',
-      quizType: false,
-      answers: [{
-        content: '',
-        isCorrect: true,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }]
-    })
-    this.test.quizs.push({
-      id: '',
-      content: '',
-      quizType: false,
-      answers: [{
-        content: '',
-        isCorrect: true,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }, {
-        content: '',
-        isCorrect: false,
-        id: '',
-      }]
-    })
+    for(let i = 0; i < 20; i++)
+      this.testPush();
+    
   }
 
   ngOnInit(): void {
@@ -97,6 +57,30 @@ export class TestCreateComponent implements OnInit {
         console.log("element " + this.test.quizs[quizIndex].answers[index].isCorrect);
       });
     }
+  }
+  testPush(){
+    this.test.quizs.push({
+      id: '',
+      content: '',
+      quizType: false,
+      answers: [{
+        content: '',
+        isCorrect: true,
+        id: '',
+      }, {
+        content: '',
+        isCorrect: false,
+        id: '',
+      }, {
+        content: '',
+        isCorrect: false,
+        id: '',
+      }, {
+        content: '',
+        isCorrect: false,
+        id: '',
+      }]
+    })
   }
 
 }

@@ -8,6 +8,7 @@ import { ClassManagementComponent } from './teacher-management/class-management/
 import { TestCreateComponent } from './teacher-management/test-create/test-create.component';
 import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TeacherUiRoutingModule
+    TeacherUiRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class TeacherUiModule {}
