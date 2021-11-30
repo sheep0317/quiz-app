@@ -9,6 +9,7 @@ import { TestCreateComponent } from './teacher-management/test-create/test-creat
 import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     TeacherUiRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    TextareaAutosizeModule
   ]
 })
 export class TeacherUiModule {}

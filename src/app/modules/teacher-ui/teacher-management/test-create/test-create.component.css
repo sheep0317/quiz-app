@@ -6,44 +6,140 @@
 
 .container-fluid .box {
     display: flex;
-    width: 100%;
+    margin-right: 80px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    min-height: fit-content;
+    
+}
+
+.error-msg{
+    margin: 20px 0 0 0;
+    padding: 10px;
+    border-radius: 0.25em;
 }
 
 .box .left {
-    width: 30%;
+    width: 40%;
+    padding: 1.25rem;
+    background: #f2f2f2;
 }
 
 .box .right {
     width: 60%;
-    height: 500px;
-    margin: auto;
+    margin-right: auto;
 }
 
-.box .right .card{
+.box .right .card {
     height: 100%;
+    min-height: min-content;
 }
 
 textarea.quiz-content {
     width: 100%;
     margin: 0;
     padding: 10px;
-}
-textarea{
-    width: 70%;
-    padding: 5px;
+    overflow: auto;
+
 }
 
-@media(max-width: 1024px)
-{
-    .container-fluid{
+textarea {
+    resize: none;
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2b6777;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #2b6777;
+    outline: none;
+    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.quiz-type{
+    display: flex;
+    align-items: center;
+}
+
+.quiz-type span{
+    font-weight: 500;
+    font-size: 1em;
+    color: #2b6777;
+}
+
+.quiz-type input{
+    margin: 10px 20px 10px 5px;
+}
+
+.form-check-input{
+    position: relative;
+}
+
+.answer-box{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    min-height: fit-content;
+}
+
+.card .card-header{
+    display: flex;
+    background: #2b6777;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+
+.card-header h2{
+    font-weight: 600;
+    font-size: 1.5em;
+    border-left: 5px solid white;
+    text-align:end;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.card .card-body{
+    background: #f2f2f2;
+}
+
+.answer-box label,
+.answer-box textarea,
+.answer-box input {
+    margin: 0 10px;
+}
+
+.answer-box label{
+    font-weight: 500;
+    font-size: 1.5em;
+    color: #2b6777;
+}
+
+.answer-box input{
+    width: 1.25em;
+    height: 1.25em;
+}
+
+@media(max-width: 1024px) {
+    .container-fluid {
         margin: 0;
     }
+
     .container-fluid .box {
         display: block;
         display: block;
         margin: auto;
     }
-    .box .right{
+
+    .box .left{
+        width: 100%;
+        margin: auto;
+    }
+
+    .box .right {
         width: 100%;
         margin: auto;
     }
