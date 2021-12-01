@@ -60,89 +60,103 @@ export class HomepageComponent implements OnInit {
 
   isLogin: boolean = true;
   passwdConfirmCorrect: boolean = true;
-  isSubmit: any = [ false, false]
+  isSubmit: any = [false, false]
 
   constructor(private authService: AuthServiceService, private toastr: ToastrService, private route: ActivatedRoute,
     private router: Router) { }
   title = 'Homepage';
   ngOnInit(): void {
-  }
+    let jwt = localStorage.getItem("jwt");
+    this.authService.checkJwt().then(
+      (data: any) => {
+        console.log(data.body.role);
+        if (data.body.role == "student") {
+          this.router.navigate(['/student']);
+        }
+        else if (data.body.role == "teacher") {
+          this.router.navigate(['/teacher']);
+        }
+      }
+    ).catch(err => {
+      localStorage.removeItem("jwt");
+      console.log("jwt not valid");
+      this.router.navigate(['/home']);
+    }
+    )
+}
 
-  toggle_login_register(input: boolean) {
-    this.isLogin = input;
-  }
+toggle_login_register(input: boolean) {
+  this.isLogin = input;
+}
 
-  onLogin() {
-    console.log(this.loginForm.value);
-    this.isSubmit[0] = true;
-    if(this.loginForm.valid)
-    {
-      this.authService.login(this.loginForm.value).subscribe(
-        data => {
+onLogin() {
+  console.log(this.loginForm.value);
+  this.isSubmit[0] = true;
+  if (this.loginForm.valid) {
+    this.authService.login(this.loginForm.value).subscribe(
+      data => {
+        console.log(data)
+        this.showToastr(true, data.body.role);
+        localStorage.setItem("jwt", data.body.accessToken)
+        if (data.body.role == "student") {
+          this.router.navigate(['/student']);
+        }
+        else if (data.body.role == "teacher") {
+          this.router.navigate(['/teacher']);
+        }
+      },
+      err => {
+        console.error("error:" + err);
+        this.showToastr(false, err.error.message);
+      }
+    )
+  }
+}
+
+onRegiste() {
+  console.log(this.registerForm.value);
+  this.isSubmit[1] = true;
+  if (this.registerForm.valid)
+    if (this.registerForm.value.password != this.registerForm.value.repeatpassword) {
+      this.passwdConfirmCorrect = false;
+      console.log("password not match")
+      this.showToastr(false, "Password is not matched");
+    }
+    else {
+      this.authService.register(this.registerForm.value).subscribe(
+        (data) => {
           console.log(data)
-          this.showToastr(true, data.body.role);
-          localStorage.setItem("jwt",data.body.accessToken)
-          if(data.body.role =="student")
-          {
-            this.router.navigate(['/student']);
+          if (data.status == 208) {
+            console.log(data.status)
           }
-          else if(data.body.role == "teacher")
-          {
-            this.router.navigate(['/teacher']);
-          }
+          this.isLogin = true;
+          this.showToastr(true, data.body.message);
         },
-        err => {
-          console.error("error:" + err);
+        (err: HttpErrorResponse) => {
+          console.log(err.error);
+          console.log(err.status);
           this.showToastr(false, err.error.message);
+
         }
       )
     }
+
+}
+
+
+showToastr(success: boolean, message: any) {
+  if (success) {
+    this.toastr.success(message, "", {
+      timeOut: 5000,
+      progressBar: true
+    })
   }
-
-  onRegiste() {
-    console.log(this.registerForm.value);
-    this.isSubmit[1] = true;
-    if (this.registerForm.valid)
-      if (this.registerForm.value.password != this.registerForm.value.repeatpassword) {
-        this.passwdConfirmCorrect = false;
-        console.log("password not match")
-        this.showToastr(false, "Password is not matched");
-      }
-      else {
-        this.authService.register(this.registerForm.value).subscribe(
-          (data) => {
-            console.log(data)
-            if (data.status == 208) {
-              console.log(data.status)
-            }
-            this.isLogin = true;
-            this.showToastr(true, data.body.message);
-          },
-          (err: HttpErrorResponse) => {
-            console.log(err.error);
-            console.log(err.status);
-            this.showToastr(false, err.error.message);
-
-          }
-        )
-      }
-
+  else {
+    this.toastr.error(message, "", {
+      timeOut: 5000,
+      progressBar: true
+    })
   }
-
-
-  showToastr(success: boolean, message: any) {
-    if (success) {
-      this.toastr.success(message, "", {
-        timeOut: 5000,
-        progressBar: true
-      })
-    }
-    else {
-      this.toastr.error(message, "", {
-        timeOut: 5000,
-        progressBar: true
-      })
-    }
-  }
+}
 
 }

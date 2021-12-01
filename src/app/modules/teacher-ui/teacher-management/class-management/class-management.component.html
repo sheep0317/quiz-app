@@ -3,7 +3,7 @@
   <div class="grid">
     <div class="class-card" *ngFor="let quiz of listQuiz">
       <div class="test-glass" [routerLink]="'class'" [queryParams]="{classId:quiz.id}">
-        <img class="shape" [src]='quiz.imgUrl' alt="https://images.pexels.com/photos/9441882/pexels-photo-9441882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+        <img class="shape" [src]='quiz.imgUrl' onerror="this.src='https://media.sketchfab.com/models/3329b7c37a694fd19295e7f68d3471f8/thumbnails/b781a636cd9c42b88fb9e2cb1701912e/048651d65ad643f0b79b830823b49bb8.jpeg'">
         <div class="card">
           <p>Xem chi tiết</p>
         </div>

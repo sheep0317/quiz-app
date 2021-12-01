@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ObjectId } from 'bson';
 import { Class } from 'src/app/model/Class';
+import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 
 @Component({
   selector: 'app-class-management',
@@ -20,9 +21,19 @@ export class ClassManagementComponent implements OnInit {
     new Class(new ObjectId(), "Available", this.imgUrl, "")
   ]
 
-  constructor() { }
+  constructor(private teacherService: TeacherServiceService) { }
 
   ngOnInit(): void {
+    this.teacherService.getListClass().then(
+      (data:any)=>{
+        console.log("data:");
+        console.log(data);
+        this.listQuiz = data;
+        console.log(this.listQuiz);
+      }
+    ).catch(
+      error => console.log(error)
+    )
   }
 
 }

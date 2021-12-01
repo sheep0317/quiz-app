@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/service/auth-service.service';
 
 @Component({
   selector: 'app-student-ui',
@@ -8,18 +10,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StudentUiComponent implements OnInit {
 
   @Input() isOpen:boolean = true;
-  constructor() { }
+  constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    let jwt = localStorage.getItem("jwt");
-    if(jwt == null)
-    {
-      console.log("jwt null");
-    }
-    else
-    {
-      console.log(jwt);
-    }
+    this.authService.checkRole("teacher").then(
+      data=>{
+        console.log("teacher: ");
+      }
+  ).catch(err=>{
+    localStorage.removeItem("jwt");
+    console.log("jwt not valid");
+    this.router.navigate(['/home']);
+  })
   }
 
   toggle_navbar(){

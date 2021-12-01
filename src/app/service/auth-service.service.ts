@@ -13,15 +13,21 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthServiceService {
-  
+
+
   constructor(private http: HttpClient) { }
+
+  getHeaders() {
+    const tokens = localStorage.getItem('jwt');
+    return tokens ? new HttpHeaders().set('Authorization', 'Bearer ' + tokens) : null;
+  }
 
   login(credentials: any): Observable<any> {
     console.log(credentials);
     return this.http.post(AUTH_API + 'login', {
       username: credentials.username,
       password: credentials.password
-    }, {observe: 'response'});
+    }, { observe: 'response' });
   }
 
   register(user: any): Observable<any> {
@@ -32,6 +38,22 @@ export class AuthServiceService {
       name: user.fullname,
       gender: user.gender,
       role: user.role
-    }, {observe: 'response'});
+    }, { observe: 'response' });
+  }
+
+  checkJwt() {
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(AUTH_API + "jwt-check-role", { headers: header, observe: 'response'  },).toPromise();
+    return this.http.get(AUTH_API + "jwt-check-role",{observe: 'response'  }).toPromise();
+  }
+
+  checkRole(role:String){
+    let header = this.getHeaders();
+    let rq = role+"/authorize";
+    if (header instanceof HttpHeaders)
+      return this.http.get(AUTH_API + rq, { headers: header, observe: 'response'  },).toPromise();
+    return this.http.get(AUTH_API + rq,{observe: 'response'  }).toPromise();
+    
   }
 }

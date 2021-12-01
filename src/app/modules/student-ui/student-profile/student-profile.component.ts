@@ -26,6 +26,7 @@ export class StudentProfileComponent implements OnInit {
   ngOnInit(): void {
     this.user.getInformation().subscribe(
       data => {
+        console.log(data);
         if (data.body != null)
           this.userInformation = data.body as User;
       },

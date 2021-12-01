@@ -17,7 +17,7 @@ export class TeacherServiceService {
   getListClass() {
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/listclass", { headers: header }).toPromise();
-    return this.http.get(API_LINK+"/listclass").toPromise();
+      return this.http.get(API_LINK+"/getClasses", { headers: header }).toPromise();
+    return this.http.get(API_LINK+"/getClasses").toPromise();
   }
 }
