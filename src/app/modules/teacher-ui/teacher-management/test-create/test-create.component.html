@@ -6,12 +6,12 @@
                 <p>Tên:</p>
                 <input type="text" name="testName" [(ngModel)]="test.name">
                 <p>Số lần thử:</p>
-                <input type="number" name="numRetry" [(ngModel)]="test.numberRetry">
+                <input type="number" name="numRetry" [(ngModel)]="test.numbRetry">
                 <p>Thời gian làm bài:</p>
                 <input type="number" name="time" [(ngModel)]="test.time">
                 <p></p>
                 <button class="btn" (click)='quizPush()'>Thêm quiz mới</button>
-                <pagination-controls id="listing_pagination" (pageChange)="p = $event" previousLabel="" nextLabel="" >
+                <pagination-controls id="listing_pagination" (pageChange)="p = $event" previousLabel="" nextLabel="" [maxSize]="100">
                 </pagination-controls>
                 <button class="btn" (click)="onCreateNewTest()">Lưu</button>
                 <p *ngIf='isErr' class="bg-danger text-white error-msg" [innerHTML]="errormsg">ERROR</p>
@@ -39,9 +39,9 @@
                         <div class="answer-box">
                             <label>{{listChar[j]}}</label>
                             <textarea type="text" name="answerContent{{p-1}}-{{j}}"
-                                [(ngModel)]="test.quizs[p-1].answers[j].content" autosize placeholder="Nội dung câu trả lời"></textarea>
+                                [(ngModel)]="test.quizs[p-1].answers[j].answer" autosize placeholder="Nội dung câu trả lời"></textarea>
                             <input class="" [type]="quiz.quizType?'checkbox':'radio'" id="isCorrect{{p-1}}-{{j}}"
-                                name="isCorrect{{p-1}}-{{j}}" [checked]="answer.isCorrect"
+                                name="isCorrect{{p-1}}-{{j}}" [checked]="answer.correct"
                                 (change)="onItemChange(quiz.quizType,p-1,j)" >
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PagenotfoundComponent } from '../public/pagenotfound/pagenotfound.component';
 import { QuizComponent } from './student-course/quiz/quiz.component';
 import { StudentCourseComponent } from './student-course/student-course.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
@@ -33,7 +34,12 @@ const routes: Routes = [
         component:StudentProfileComponent
       }
     ]
-  }
+  },
+  // {
+  //   path: '**',
+  //   pathMatch: 'full',
+  //   component: PagenotfoundComponent
+  // }
 ];
 
 @NgModule({

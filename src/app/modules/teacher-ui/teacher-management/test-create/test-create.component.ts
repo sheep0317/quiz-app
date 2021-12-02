@@ -15,7 +15,7 @@ export class TestCreateComponent implements OnInit {
     _id: '',
     name: '',
     time: 0,
-    numberRetry: 0,
+    numbRetry: 0,
     quizs: []
   };
   p: number = 1;
@@ -36,9 +36,9 @@ export class TestCreateComponent implements OnInit {
         console.log("\nindex" + index);
         console.log(" answerIndex" + answerIndex);
         if (index == answerIndex) {
-          this.test.quizs[quizIndex].answers[index].isCorrect = !this.test.quizs[quizIndex].answers[index].isCorrect;
+          this.test.quizs[quizIndex].answers[index].correct = !this.test.quizs[quizIndex].answers[index].correct;
         }
-        console.log("element " + this.test.quizs[quizIndex].answers[index].isCorrect);
+        console.log("element " + this.test.quizs[quizIndex].answers[index].correct);
 
       });
     }
@@ -47,12 +47,12 @@ export class TestCreateComponent implements OnInit {
         console.log("\nindex" + index);
         console.log(" answerIndex" + answerIndex);
         if (index == answerIndex) {
-          this.test.quizs[quizIndex].answers[index].isCorrect = true;
+          this.test.quizs[quizIndex].answers[index].correct = true;
         }
         else {
-          this.test.quizs[quizIndex].answers[index].isCorrect = false;
+          this.test.quizs[quizIndex].answers[index].correct = false;
         }
-        console.log("element " + this.test.quizs[quizIndex].answers[index].isCorrect);
+        console.log("element " + this.test.quizs[quizIndex].answers[index].correct);
       });
     }
   }
@@ -62,20 +62,20 @@ export class TestCreateComponent implements OnInit {
       content: '',
       quizType: false,
       answers: [{
-        content: '',
-        isCorrect: true,
+        answer: '',
+        correct: true,
         id: '',
       }, {
-        content: '',
-        isCorrect: false,
+        answer: '',
+        correct: false,
         id: '',
       }, {
-        content: '',
-        isCorrect: false,
+        answer: '',
+        correct: false,
         id: '',
       }, {
-        content: '',
-        isCorrect: false,
+        answer: '',
+        correct: false,
         id: '',
       }]
     })
@@ -94,6 +94,11 @@ export class TestCreateComponent implements OnInit {
 
   onCreateNewTest() {
     this.isErr = !this.validateTest(this.test);
+
+    if(!this.isErr)
+    {
+      console.log(this.test);
+    }
   }
 
   validateTest(test: Test): Boolean {
@@ -103,7 +108,7 @@ export class TestCreateComponent implements OnInit {
       this.errormsg += "<br>Tên bài kiểm tra không được để trống"
       passValidate = false
     }
-    if (test.numberRetry < 1) {
+    if (test.numbRetry < 1) {
       this.errormsg += "<br>Số lần làm bài kiểm tra không được nhỏ hơn 1"
       passValidate = false
     }
@@ -118,14 +123,17 @@ export class TestCreateComponent implements OnInit {
         passQuizVali = false;
       }
       quiz.answers.forEach(answer => {
-        if (answer.content == "")
+        if (answer.answer == "")
           passQuizVali = false;
       });
       if (!passQuizVali)
         listNonPassQuiz.push(i+1);
     });
     if(listNonPassQuiz.length>0)
+    {
+      passValidate = false;
       this.errormsg += "<br>Quiz "+listNonPassQuiz.toString() +" không hợp lệ";
+    }
 
     return passValidate;
   }

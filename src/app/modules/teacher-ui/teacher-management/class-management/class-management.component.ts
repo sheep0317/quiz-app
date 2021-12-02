@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ObjectId } from 'bson';
 import { Class } from 'src/app/model/Class';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
@@ -14,14 +15,18 @@ export class ClassManagementComponent implements OnInit {
 
   listQuiz:Class[] = [
     new Class(new ObjectId(), "Available", this.imgUrl, ""),
-    new Class(new ObjectId(), "Available", this.imgUrl, ""),
-    new Class(new ObjectId(), "Available", this.imgUrl, ""),
-    new Class(new ObjectId(), "Available", this.imgUrl, ""),
-    new Class(new ObjectId(), "Available", this.imgUrl, ""),
-    new Class(new ObjectId(), "Available", this.imgUrl, "")
   ]
 
-  constructor(private teacherService: TeacherServiceService) { }
+  classForm: FormGroup;
+
+  constructor(private teacherService: TeacherServiceService) {
+    this.classForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+    });
+   }
 
   ngOnInit(): void {
     this.teacherService.getListClass().then(
@@ -34,6 +39,19 @@ export class ClassManagementComponent implements OnInit {
     ).catch(
       error => console.log(error)
     )
+  }
+
+  createNewClass(){
+    this.teacherService.createNewClass(this.classForm.value.name).then(
+      (data:any)=>{
+        console.log(data);
+      }
+    ).catch(
+      error=>{
+        console.log(error);
+      }
+    )
+
   }
 
 }

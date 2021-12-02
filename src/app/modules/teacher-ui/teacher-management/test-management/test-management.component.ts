@@ -22,7 +22,7 @@ export class TestManagementComponent implements OnInit {
   addTest(name: string, numberRetry: any, time:any ): void {
     var test:Test = {
       name: name,
-      numberRetry: numberRetry,
+      numbRetry: numberRetry,
       time: time,
       _id: this.getTestID().toString(),
       quizs: []
@@ -45,8 +45,8 @@ export class TestManagementComponent implements OnInit {
   addAnswer(content: any, testid: any, quizid: any){
     console.log(content, testid, quizid);
     var answer: AnswerT = {
-      content: content,
-      isCorrect: this.isChecked,
+      answer: content,
+      correct: this.isChecked,
       id: this.getAnswerID(testid, quizid).toString(),
     }
     
