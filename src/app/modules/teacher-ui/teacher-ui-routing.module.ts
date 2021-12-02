@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PagenotfoundComponent } from '../public/pagenotfound/pagenotfound.component';
 import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
 import { ClassManagementComponent } from './teacher-management/class-management/class-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
             data: { breadcrumb: 'Create Test'}
           },
           {
-            path: 'class',
+            path: ':classId',
             component: ClassDetailComponent,
             data: { breadcrumb: 'Detail'}
           }
@@ -49,7 +50,12 @@ const routes: Routes = [
         data: { breadcrumb: 'Profile'}
       }
     ]
-  }
+  },
+  // {
+  //   path: '**',
+  //   pathMatch: 'full',
+  //   component: PagenotfoundComponent
+  // }
 ];
 
 @NgModule({

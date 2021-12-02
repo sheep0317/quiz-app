@@ -3,6 +3,6 @@ export interface Test {
   _id: string;
   name: string;
   time: number;
-  numberRetry: number;
+  numbRetry: number;
   quizs: Quiz[];
 }

@@ -14,7 +14,7 @@ export class QuizComponent implements OnInit {
     _id: '1',
     name: 'Quiz 1',
     time: 10,
-    numberRetry: 1,
+    numbRetry: 1,
     quizs: [
       {
         id: '1',
@@ -23,23 +23,23 @@ export class QuizComponent implements OnInit {
         answers: [
           {
             id: '11',
-            content: 'Đáp án 1',
-            isCorrect:false
+            answer: 'Đáp án 1',
+            correct:false
           },
           {
             id: '12',
-            content: 'Đáp án 2',
-            isCorrect:false
+            answer: 'Đáp án 2',
+            correct:false
           },
           {
             id: '13',
-            content: 'Đáp án 3',
-            isCorrect:false
+            answer: 'Đáp án 3',
+            correct:false
           },
           {
             id: '14',
-            content: 'Đáp án 4',
-            isCorrect:false
+            answer: 'Đáp án 4',
+            correct:false
           }
         ]
       },
@@ -50,28 +50,28 @@ export class QuizComponent implements OnInit {
         answers: [
           {
             id: '21',
-            content: 'Đáp án 1',
-            isCorrect:false
+            answer: 'Đáp án 1',
+            correct:false
           },
           {
             id: '22',
-            content: 'Đáp án 2',
-            isCorrect:false
+            answer: 'Đáp án 2',
+            correct:false
           },
           {
             id: '23',
-            content: 'Đáp án 3',
-            isCorrect:false
+            answer: 'Đáp án 3',
+            correct:false
           },
           {
             id: '24',
-            content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            answer: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
             when an unknown printer took a galley of type and scrambled it to make a type specimen book. It 
             has survived not only five centuries, but also the leap into electronic typesetting, remaining ess
             entially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
              Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-             isCorrect:false
+             correct:false
           }
         ]
       }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Test } from '../models/test.model';
 
 const API_LINK = 'http://localhost:8080/teacher';
 @Injectable({
@@ -19,5 +20,29 @@ export class TeacherServiceService {
     if (header instanceof HttpHeaders)
       return this.http.get(API_LINK+"/getClasses", { headers: header }).toPromise();
     return this.http.get(API_LINK+"/getClasses").toPromise();
+  }
+
+  createNewClass(name:string){
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/addNewClass",{name:name}, { headers: header}).toPromise();
+    return this.http.post(API_LINK+"/addNewClass",{name:name}).toPromise();
+  }
+
+  createNewSection(name:string, classId: string){
+    let param = new HttpParams().set("classId",classId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/addClassSection",{name:name}, { headers: header ,params: param}).toPromise();
+    return this.http.post(API_LINK+"/addClassSection",{name:name}, {params: param}).toPromise();
+  
+  }
+
+  createNewTest(test:Test, sectionId: string){
+    let param = new HttpParams().set("sectionId",sectionId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/addNewTest",test, { headers: header ,params: param}).toPromise();
+    return this.http.post(API_LINK+"/addNewTest",test, {params: param}).toPromise();
   }
 }

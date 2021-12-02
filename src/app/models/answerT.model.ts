@@ -1,5 +1,5 @@
 export interface AnswerT {
     id: string;
-    content: string;
-    isCorrect: boolean;
+    answer: string;
+    correct: boolean;
   }

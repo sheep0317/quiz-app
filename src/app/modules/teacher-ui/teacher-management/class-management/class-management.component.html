@@ -1,8 +1,12 @@
-<h1>Danh sách lớp học</h1>
-<div class="container">
+<div class="container-fluid">
+  <div class="title d-flex justify-content-between">
+    <h1>Danh sách lớp học</h1>
+    <button data-bs-toggle="modal" data-bs-target="#createClass">thêm lớp</button>
+  </div>
+  
   <div class="grid">
     <div class="class-card" *ngFor="let quiz of listQuiz">
-      <div class="test-glass" [routerLink]="'class'" [queryParams]="{classId:quiz.id}">
+      <div class="test-glass" [routerLink]="[quiz.id]">
         <img class="shape" [src]='quiz.imgUrl' onerror="this.src='https://media.sketchfab.com/models/3329b7c37a694fd19295e7f68d3471f8/thumbnails/b781a636cd9c42b88fb9e2cb1701912e/048651d65ad643f0b79b830823b49bb8.jpeg'">
         <div class="card">
           <p>Xem chi tiết</p>
@@ -18,17 +22,33 @@
 
 
 <!--Modal-->
-<div class="modal fade" id="deleteSection">
+<div class="modal fade" id="createClass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-- Modal body -->
       <div class="modal-body">
-        Are you sure?
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+        <div class="change-password">
+          <form [formGroup]='classForm' (ngSubmit)="createNewClass()">
+            <div class="form-group">
+              <label for="current-password">Tên:</label>
+              <input type="text" class="form-control" placeholder="Tên lớp"
+                formControlName="name">
+              <div class="invalid-feedback">
+                <div *ngIf="classForm.controls['name'].hasError('required')">
+                  Tên lớp không được để trống
+                </div>
+                <div *ngIf="classForm.controls['name'].hasError('minlength')">
+                  Tên lớp không thế ngắn hơn 4 ký tự
+                </div>
+              </div>
+            </div>
+            <div class="create-button">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!classForm.valid">Tạo</button>
+            </div>
+
+          </form>
+
+        </div>
       </div>
 
     </div>

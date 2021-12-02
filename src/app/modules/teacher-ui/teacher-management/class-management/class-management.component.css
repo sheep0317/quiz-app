@@ -1,15 +1,22 @@
-.container {
-    min-width: 100%;
-    margin: 0px;
-    justify-content: flex-start;
-    margin-right: 30px;
+.container-fluid {
+    padding: 30px;
+    /* margin: 30px; */
+    float: left;  
+    
 }
-h1{
+
+.container-fluid .title{
+    border-bottom: 2px solid #2b6777;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.container-fluid .title h1{
+    
     overflow: hidden;
     min-width: fit-content;
     min-height: min-content;
     white-space: nowrap;
-    margin-left: 80px;
 }
 
 .grid {
@@ -105,7 +112,12 @@ p {
 
 /* responsive */
 @media(max-width: 500px) {
-    .h1{
+
+    .container-fluid{
+        margin: 0;
+    }
+
+    .container-fluid .h1{
         margin: 0;
     }
     .grid {
