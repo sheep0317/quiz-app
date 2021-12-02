@@ -24,6 +24,7 @@ import { FooterComponent } from './modules/public/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ClassItemComponent } from './modules/ui-component/class-item/class-item.component';
+import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ClassItemComponent } from './modules/ui-component/class-item/class-item
     ClassItemComponent,
     AboutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

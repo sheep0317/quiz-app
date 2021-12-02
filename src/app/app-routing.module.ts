@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './modules/public/about/about.component';
 import { HomepageComponent } from './modules/public/homepage/homepage.component';
+import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     pathMatch: 'full',
     data: { breadcrumb: 'Teacher'}
   },
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: PagenotfoundComponent
+  }
 ];
 
 @NgModule({
