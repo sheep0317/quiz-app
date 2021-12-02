@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './modules/public/about/about.component';
 import { HomepageComponent } from './modules/public/homepage/homepage.component';
 import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfound.component';
+import { StudentUiRoutingModule } from './modules/student-ui/student-ui-routing.module';
+import { TeacherUiRoutingModule } from './modules/teacher-ui/teacher-ui-routing.module';
 
 const routes: Routes = [
   {
@@ -36,13 +38,21 @@ const routes: Routes = [
   },
   {
     path: '**',
-    pathMatch: 'full',
-    component: PagenotfoundComponent
+    redirectTo: '/404',
+  },
+  {
+    path: '404',
+    component: PagenotfoundComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: 
+  [
+    RouterModule.forRoot(routes),
+    TeacherUiRoutingModule,
+    StudentUiRoutingModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

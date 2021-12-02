@@ -13,9 +13,9 @@ export class StudentUiComponent implements OnInit {
   constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.checkRole("teacher").then(
+    this.authService.checkRole("student").then(
       data=>{
-        console.log("teacher: ");
+        console.log("student: ");
       }
   ).catch(err=>{
     localStorage.removeItem("jwt");
