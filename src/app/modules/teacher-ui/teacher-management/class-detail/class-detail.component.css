@@ -1,34 +1,4 @@
 .container-fluid{
-    padding: 30px;
-    margin: 30px;
-    float: left;
-}
-
-.class-detail{
-    display: flex;
-    max-width: 100%;
-}
-
-.class-detail .left{
-    width: 30%;
-}
-
-.class-detail .right{
-    margin-right: 10px;
-    width: 70%;
-    z-index: 0;
-}
-
-@media(max-width: 768px) {
-    .container-fluid{
-        margin: 0;
-    }
-    .class-detail{
-        display: block;
-        margin: auto;
-    }
-    .class-detail .right{
-        width: 100%;
-    }
-
+    padding: 25px;
+    margin: 10px;
 }

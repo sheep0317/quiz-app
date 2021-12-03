@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from '../public/pagenotfound/pagenotfound.component';
 import { ClassDetailComponent } from './teacher-management/class-detail/class-detail.component';
+import { StudentListComponent } from './teacher-management/class-detail/student-list/student-list.component';
+import { TestListComponent } from './teacher-management/class-detail/test-list/test-list.component';
 import { ClassManagementComponent } from './teacher-management/class-management/class-management.component';
 import { TeacherManagementComponent } from './teacher-management/teacher-management.component';
 import { TestCreateComponent } from './teacher-management/test-create/test-create.component';
@@ -40,6 +42,21 @@ const routes: Routes = [
           {
             path: ':classId',
             component: ClassDetailComponent,
+            children:[
+              {
+                path: '',
+                component: StudentListComponent
+              },
+              {
+                path: 'student-list',
+                component: StudentListComponent,
+              },
+              {
+                path: 'test-list',
+                component: TestListComponent,
+              }
+
+            ],
             data: { breadcrumb: 'Detail'}
           }
         ]

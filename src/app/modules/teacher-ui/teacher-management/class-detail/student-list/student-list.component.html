@@ -1,0 +1,28 @@
+<div class="wrap">
+    <button class="btn-add">Add student</button>
+    <div *ngFor= "let student of studentList">
+        <div class="student-info">
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="name">
+                        Tran Quocs Viet
+                    </p>
+                    <p class="class-name">
+                        Lớp 10A1
+                    </p>
+                    <p class="email">
+                        tranvietmar15@gmialcom
+                    </p>
+                </div> 
+                <div class="col-md-2">
+                   <button class="btn-delete" (click)="deleteStudentToClass()">
+                       Delete  
+                   </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+</div>
