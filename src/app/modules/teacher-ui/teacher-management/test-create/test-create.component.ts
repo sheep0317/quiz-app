@@ -33,26 +33,20 @@ export class TestCreateComponent implements OnInit {
   onItemChange(quizType: Boolean, quizIndex: any, answerIndex: any,) {
     if (quizType) {
       this.test.quizs[quizIndex].answers.forEach((element, index) => {
-        console.log("\nindex" + index);
-        console.log(" answerIndex" + answerIndex);
         if (index == answerIndex) {
           this.test.quizs[quizIndex].answers[index].correct = !this.test.quizs[quizIndex].answers[index].correct;
         }
-        console.log("element " + this.test.quizs[quizIndex].answers[index].correct);
 
       });
     }
     else {
       this.test.quizs[quizIndex].answers.forEach((element, index) => {
-        console.log("\nindex" + index);
-        console.log(" answerIndex" + answerIndex);
         if (index == answerIndex) {
           this.test.quizs[quizIndex].answers[index].correct = true;
         }
         else {
           this.test.quizs[quizIndex].answers[index].correct = false;
         }
-        console.log("element " + this.test.quizs[quizIndex].answers[index].correct);
       });
     }
   }
@@ -141,13 +135,13 @@ export class TestCreateComponent implements OnInit {
   showToastr(success: boolean, message: any) {
     if (success) {
       this.toastr.success(message, "", {
-        timeOut: 1000,
+        timeOut: 2000,
         progressBar: true
       })
     }
     else {
       this.toastr.error(message, "", {
-        timeOut: 1000,
+        timeOut: 2000,
         progressBar: true
       })
     }
