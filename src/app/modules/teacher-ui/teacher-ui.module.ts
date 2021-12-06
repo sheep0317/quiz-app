@@ -12,6 +12,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { StudentListComponent } from './teacher-management/class-detail/student-list/student-list.component';
 import { TestListComponent } from './teacher-management/class-detail/test-list/test-list.component';
+import { UiComponentModule } from '../ui-component/ui-component.module';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { TestListComponent } from './teacher-management/class-detail/test-list/t
     TestCreateComponent,
     ClassDetailComponent,
     StudentListComponent,
-    TestListComponent,
+    TestListComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +32,8 @@ import { TestListComponent } from './teacher-management/class-detail/test-list/t
     ReactiveFormsModule,
     TeacherUiRoutingModule,
     NgxPaginationModule,
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    UiComponentModule
   ]
 })
 export class TeacherUiModule {}

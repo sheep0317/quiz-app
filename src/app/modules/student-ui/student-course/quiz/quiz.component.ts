@@ -11,7 +11,7 @@ export class QuizComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   quizSample: Test = {
-    _id: '1',
+    id: '1',
     name: 'Quiz 1',
     time: 10,
     numbRetry: 1,

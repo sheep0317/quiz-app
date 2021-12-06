@@ -3,13 +3,20 @@
     Lớp Shrimp 420CLC69
   </h1>
   <div class="class-detail row">
-    <div class="col-lg-2">
-      <button [routerLink]="'student-list'">Danh sach lop hoc</button>
-      <button [routerLink]="'test-list'">Danh sach bai kiem tra</button>
+    <div class="col-lg-4 d-flex flex-column">
+      <a (click)="toggleChild(true)">Bài kiểm tra</a>
+      <a (click)="toggleChild(false)">Danh sách học sinh</a>
     </div>
-    <div class="col-lg-10">
-      <router-outlet></router-outlet>
+    <div class="col-lg-8" *ngIf="toggle; else hocsinh">
+      <app-test-list [sections]='classDetail.sections'></app-test-list>
     </div>
+
+    <ng-template #hocsinh class="col-lg-8">
+      <div class="col-lg-8">
+        <app-student-list></app-student-list>
+      </div>
+      
+    </ng-template>
 
   </div>
 </div>

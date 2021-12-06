@@ -12,7 +12,7 @@ export class TestCreateComponent implements OnInit {
   listChar: String[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
 
   test: Test = {
-    _id: '',
+    id: '',
     name: '',
     time: 0,
     numbRetry: 0,

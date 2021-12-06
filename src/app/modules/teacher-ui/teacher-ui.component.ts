@@ -9,7 +9,7 @@ import { AuthServiceService } from 'src/app/service/auth-service.service';
 })
 export class TeacherUiComponent implements OnInit {
 
-  @Input() isOpen:boolean = true;
+  @Input() isOpen:boolean = false;
 
   constructor(private authService: AuthServiceService, private router: Router) { }
 

@@ -31,10 +31,7 @@ const routes: Routes = [
             component: ClassManagementComponent
           },
           {
-            path:'classid_testeditor',
-            component: TestManagementComponent
-          },
-          {
+          
             path:'create_test',
             component: TestCreateComponent,
             data: { breadcrumb: 'Create Test'}
@@ -45,7 +42,7 @@ const routes: Routes = [
             children:[
               {
                 path: '',
-                component: StudentListComponent
+                component: TestListComponent
               },
               {
                 path: 'student-list',
@@ -65,7 +62,13 @@ const routes: Routes = [
         path:'profile',
         component:TeacherProfileComponent,
         data: { breadcrumb: 'Profile'}
-      }
+      },
+      {
+        path:'test/:testId',
+        component: TestManagementComponent,
+        data: { breadcrumb: 'Test'}
+      },
+      
     ]
   },
   // {

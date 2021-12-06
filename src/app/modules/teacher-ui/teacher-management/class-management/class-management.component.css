@@ -186,7 +186,6 @@ p {
     .grid .class-card {
         width: 90%;
         margin: auto;
-        min-width: fit-content;
     }
     .test-glass {
         width: 100%;

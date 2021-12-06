@@ -5,17 +5,19 @@ import { QuizComponent } from './student-course/quiz/quiz.component';
 import { StudentCourseComponent } from './student-course/student-course.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { StudentClassDetailComponent } from './student-course/student-class-detail/student-class-detail.component';
+import { UiComponentModule } from '../ui-component/ui-component.module';
 
 @NgModule({
   declarations: [
     QuizComponent,
     StudentCourseComponent,
     StudentProfileComponent,
-    StudentClassDetailComponent,
+    StudentClassDetailComponent
   ],
   imports: [
     CommonModule,
-    StudentUiRoutingModule
+    StudentUiRoutingModule,
+    UiComponentModule
   ]
 })
 export class StudentUiModule { }

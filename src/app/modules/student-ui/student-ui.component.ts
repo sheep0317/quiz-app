@@ -9,7 +9,7 @@ import { AuthServiceService } from 'src/app/service/auth-service.service';
 })
 export class StudentUiComponent implements OnInit {
 
-  @Input() isOpen:boolean = true;
+  @Input() isOpen:boolean = false;
   constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {

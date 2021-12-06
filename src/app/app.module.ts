@@ -17,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {BreadcrumbModule} from 'angular-crumbs';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { ChartsModule } from 'ng2-charts';
 
 import { AboutComponent } from './modules/public/about/about.component';
 import { HeaderComponent } from './modules/public/header/header.component';
@@ -40,7 +41,7 @@ import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfoun
     AboutComponent,
     HeaderComponent,
     FooterComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,8 @@ import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfoun
     ToastrModule.forRoot(),
     BreadcrumbModule,
     NgxPaginationModule,
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    ChartsModule
   ],
   providers: [
     CookieService,

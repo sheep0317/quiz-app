@@ -4,6 +4,7 @@ import { ObjectId } from 'bson';
 import { ToastrService } from 'ngx-toastr';
 import { Class } from 'src/app/model/Class';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import { LineChartComponent } from 'src/app/modules/ui-component/line-chart/line-chart.component';
 
 @Component({
   selector: 'app-class-management',

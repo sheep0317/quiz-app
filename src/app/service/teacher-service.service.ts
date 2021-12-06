@@ -45,4 +45,20 @@ export class TeacherServiceService {
       return this.http.post(API_LINK+"/addNewTest",test, { headers: header ,params: param, responseType:'text'}).toPromise();
     return this.http.post(API_LINK+"/addNewTest",test, {params: param, responseType:'text'}).toPromise();
   }
+
+  getClassDetail(id:string){
+    let param = new HttpParams().set("id",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/classdetail",{ headers: header ,params: param}).toPromise();
+    return this.http.get(API_LINK+"/classdetail",{params: param}).toPromise();
+  }
+
+  getTest(id:string){
+    let param = new HttpParams().set("testId",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/get-test",{ headers: header ,params: param}).toPromise();
+    return this.http.get(API_LINK+"/get-test",{params: param}).toPromise();
+  }
 }
