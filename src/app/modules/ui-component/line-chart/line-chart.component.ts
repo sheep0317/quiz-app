@@ -24,6 +24,13 @@ export class LineChartComponent implements OnInit {
           }
         }]
       }
+    },
+    title: {
+      text: 'Thống kê điểm',
+      display: true,
+      position:'bottom',
+      fontSize: '30',
+      fontColor: '#2b6777'
     }
   };
   public lineChartColors: Color[] = [

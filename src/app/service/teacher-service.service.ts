@@ -61,4 +61,12 @@ export class TeacherServiceService {
       return this.http.get(API_LINK+"/get-test",{ headers: header ,params: param}).toPromise();
     return this.http.get(API_LINK+"/get-test",{params: param}).toPromise();
   }
+
+  getTestScores(id:string){
+    let param = new HttpParams().set("testId",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/get-score-statistics",{ headers: header ,params: param}).toPromise();
+    return this.http.get(API_LINK+"/get-score-statistics",{params: param}).toPromise();
+  }
 }

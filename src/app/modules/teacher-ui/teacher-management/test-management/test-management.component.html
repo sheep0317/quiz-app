@@ -74,39 +74,31 @@
 
     <!-- danhsachdiem -->
     <ng-template #danhsachdiem>
-        <div class="box">
-            <app-line-chart></app-line-chart>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Số lần thử</th>
-                    <th scope="col">Điểm cao nhất</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="box d-flex">
+            <div class="col-lg-4">
+                <app-line-chart [lineChartData]="lineChartData" [lineChartLabels]="lineChartLabels"></app-line-chart>
+            </div>
+            <div class="col-lg-8">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Số lần thử</th>
+                        <th scope="col">Số câu đúng</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let score of scores.scores;index as i">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{score.studentName}}</td>
+                        <td>{{score.retry}}</td>
+                        <td>{{score.numbCorrect}}/{{scores.numberOfQuiz}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            
         </div>
     </ng-template>
 </div>

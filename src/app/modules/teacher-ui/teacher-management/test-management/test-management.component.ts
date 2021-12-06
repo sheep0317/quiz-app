@@ -36,6 +36,8 @@ export class TestManagementComponent implements OnInit {
   testId:string = "";
   toggleShow:boolean = true;
 
+  scores:any;
+
   constructor(private toastr: ToastrService, private teacherService: TeacherServiceService, private route:ActivatedRoute) {
     this.quizPush();
   }
@@ -45,7 +47,18 @@ export class TestManagementComponent implements OnInit {
     this.teacherService.getTest(this.testId).then(
       (data:any)=>{
         this.test = data as Test;
-        console.log(data);
+        console.log("Test:");
+        console.log(data)
+      }
+    ).catch(
+      er=>{
+        console.log(er);
+      }
+    )
+    this.teacherService.getTestScores(this.testId).then(
+      (data:any)=>{
+        
+        this.scoreProcess(data);
       }
     ).catch(
       er=>{
@@ -173,4 +186,26 @@ export class TestManagementComponent implements OnInit {
       })
     }
   }
+
+  scoreProcess(data: any) {
+    console.log("score:")
+    console.log(data);
+    this.scores = data;
+    this.lineChartLabels = [];
+    let dt: number[] = [];
+    for(let i =0;i<= data.numberOfQuiz; i++){
+      this.lineChartLabels.push(i+"");
+      dt.push(0);
+    }
+
+    data.scores.forEach((scores:any) => {
+      dt[scores.numbCorrect]++;
+    });
+
+    this.lineChartData = [
+      { data: dt, label: 'Thống kê điểm' },
+    ]
+  }
 }
+
+
