@@ -89,7 +89,7 @@ textarea {
     border-bottom: 1px solid #2b6777;
     outline: none;
     border-radius: 0.25rem;
-    background: rgba(255, 255, 255, 0.10);
+    background: white;
 }
 
 .quiz-type {

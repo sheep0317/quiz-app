@@ -62,27 +62,33 @@ export class HomepageComponent implements OnInit {
   passwdConfirmCorrect: boolean = true;
   isSubmit: any = [false, false]
 
+  title = 'Homepage';
+
   constructor(private authService: AuthServiceService, private toastr: ToastrService, private route: ActivatedRoute,
     private router: Router) { }
-  title = 'Homepage';
+  
   ngOnInit(): void {
     let jwt = localStorage.getItem("jwt");
-    this.authService.checkJwt().then(
-      (data: any) => {
-        console.log(data.body.role);
-        if (data.body.role == "student") {
-          this.router.navigate(['/student']);
+    if(jwt!=null)
+    {
+      this.authService.checkJwt().then(
+        (data: any) => {
+          console.log(data.body.role);
+          if (data.body.role == "student") {
+            this.router.navigate(['/student']);
+          }
+          else if (data.body.role == "teacher") {
+            this.router.navigate(['/teacher']);
+          }
         }
-        else if (data.body.role == "teacher") {
-          this.router.navigate(['/teacher']);
-        }
+      ).catch(err => {
+        localStorage.removeItem("jwt");
+        console.log(err);
+        this.router.navigate(['/home']);
       }
-    ).catch(err => {
-      localStorage.removeItem("jwt");
-      console.log("jwt not valid");
-      this.router.navigate(['/home']);
+      )
     }
-    )
+    
 }
 
 toggle_login_register(input: boolean) {

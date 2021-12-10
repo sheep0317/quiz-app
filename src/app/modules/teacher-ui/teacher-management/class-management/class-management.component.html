@@ -10,28 +10,28 @@
 
   <div class="grid">
     <div class="class-card" *ngFor="let quiz of listQuiz">
-      <div class="test-glass"  [routerLink]="[quiz.id]">
+      <div class="test-glass" [routerLink]="[quiz.id]">
         <img class="shape" [src]='quiz.imgUrl'
-          onerror="this.src='https://i.kym-cdn.com/photos/images/original/002/013/183/792.png'">
+          onerror="this.src='https://media.sketchfab.com/models/7d40f94be37d458e98365e89dcdcae11/thumbnails/6bbd665875d94ff981f54e4c1a445617/81b45ea904ad4cfd95234ca9d3ac525d.jpeg'">
         <div class="card">
           <p>Xem chi tiết</p>
         </div>
-        <button class="btn-delete" (click)="deleteClass($event)">
+        <button class="btn-delete" (click)="deleteClass($event, quiz.id)">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
       <div class="card-title d-flex justify-content-center align-items-center">
-        <p class="text-truncate d-inline-block" [innerHTML]="quiz.name"></p>
-        <button class="bg-transparent border-0">
+        <p #name class="text-truncate" [innerHTML]="quiz.name"></p>
+        <form (ngSubmit)="onEdit(quiz.id,editName)">
+          <input #editName [value]="quiz.name" class="d-none" (focusout)="banana(name,editName)">
+        </form>
+        
+        <button class="bg-transparent border-0" (click)="enableEdit(name, editName)">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
-
       </div>
-
-
     </div>
   </div>
-
 </div>
 
 
@@ -46,7 +46,7 @@
       </div>
       <div class="modal-body">
         <div class="change-password">
-          <form [formGroup]='classForm' (ngSubmit)="createNewClass()">
+          <form [formGroup]='classForm'>
             <div class="form-group">
               <label for="current-password">Tên lớp:</label>
               <input type="text" class="form-control" placeholder="Tên lớp" formControlName="name">
@@ -62,7 +62,7 @@
             <div class="create-button d-flex justify-content-between">
               <button type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" data-bs-dismiss="modal"><i
                   class="fa fa-times" aria-hidden="true"></i></button>
-              <button type="submit" class="btn btn-sm btn-light mt-3 btn-ok" [disabled]="!classForm.valid"><i
+              <button (click)="createNewClass()" class="btn btn-sm btn-light mt-3 btn-ok" [disabled]="!classForm.valid"><i
                   class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
             </div>
 

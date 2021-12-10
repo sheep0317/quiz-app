@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Test } from 'src/app/models/test.model';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 
 @Component({
   selector: 'app-test-create',
@@ -12,7 +14,6 @@ export class TestCreateComponent implements OnInit {
   listChar: String[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
 
   test: Test = {
-    id: '',
     name: '',
     time: 0,
     numbRetry: 0,
@@ -21,13 +22,15 @@ export class TestCreateComponent implements OnInit {
   p: number = 1;
   errormsg: String = "ERROR";
   isErr: Boolean = false;
+  sectionId: string = "";
 
-  constructor(private toastr: ToastrService) {
+  constructor(private teacherService:TeacherServiceService,private toastr: ToastrService, private route: ActivatedRoute, private router: Router) {
     this.quizPush();
   }
 
   ngOnInit(): void {
-
+    this.sectionId =  this.route.snapshot.paramMap.get("section") as string;
+    console.log(this.sectionId);
   }
 
   onItemChange(quizType: Boolean, quizIndex: any, answerIndex: any,) {
@@ -52,25 +55,20 @@ export class TestCreateComponent implements OnInit {
   }
   quizPush() {
     this.test.quizs.push({
-      id: '',
       content: '',
       quizType: false,
       answers: [{
         answer: '',
         correct: true,
-        id: '',
       }, {
         answer: '',
         correct: false,
-        id: '',
       }, {
         answer: '',
         correct: false,
-        id: '',
       }, {
         answer: '',
         correct: false,
-        id: '',
       }]
     })
   }
@@ -92,6 +90,16 @@ export class TestCreateComponent implements OnInit {
     if(!this.isErr)
     {
       console.log(this.test);
+      this.teacherService.createNewTest(this.test, this.sectionId).then(
+        (data:any)=>{
+          this.router.navigate(["/teacher"]);
+          this.showToastr(true, data)
+        }
+      ).catch(
+        er=>{
+          this.showToastr(false, er)
+        }
+      )
     }
   }
 
@@ -135,13 +143,13 @@ export class TestCreateComponent implements OnInit {
   showToastr(success: boolean, message: any) {
     if (success) {
       this.toastr.success(message, "", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true
       })
     }
     else {
       this.toastr.error(message, "", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true
       })
     }

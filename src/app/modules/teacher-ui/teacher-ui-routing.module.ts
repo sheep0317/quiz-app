@@ -32,7 +32,7 @@ const routes: Routes = [
           },
           {
           
-            path:'create_test',
+            path:':section/create_test',
             component: TestCreateComponent,
             data: { breadcrumb: 'Create Test'}
           },

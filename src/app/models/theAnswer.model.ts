@@ -1,4 +1,4 @@
 export interface TheAnswer {
-  idOfQuiz: string;
+  idOfQuiz?: string;
   answer:string[];
 }

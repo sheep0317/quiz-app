@@ -18,8 +18,8 @@ export class TeacherServiceService {
   getListClass() {
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/getClasses", { headers: header}).toPromise();
-    return this.http.get(API_LINK+"/getClasses", ).toPromise();
+      return this.http.get(API_LINK+"/getClasses", { headers: header, observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/getClasses", {observe: 'response'}).toPromise();
   }
 
   createNewClass(name:string){
@@ -50,23 +50,41 @@ export class TeacherServiceService {
     let param = new HttpParams().set("id",id);
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/classdetail",{ headers: header ,params: param}).toPromise();
-    return this.http.get(API_LINK+"/classdetail",{params: param}).toPromise();
+      return this.http.get(API_LINK+"/classdetail",{ headers: header ,params: param, observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/classdetail",{params: param, observe: 'response'}).toPromise();
   }
 
   getTest(id:string){
     let param = new HttpParams().set("testId",id);
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/get-test",{ headers: header ,params: param}).toPromise();
-    return this.http.get(API_LINK+"/get-test",{params: param}).toPromise();
+      return this.http.get(API_LINK+"/get-test",{ headers: header ,params: param, observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/get-test",{params: param, observe: 'response'}).toPromise();
   }
 
   getTestScores(id:string){
     let param = new HttpParams().set("testId",id);
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/get-score-statistics",{ headers: header ,params: param}).toPromise();
-    return this.http.get(API_LINK+"/get-score-statistics",{params: param}).toPromise();
+      return this.http.get(API_LINK+"/get-score-statistics",{ headers: header ,params: param, observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/get-score-statistics",{params: param, observe: 'response'}).toPromise();
   }
+
+  editClassName(id:string, name:string){
+    let param = new HttpParams().set("id",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/editclass",{name:name},{ headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/editclass",{name:name},{params: param, responseType:'text'}).toPromise();
+  }
+
+  deleteClass(id:string){
+    let param = new HttpParams().set("id",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/deleteClass",{},{ headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/deleteClass",{},{params: param, responseType:'text'}).toPromise();
+  }
+
+
 }

@@ -2,22 +2,22 @@
     <div class="title d-flex flex-wrap justify-content-between align-items-center">
         <h1>Bài kiểm tra {{test.id}}</h1>
         <div class="btn-group shadow-none " role="group" aria-label="Basic radio toggle button group">
-            <input (change)="toggle(true)" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" [checked]="toggleShow" value="true">
-            <label class="btn btn-outline-primary mb-0" for="btnradio1">Bài kiểm tra</label>
+            <input (change)="toggle(true)" type="radio" class="btn-check btn-outline-info" name="btnradio" id="btnradio1" autocomplete="off" [checked]="toggleShow" value="true">
+            <label class="btn shadow-none btn-outline-info mb-0" for="btnradio1">Bài kiểm tra</label>
           
-            <input (change)="toggle(false)" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" [checked]="!toggleShow" value="false">
-            <label class="btn btn-outline-primary mb-0" for="btnradio2">Danh sách Điểm</label>
+            <input (change)="toggle(false)" type="radio" class=" btn-check btn-outline-info" name="btnradio" id="btnradio2" autocomplete="off" [checked]="!toggleShow" value="false">
+            <label class="btn shadow-none btn-outline-info mb-0" for="btnradio2">Danh sách Điểm</label>
           </div>
     </div>
     <form class="box" *ngIf="toggleShow; else danhsachdiem">
         <div class="left">
             <div class="test-detail">
                 <p>Tên:</p>
-                <input type="text" name="testName" [(ngModel)]="test.name">
+                <input type="text" name="testName"  [(ngModel)]="test.name">
                 <p>Số lần thử:</p>
-                <input type="number" name="numRetry" [(ngModel)]="test.numbRetry">
+                <input type="number" name="numRetry" min="1" [(ngModel)]="test.numbRetry">
                 <p>Thời gian làm bài:</p>
-                <input type="number" name="time" [(ngModel)]="test.time">
+                <input type="number" name="time" min="5" step="5" [(ngModel)]="test.time">
                 <pagination-controls class="pagination" id="listing_pagination" (pageChange)="p = $event"
                     previousLabel="" nextLabel="" [maxSize]="100">
                 </pagination-controls>
@@ -34,7 +34,6 @@
                 <p *ngIf='isErr' class="bg-danger text-white error-msg" [innerHTML]="errormsg">ERROR</p>
             </div>
         </div>
-
         <div class="right">
             <div class="quizs card"
                 *ngFor="let quiz of test.quizs | paginate: {id: 'listing_pagination', itemsPerPage: 1, currentPage: p }">
@@ -74,11 +73,12 @@
 
     <!-- danhsachdiem -->
     <ng-template #danhsachdiem>
-        <div class="box d-flex">
-            <div class="col-lg-4">
+        <div class="box d-flex row">
+            <div class="col-lg-2 d-flex flex-column">
                 <app-line-chart [lineChartData]="lineChartData" [lineChartLabels]="lineChartLabels"></app-line-chart>
+                <app-donut-chart [doughnutChartData]="doughnutChartData"></app-donut-chart>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <table class="table">
                     <thead>
                       <tr>

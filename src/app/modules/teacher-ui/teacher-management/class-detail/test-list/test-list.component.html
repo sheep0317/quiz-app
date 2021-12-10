@@ -25,11 +25,12 @@
           </div>
         </div>
         <div *ngIf="section.tests.length <= 0">Chưa có bài kiểm tra nào trong chương này</div>
-        <button class="add-test-btn d-flex justify-content-center align-items-center" (click)="addNewTest()">
-          Thêm class mới
+        <button class="add-test-btn d-flex justify-content-center align-items-center" (click)="addNewTest(section.id)">
+          Thêm bài kiểm tra mới
         </button>
       </div>
     </div>
   </div>
   
 </div>
+

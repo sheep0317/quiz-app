@@ -1,6 +1,6 @@
 import { ObjectId } from 'bson'
 export interface User {
-    id: ObjectId,
+    id?: ObjectId,
     name: String,
     email: String,
     phone: String,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Label, MultiDataSet } from 'ng2-charts';
 import { ToastrService } from 'ngx-toastr';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 import { AnswerT } from '../../../../models/answerT.model';
@@ -22,6 +22,9 @@ export class TestManagementComponent implements OnInit {
     { data: [3,5,1,2,7,2,1,3,5,6,0], label: 'Series A' },
   ];
   lineChartLabels: Label[] = ['0', '1', '2', '3', '4', '5', '6','7','8','9','10'];
+  doughnutChartData: MultiDataSet = [
+    [350, 450]
+  ];
   //
   test: Test = {
     id: '',
@@ -46,23 +49,22 @@ export class TestManagementComponent implements OnInit {
     this.testId =  this.route.snapshot.paramMap.get("testId") as string;
     this.teacherService.getTest(this.testId).then(
       (data:any)=>{
-        this.test = data as Test;
+        this.test = data.body as Test;
         console.log("Test:");
         console.log(data)
       }
     ).catch(
       er=>{
-        console.log(er);
+        console.log(er.body);
       }
     )
     this.teacherService.getTestScores(this.testId).then(
       (data:any)=>{
-        
-        this.scoreProcess(data);
+        this.scoreProcess(data.body);
       }
     ).catch(
       er=>{
-        console.log(er);
+        console.log(er.body);
       }
     )
   }
@@ -188,6 +190,8 @@ export class TestManagementComponent implements OnInit {
   }
 
   scoreProcess(data: any) {
+    let numbDoQuiz = 0;
+
     console.log("score:")
     console.log(data);
     this.scores = data;
@@ -198,13 +202,16 @@ export class TestManagementComponent implements OnInit {
       dt.push(0);
     }
 
-    data.scores.forEach((scores:any) => {
-      dt[scores.numbCorrect]++;
+    data.scores.forEach((score:any) => {
+      dt[score.numbCorrect]++;
+      numbDoQuiz++;
     });
 
     this.lineChartData = [
-      { data: dt, label: 'Thống kê điểm' },
+      { data: dt, label: '' },
     ]
+
+    this.doughnutChartData = [[numbDoQuiz,data.numbStudentInClass - numbDoQuiz]]
   }
 }
 

@@ -10,9 +10,9 @@ import { Color, Label } from 'ng2-charts';
 export class LineChartComponent implements OnInit {
 
   @Input() lineChartData: ChartDataSets[] = [
-    { data: [3,5,1,2,7,2,1,3,5,6,0], label: 'Series A' },
+    { },
   ];
-  @Input() lineChartLabels: Label[] = ['0', '1', '2', '3', '4', '5', '6','7','8','9','10'];
+  @Input() lineChartLabels: Label[] = [];
   public lineChartOptions:any = {
     responsive: true,
     options : {
@@ -29,7 +29,7 @@ export class LineChartComponent implements OnInit {
       text: 'Thống kê điểm',
       display: true,
       position:'bottom',
-      fontSize: '30',
+      fontSize: '20',
       fontColor: '#2b6777'
     }
   };

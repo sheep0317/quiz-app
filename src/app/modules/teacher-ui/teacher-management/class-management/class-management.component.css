@@ -61,7 +61,8 @@
     text-overflow: ellipsis;
 }
 
-.grid .class-card .card-title p{
+.grid .class-card .card-title p,
+.grid .class-card .card-title form{
     margin: 0 5px 0 0;
 }
 

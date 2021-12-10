@@ -18,8 +18,9 @@ export class StudentUiComponent implements OnInit {
         console.log("student: ");
       }
   ).catch(err=>{
-    localStorage.removeItem("jwt");
-    console.log("jwt not valid");
+    if(err.status == 403)
+      localStorage.removeItem("jwt");
+    console.log(err);
     this.router.navigate(['/home']);
   })
   }

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 
 @Component({
@@ -12,16 +14,31 @@ export class ClassDetailComponent implements OnInit {
   classId:string ="";
   toggle:boolean = true; // true thì danh sách bài kiểm tra, false thì danh sách học sinh
   classDetail:any;
+  sectionForm:FormGroup;
 
-  constructor(private route: ActivatedRoute, private teacherService: TeacherServiceService) { }
+  constructor(private route: ActivatedRoute, private teacherService: TeacherServiceService, private router: Router, private toastr: ToastrService) {
+    this.sectionForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+    });
+   }
 
   ngOnInit(): void {
     this.classId =  this.route.snapshot.paramMap.get("classId") as string;
     console.log(this.classId);
+    this.getClassDetail();
+  }
+
+  getClassDetail(){
     this.teacherService.getClassDetail(this.classId).then(
       (data:any)=>{
-        console.log(data);
-        this.classDetail = data;
+        if(data == "")
+        {
+          this.router.navigate(["/teacher"]);
+        }
+        this.classDetail = data.body;
       }
     ).catch(
       er=>console.log(er)
@@ -32,4 +49,31 @@ export class ClassDetailComponent implements OnInit {
     this.toggle = value;
   }
 
+  createNewSection(){
+    this.teacherService.createNewSection(this.sectionForm.value.name, this.classId).then(
+      (data:any)=>{
+        this.showToastr(true,"Tạo chương mới thành công");
+        this.getClassDetail();
+      }
+    ).catch(
+      er=>{
+        this.showToastr(false,er);
+      }
+    )
+  }
+
+showToastr(success: boolean, message: any) {
+    if (success) {
+      this.toastr.success(message, "", {
+        timeOut: 3000,
+        progressBar: true
+      })
+    }
+    else {
+      this.toastr.error(message, "", {
+        timeOut: 3000,
+        progressBar: true
+      })
+    }
+  }
 }

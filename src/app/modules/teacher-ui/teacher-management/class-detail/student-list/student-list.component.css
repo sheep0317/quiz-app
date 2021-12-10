@@ -12,5 +12,16 @@
     margin: 5px;
     padding: 10px;
 }
-.btn-delete{
+
+.btn-ok, .btn-not-ok, .btn-submit ,.btn-trash{
+    margin: 0;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    min-width: min-content;
+    box-shadow: none;
+    border-radius: 10px;
+
 }

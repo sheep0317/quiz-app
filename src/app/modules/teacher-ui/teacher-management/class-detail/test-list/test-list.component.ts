@@ -11,10 +11,14 @@ export class TestListComponent implements OnInit {
 
   classId:string = "";
   @Input() sections:any;
+  
 
   constructor(private teacherService: TeacherServiceService, 
     private activatedRoute: ActivatedRoute, 
-    private router: Router) { }
+    private router: Router) {
+
+     
+     }
 
   ngOnInit(): void {
     this.classId = this.activatedRoute.snapshot.parent?.paramMap.get("classId") as string;
@@ -25,8 +29,9 @@ export class TestListComponent implements OnInit {
     this.router.navigate(['/teacher/test/'+id]);
   }
 
-  addNewTest(){
-    this.router.navigate(['/teacher/course/create_test']);
+  addNewTest(sectionId:string){
+    this.router.navigate(['/teacher/course/'+sectionId+'/create_test']);
   }
+
 
 }

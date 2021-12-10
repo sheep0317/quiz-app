@@ -9,23 +9,24 @@ import { AuthServiceService } from 'src/app/service/auth-service.service';
 })
 export class TeacherUiComponent implements OnInit {
 
-  @Input() isOpen:boolean = false;
+  @Input() isOpen: boolean = false;
 
   constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.checkRole("teacher").then(
-        data=>{
-          console.log("teacher: ");
-        }
-    ).catch(err=>{
-      localStorage.removeItem("jwt");
-      console.log("jwt not valid");
+      data => {
+        console.log("teacher: ");
+      }
+    ).catch(err => {
+      if (err.status)
+        localStorage.removeItem("jwt");
+      console.log("err");
       this.router.navigate(['/home']);
     })
   }
 
-  toggle_navbar(){
+  toggle_navbar() {
     this.isOpen = !this.isOpen;
   }
 

@@ -1,8 +1,8 @@
 <div class="wrap">
-    <button class="btn-add">Add student</button>
-    <div *ngFor= "let student of studentList">
+    <button class="btn-add btn shadow-none btn-outline-info">Add student</button>
+    <div *ngFor="let student of studentList">
         <div class="student-info">
-            <div class="row">
+            <div class="d-flex justify-content-between row pr-3">
                 <div class="col-md-10">
                     <p class="name">
                         Tran Quocs Viet
@@ -13,16 +13,15 @@
                     <p class="email">
                         tranvietmar15@gmialcom
                     </p>
-                </div> 
-                <div class="col-md-2">
-                   <button class="btn-delete" (click)="deleteStudentToClass()">
-                       Delete  
-                   </button>
                 </div>
+                <button class="btn btn-sm btn-light btn-trash" title="Xem điểm">
+                    <i class="fa fa-trash px-2" aria-hidden="true">
+                    </i>
+                </button>
             </div>
-            
+
         </div>
     </div>
-    
+
 
 </div>

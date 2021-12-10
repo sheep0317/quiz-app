@@ -4,10 +4,15 @@
   </h1>
   <div class="class-detail row">
     <div class="col-lg-4 d-flex flex-column">
-      <a (click)="toggleChild(true)">Bài kiểm tra</a>
-      <a (click)="toggleChild(false)">Danh sách học sinh</a>
+      <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
+      <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
     </div>
     <div class="col-lg-8" *ngIf="toggle; else hocsinh">
+      <div class="mb-1">
+        <button class="btn shadow-none btn-outline-info" data-bs-toggle="modal" data-bs-target="#createSection">
+          Thêm chương mới
+        </button>
+      </div>
       <app-test-list [sections]='classDetail.sections'></app-test-list>
     </div>
 
@@ -18,5 +23,44 @@
       
     </ng-template>
 
+  </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="createSection" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tạo chương mới</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="change-password">
+          <form [formGroup]='sectionForm'>
+            <div class="form-group">
+              <label for="current-password">Tên chương:</label>
+              <input type="text" class="form-control" placeholder="Tên chương" formControlName="name">
+              <div class="invalid-feedback">
+                <div *ngIf="sectionForm.controls['name'].hasError('required')">
+                  Tên chương không được để trống
+                </div>
+                <div *ngIf="sectionForm.controls['name'].hasError('minlength')">
+                  Tên chương không thế ngắn hơn 4 ký tự
+                </div>
+              </div>
+            </div>
+            <div class="create-button d-flex justify-content-between">
+              <button type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" data-bs-dismiss="modal"><i
+                  class="fa fa-times" aria-hidden="true"></i></button>
+              <button (click)="createNewSection()" class="btn btn-sm btn-light mt-3 btn-ok" [disabled]="!sectionForm.valid"><i
+                  class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
