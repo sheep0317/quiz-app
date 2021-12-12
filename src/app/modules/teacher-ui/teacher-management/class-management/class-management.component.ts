@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,12 +12,17 @@ import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 })
 export class ClassManagementComponent implements OnInit {
 
+  // @ViewChild("content") private contentRef: TemplateRef<Object>;
+
   imgUrl = "./../../../../assets/img/smol_gura.jpeg";
 
   listQuiz: Class[] = [
   ]
 
   classForm: FormGroup;
+
+  wantedDel:string = "";
+  isOpenDialog:boolean = false;
 
 
 
@@ -65,23 +70,37 @@ export class ClassManagementComponent implements OnInit {
     )
   }
 
-  deleteClass(event: any, id:string) {
+  deleteClass() {
+    if(this.wantedDel!="")
+    {
+      this.teacherService.deleteClass(this.wantedDel).then(
+        (data:any)=>{
+          console.log(data);
+          this.getListClass();
+          this.showToastr(true, data);
+        }
+      ).then(
+        er=>{
+          console.log(er);
+          if(er!=null)
+          this.showToastr(false, er);
+        }
+      )
+    }
+    this.openModal(false);
+    
+  }
+
+  openConfirm(event: any, id:string){
     event.stopPropagation();
     console.log("deleteeeeeeeeeeeeeeeeeeee REEEEEEEEEEEEEEEEEE");
-    this.teacherService.deleteClass(id).then(
-      (data:any)=>{
-        console.log(data);
-        this.getListClass();
-        this.showToastr(true, data);
-      }
-    ).then(
-      er=>{
-        console.log(er);
-        if(er!=null)
-        this.showToastr(false, er);
-      }
-    )
+    this.wantedDel = id;
+    this.openModal(true)
     
+  }
+
+  openModal(input:boolean){
+    this.isOpenDialog = input;
   }
 
   enableEdit(element: HTMLElement, editName: HTMLElement) {

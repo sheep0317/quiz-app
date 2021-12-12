@@ -86,5 +86,20 @@ export class TeacherServiceService {
     return this.http.post(API_LINK+"/deleteClass",{},{params: param, responseType:'text'}).toPromise();
   }
 
+  addStudentToClass(studentId:string, classId:string){
+    let param = new HttpParams().set("id",classId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/add-student-to-class",{studentId:studentId},{ headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/add-student-to-class",{studentId:studentId},{params: param, responseType:'text'}).toPromise();
+  }
+
+  deleteStudentFromClass(studentId:string, classId:string){
+    let param = new HttpParams().set("id",classId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/delete-student-in-class",{studentId:studentId},{ headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/delete-student-in-class",{studentId:studentId},{params: param, responseType:'text'}).toPromise();
+  }
 
 }

@@ -16,7 +16,7 @@
         <div class="card">
           <p>Xem chi tiết</p>
         </div>
-        <button class="btn-delete" (click)="deleteClass($event, quiz.id)">
+        <button class="btn-delete" (click)="openConfirm($event, quiz.id)">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
@@ -25,7 +25,7 @@
         <form (ngSubmit)="onEdit(quiz.id,editName)">
           <input #editName [value]="quiz.name" class="d-none" (focusout)="banana(name,editName)">
         </form>
-        
+
         <button class="bg-transparent border-0" (click)="enableEdit(name, editName)">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </button>
@@ -62,11 +62,36 @@
             <div class="create-button d-flex justify-content-between">
               <button type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" data-bs-dismiss="modal"><i
                   class="fa fa-times" aria-hidden="true"></i></button>
-              <button (click)="createNewClass()" class="btn btn-sm btn-light mt-3 btn-ok" [disabled]="!classForm.valid"><i
-                  class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
+              <button (click)="createNewClass()" class="btn btn-sm btn-light mt-3 btn-ok"
+                [disabled]="!classForm.valid"><i class="fa fa-check" aria-hidden="true"
+                  data-bs-dismiss="modal"></i></button>
             </div>
 
           </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createClass"  aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display': isOpenDialog ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header mt-3">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa lớp?</h5>
+        <button type="button" class="btn-close" (click)="openModal(false)"></button>
+      </div>
+      <div class="modal-body">
+        <div class="change-password">
+          <div class="create-button d-flex justify-content-between">
+            <button (click)="openModal(false)" type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" ><i
+                class="fa fa-times" aria-hidden="true"></i></button>
+            <button (click)="deleteClass()" class="btn btn-sm btn-light mt-3 btn-ok"><i
+                class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
+          </div>
+
 
         </div>
       </div>

@@ -1,17 +1,21 @@
 <div class="wrap">
-    <button class="btn-add btn shadow-none btn-outline-info">Add student</button>
+    <div class="d-flex">
+        <input #id class="id-input mr-1 col-md-3" placeholder="ID học sinh">
+        <button  class="btn-add btn shadow-none btn-outline-info col-md-2" (click)='addNewStudent(id)'>Thêm học sinh</button>
+    </div>
+
     <div *ngFor="let student of studentList">
         <div class="student-info">
             <div class="d-flex justify-content-between row pr-3">
                 <div class="col-md-10">
-                    <p class="name">
-                        Tran Quocs Viet
+                    <p class="username">
+                        Tên người dùng: {{student.userName}}
                     </p>
-                    <p class="class-name">
-                        Lớp 10A1
+                    <p class="full-name">
+                        Họ và tên: {{student.name}}
                     </p>
                     <p class="email">
-                        tranvietmar15@gmialcom
+                        Email: {{student.email}}
                     </p>
                 </div>
                 <button class="btn btn-sm btn-light btn-trash" title="Xem điểm">

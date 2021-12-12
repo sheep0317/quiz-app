@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="title d-flex flex-wrap justify-content-between align-items-center">
+      <h1>Danh sách lớp học</h1>
+    </div>
+  
+    <div class="grid">
+      <div class="class-card" *ngFor="let quiz of listQuiz">
+        <div class="test-glass" [routerLink]="[quiz.id]">
+          <img class="shape" [src]='quiz.imgUrl'
+            onerror="this.src='https://media.sketchfab.com/models/7d40f94be37d458e98365e89dcdcae11/thumbnails/6bbd665875d94ff981f54e4c1a445617/81b45ea904ad4cfd95234ca9d3ac525d.jpeg'">
+          <div class="card">
+            <p>Xem chi tiết</p>
+          </div>
+        </div>
+        <div class="card-title d-flex justify-content-center align-items-center">
+          <p #name class="text-truncate" [innerHTML]="quiz.name"></p>
+        </div>
+      </div>
+    </div>
+  </div>

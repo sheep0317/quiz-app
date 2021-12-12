@@ -39,21 +39,6 @@ const routes: Routes = [
           {
             path: ':classId',
             component: ClassDetailComponent,
-            children:[
-              {
-                path: '',
-                component: TestListComponent
-              },
-              {
-                path: 'student-list',
-                component: StudentListComponent,
-              },
-              {
-                path: 'test-list',
-                component: TestListComponent,
-              }
-
-            ],
             data: { breadcrumb: 'Detail'}
           }
         ]

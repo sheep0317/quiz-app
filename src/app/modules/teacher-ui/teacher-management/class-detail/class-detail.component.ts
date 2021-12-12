@@ -11,10 +11,11 @@ import { TeacherServiceService } from 'src/app/service/teacher-service.service';
 })
 export class ClassDetailComponent implements OnInit {
 
-  classId:string ="";
-  toggle:boolean = true; // true thì danh sách bài kiểm tra, false thì danh sách học sinh
-  classDetail:any;
-  sectionForm:FormGroup;
+  classId: string = "";
+  toggle: boolean = true; // true thì danh sách bài kiểm tra, false thì danh sách học sinh
+  classDetail: any;
+  listStudent: any;
+  sectionForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private teacherService: TeacherServiceService, private router: Router, private toastr: ToastrService) {
     this.sectionForm = new FormGroup({
@@ -23,46 +24,43 @@ export class ClassDetailComponent implements OnInit {
         Validators.minLength(4)
       ]),
     });
-   }
+  }
 
   ngOnInit(): void {
-    this.classId =  this.route.snapshot.paramMap.get("classId") as string;
+    this.classId = this.route.snapshot.paramMap.get("classId") as string;
     console.log(this.classId);
     this.getClassDetail();
   }
 
-  getClassDetail(){
+  getClassDetail() {
     this.teacherService.getClassDetail(this.classId).then(
-      (data:any)=>{
-        if(data == "")
-        {
-          this.router.navigate(["/teacher"]);
-        }
+      (data: any) => {
         this.classDetail = data.body;
+        console.log(this.classDetail)
       }
     ).catch(
-      er=>console.log(er)
+      er => console.log(er)
     )
   }
 
-  toggleChild(value:boolean){
+  toggleChild(value: boolean) {
     this.toggle = value;
   }
 
-  createNewSection(){
+  createNewSection() {
     this.teacherService.createNewSection(this.sectionForm.value.name, this.classId).then(
-      (data:any)=>{
-        this.showToastr(true,"Tạo chương mới thành công");
+      (data: any) => {
+        this.showToastr(true, "Tạo chương mới thành công");
         this.getClassDetail();
       }
     ).catch(
-      er=>{
-        this.showToastr(false,er);
+      er => {
+        this.showToastr(false, er);
       }
     )
   }
 
-showToastr(success: boolean, message: any) {
+  showToastr(success: boolean, message: any) {
     if (success) {
       this.toastr.success(message, "", {
         timeOut: 3000,

@@ -1,0 +1,78 @@
+.container-fluid {
+    padding: 30px;
+}
+
+.container-fluid .class-name {
+    border-bottom: 2px solid #2b6777;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+}
+
+.container-fluid .class-detail {
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+    min-width: min-content;
+}
+
+.btn-ok, .btn-not-ok, .btn-submit {
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    min-width: min-content;
+    box-shadow: none;
+    border-radius: 10px;
+
+}
+
+.option {
+    padding: 5px 10px;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+.option.active {
+    border-radius: 10px;
+    background: #52ab98;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-ok {
+    background-color: #52ab98;
+}
+
+.btn-not-ok {
+    background-color: #FFC107;
+}
+
+.btn-submit {
+    background-color: #2b6777;
+}
+
+.btn-ok i,
+.btn-not-ok i,
+.btn-submit i {
+    color: white;
+    font-size: 20px;
+}
+
+
+@media(max-width: 500px) {
+
+    .container-fluid {
+        margin: 0;
+    }
+
+    .container-fluid .class-name {
+        margin: 20px 0;
+    }
+
+    .container-fluid .class-detail {
+        margin: 0;
+        
+    }
+}

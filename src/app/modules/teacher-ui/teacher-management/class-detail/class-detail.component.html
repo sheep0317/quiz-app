@@ -7,6 +7,7 @@
       <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
       <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
     </div>
+    
     <div class="col-lg-8" *ngIf="toggle; else hocsinh">
       <div class="mb-1">
         <button class="btn shadow-none btn-outline-info" data-bs-toggle="modal" data-bs-target="#createSection">
@@ -18,7 +19,7 @@
 
     <ng-template #hocsinh class="col-lg-8">
       <div class="col-lg-8">
-        <app-student-list></app-student-list>
+        <app-student-list [studentList]='classDetail.listStudent' [classId]='classId' (uploaded)="getClassDetail()"></app-student-list>
       </div>
       
     </ng-template>

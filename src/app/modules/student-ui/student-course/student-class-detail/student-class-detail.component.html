@@ -1,1 +1,23 @@
-<p>student-class-detail works!</p>
+<div class="container-fluid">
+    <h1 class="class-name">
+      {{classDetail.name}}
+    </h1>
+    <div class="class-detail row">
+      <div class="col-lg-4 d-flex flex-column">
+        <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
+        <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
+      </div>
+      
+      <div class="col-lg-8" *ngIf="toggle; else hocsinh">
+        <app-student-test-list [sections]='classDetail.sections'></app-student-test-list>
+      </div>
+  
+      <ng-template #hocsinh class="col-lg-8">
+        <div class="col-lg-8">
+          <app-student-student-list [studentList]='classDetail.listStudent' [classId]='classId'></app-student-student-list>
+        </div>
+        
+      </ng-template>
+  
+    </div>
+  </div>

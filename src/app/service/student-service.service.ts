@@ -18,7 +18,16 @@ export class StudentServiceService {
   getListClass() {
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/getclasses", { headers: header , observe: 'response'});
-    return this.http.get(API_LINK+"/getclasses" , {observe: 'response'});
+      return this.http.get(API_LINK+"/getclasses", { headers: header , observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/getclasses" , {observe: 'response'}).toPromise();
   }
+
+  getClassDetail(id:string){
+    let param = new HttpParams().set("id",id);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/classdetail",{ headers: header ,params: param, observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/classdetail",{params: param, observe: 'response'}).toPromise();
+  }
+
 }
