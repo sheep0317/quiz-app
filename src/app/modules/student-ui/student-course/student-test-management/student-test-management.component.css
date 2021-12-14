@@ -1,0 +1,31 @@
+.container-fluid {
+    margin: 30px;
+}
+
+.container-fluid .box {
+    display: flex;
+    margin: 40px 80px;
+    min-height: fit-content;
+    min-width: min-content;
+
+}
+
+.title{
+    border-bottom: 2px solid #2b6777;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding-bottom: 10px;
+}
+
+.title h1{
+    overflow: hidden;
+    min-width: fit-content;
+    min-height: min-content;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.thead-header{
+    background: #2b6777;
+    color: white;
+}

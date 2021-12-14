@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="title d-flex flex-wrap justify-content-between align-items-center">
+        <h1>Bài kiểm tra {{test.id}}</h1>
+    </div>
+
+    <div class="box d-flex justify-content-center align-items-center flex-column">
+        <h2>{{test.name}}</h2>
+        <h4>Thời gian: {{test.time}} phút</h4>
+        <h4>Số lần thử: {{test.numbRetry}}</h4>
+
+        <button class="btn btn-sm btn-outline-info mt-3 btn-ok">Bắt đầu làm bài</button>
+
+        <table class="table mt-5 container table-bordered ">
+            <thead class="thead-header">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Thời gian</th>
+                    <th scope="col">Số câu đúng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let score of scores.scores;index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{score.studentName}}</td>
+                    <td>{{score.time|date:' mm:ss'}}s</td>
+                    <td>{{score.numbCorrect}}/{{scores.numberOfQuiz}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

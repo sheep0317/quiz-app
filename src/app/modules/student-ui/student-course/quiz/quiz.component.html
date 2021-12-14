@@ -1,0 +1,72 @@
+<!-- <div class="container-fluid">
+    <div class="title d-flex flex-wrap justify-content-between align-items-center">
+        <h1>Bài kiểm tra {{test.id}}</h1>
+        <div class="btn-group shadow-none " role="group" aria-label="Basic radio toggle button group">
+            <input (change)="toggle(true)" type="radio" class="btn-check btn-outline-info" name="btnradio" id="btnradio1" autocomplete="off" [checked]="toggleShow" value="true">
+            <label class="btn shadow-none btn-outline-info mb-0" for="btnradio1">Bài kiểm tra</label>
+          
+            <input (change)="toggle(false)" type="radio" class=" btn-check btn-outline-info" name="btnradio" id="btnradio2" autocomplete="off" [checked]="!toggleShow" value="false">
+            <label class="btn shadow-none btn-outline-info mb-0" for="btnradio2">Danh sách Điểm</label>
+          </div>
+    </div>
+    <form class="box" *ngIf="toggleShow; else danhsachdiem">
+        <div class="left">
+            <div class="test-detail">
+                <p>Tên:</p>
+                <input type="text" name="testName"  [(ngModel)]="test.name">
+                <p>Số lần thử:</p>
+                <input type="number" name="numRetry" min="1" [(ngModel)]="test.numbRetry">
+                <p>Thời gian làm bài:</p>
+                <input type="number" name="time" min="5" step="5" [(ngModel)]="test.time">
+                <pagination-controls class="pagination" id="listing_pagination" (pageChange)="p = $event"
+                    previousLabel="" nextLabel="" [maxSize]="100">
+                </pagination-controls>
+                <button class="btn btn-sm btn-light mt-3 btn-submit" (click)="onCreateNewTest()">
+                    <i class="fa fa-check px-2" aria-hidden="true">
+                        <span class="px-2 h6">Lưu</span>
+                    </i></button>
+                <button class="btn btn-sm btn-light mt-3 btn-ok" (click)='quizPush()'>
+                    <i class="fa fa-plus px-2" aria-hidden="true">
+                        <span class="px-2 h6">Thêm</span>
+                    </i>
+                </button>
+
+                <p *ngIf='isErr' class="bg-danger text-white error-msg" [innerHTML]="errormsg">ERROR</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="quizs card"
+                *ngFor="let quiz of test.quizs | paginate: {id: 'listing_pagination', itemsPerPage: 1, currentPage: p }">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>Câu hỏi {{p}}</h2>
+                    <button class="btn btn-sm btn-light btn-not-ok" (click)='deleteQuiz(p-1)'>
+                        <i class="fa fa-trash px-2" aria-hidden="true">
+                        </i>
+                    </button>
+                </div>
+                <div class="quiz-box card-body">
+                    <textarea class="quiz-content" type="text" name="quizname{{p-1}}"
+                        [(ngModel)]="test.quizs[p-1].content" autosize placeholder="Nội dung câu hỏi"></textarea>
+                    <div class="quiz-type">
+                        <span>Single choice</span>
+                        <input class="form-check-input" type="radio" name="quizType{{p-1}}"
+                            [(ngModel)]="test.quizs[p-1].quizType" [value]="false">
+                        <span>Multi choice</span>
+                        <input class="form-check-input" type="radio" name="quizType{{p-1}}"
+                            [(ngModel)]="test.quizs[p-1].quizType" [value]="true">
+                    </div>
+                    <div class="answers" *ngFor="let answer of quiz.answers; let j = index">
+                        <div class="answer-box">
+                            <label>{{listChar[j]}}</label>
+                            <textarea type="text" name="answerContent{{p-1}}-{{j}}"
+                                [(ngModel)]="test.quizs[p-1].answers[j].answer" autosize
+                                placeholder="Nội dung câu trả lời"></textarea>
+                            <input class="" [type]="quiz.quizType?'checkbox':'radio'" id="isCorrect{{p-1}}-{{j}}"
+                                name="isCorrect{{p-1}}-{{j}}" [checked]="answer.correct"
+                                (change)="onItemChange(quiz.quizType,p-1,j)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> -->

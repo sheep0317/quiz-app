@@ -1,1 +1,30 @@
-<p>student-test-list works!</p>
+<div class="accordion class_sections" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item" *ngFor="let section of sections; index as i;">
+      <h2 class="accordion-header" [id]="'panelsStayOpen-heading' +section.id">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+          [attr.data-bs-target]="'#panelsStayOpen-collapse'+section.id" aria-expanded="true"  [attr.aria-controls]="'panelsStayOpen-collapse'+section.id">
+          <h3>
+            {{section.name}}
+          </h3>
+        </button>
+      </h2>
+      <div [id]="'panelsStayOpen-collapse'+section.id" class="accordion-collapse collapse show"
+        [attr.aria-labelledby]="'panelsStayOpen-heading'+section.id">
+        <div class="accordion-body">
+          <div class="test d-flex justify-content-between align-items-center" *ngFor="let test of section.tests">
+            <a (click)="openTest(test.id)">{{test.name}}</a>
+            <div class="test-btn-group">
+              <button class="btn btn-sm btn-light btn-trash" title="Xem điểm">
+                <i class="fa fa-book px-2" aria-hidden="true">
+                </i>
+              </button>
+            </div>
+          </div>
+          <div *ngIf="section.tests.length <= 0">Chưa có bài kiểm tra nào trong chương này</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  

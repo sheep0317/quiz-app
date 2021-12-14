@@ -1,0 +1,35 @@
+.quiz{
+    padding: 10px;
+    font-family: roboto;
+    box-shadow: 1px 1px 5px 1px #ccc;
+    margin: 15px 0;
+}
+.choice{
+    padding: 10px;
+}
+.choice-content{
+    margin: 10px;
+    box-shadow: 1px 1px 5px 1px #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.choice-content input{
+    margin: 0 5px;
+}
+.choice .label-answer{
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 1px 1px 2px #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.choice .label-answer.active{
+    background-color: green;
+    border: 1px solid white;
+    box-shadow: 1px 1px 2px #ccc;
+    padding: 5px;
+    margin-bottom: 5px;
+}

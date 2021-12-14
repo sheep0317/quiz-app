@@ -22,16 +22,10 @@ export class StudentTestListComponent implements OnInit {
 
   ngOnInit(): void {
     this.classId = this.activatedRoute.snapshot.parent?.paramMap.get("classId") as string;
-    
   }
 
   openTest(id:string){
-    this.router.navigate(['/teacher/test/'+id]);
+    this.router.navigate(['/student/test/'+id]);
   }
-
-  addNewTest(sectionId:string){
-    this.router.navigate(['/teacher/course/'+sectionId+'/create_test']);
-  }
-
 
 }

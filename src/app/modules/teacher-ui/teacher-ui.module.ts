@@ -31,7 +31,6 @@ import { UiComponentModule } from '../ui-component/ui-component.module';
     FormsModule,
     ReactiveFormsModule,
     TeacherUiRoutingModule,
-    NgxPaginationModule,
     TextareaAutosizeModule,
     UiComponentModule
   ]

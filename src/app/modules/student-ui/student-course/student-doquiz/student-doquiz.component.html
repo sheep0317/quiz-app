@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="title d-flex flex-wrap justify-content-between align-items-center">
+        <h1>Bài kiểm tra {{test.id}}</h1>
+    </div>
+    <form class="box">
+        <div class="left">
+            <div class="test-detail">
+                <div>Timer ở đây</div>
+                <pagination-controls class="pagination" id="listing_pagination" (pageChange)="p = $event"
+                    previousLabel="" nextLabel="" [maxSize]="100">
+                </pagination-controls>
+                <button class="btn btn-sm btn-light mt-3 btn-submit" (click)="submit()">
+                    <i class="fa fa-check px-2" aria-hidden="true">
+                        <span class="px-2 h6">Lưu</span>
+                    </i></button>
+
+                <p *ngIf='isErr' class="bg-danger text-white error-msg" [innerHTML]="errormsg">ERROR</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="quizs card"
+                *ngFor="let quiz of test.quizs | paginate: {id: 'listing_pagination', itemsPerPage: 1, currentPage: p }">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>Câu hỏi {{p}}</h2>
+                </div>
+                <div class="quiz-box card-body">
+                    <textarea class="quiz-content" type="text" name="quizname{{p-1}}"
+                        [ngModel]="quiz.content" disabled></textarea>
+                    <div class="answers" *ngFor="let answerContent of quiz.answers; let j = index">
+                        <div class="answer-box">
+                            <label>{{listChar[j]}}</label>
+                            <textarea type="text" name="answerContent{{p-1}}"
+                                [ngModel]="answerContent.answer" autosize
+                                placeholder="Nội dung câu trả lời" disabled></textarea>
+                            <input class="" [type]="quiz.quizType?'checkbox':'radio'" [checked]="checkExistInArrayAnswer(p-1,answerContent.id)"
+                                (change)="onItemChange(quiz.quizType,quiz.id,answerContent.id)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>

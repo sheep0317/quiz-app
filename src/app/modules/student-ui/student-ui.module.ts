@@ -8,6 +8,12 @@ import { UiComponentModule } from '../ui-component/ui-component.module';
 import { StudentTestListComponent } from './student-course/student-class-detail/student-test-list/student-test-list.component';
 import { StudentStudentListComponent } from './student-course/student-class-detail/student-student-list/student-student-list.component';
 import { CourseManagementComponent } from './student-course/course-management/course-management.component';
+import { StudentTestManagementComponent } from './student-course/student-test-management/student-test-management.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentDoquizComponent } from './student-course/student-doquiz/student-doquiz.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +22,17 @@ import { CourseManagementComponent } from './student-course/course-management/co
     StudentClassDetailComponent,
     StudentTestListComponent,
     StudentStudentListComponent,
-    CourseManagementComponent
+    CourseManagementComponent,
+    StudentTestManagementComponent,
+    StudentDoquizComponent
   ],
   imports: [
     CommonModule,
     StudentUiRoutingModule,
-    UiComponentModule
+    UiComponentModule,
+    TextareaAutosizeModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class StudentUiModule { }

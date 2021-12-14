@@ -1,4 +1,6 @@
+import { AnswerT } from "./answerT.model";
+
 export interface TheAnswer {
-  idOfQuiz?: string;
-  answer:string[];
+  id?: string;
+  answers:AnswerT[];
 }

@@ -55,7 +55,7 @@ export class TestManagementComponent implements OnInit {
       }
     ).catch(
       er=>{
-        console.log(er.body);
+        console.log(er);
       }
     )
     this.teacherService.getTestScores(this.testId).then(
@@ -64,7 +64,7 @@ export class TestManagementComponent implements OnInit {
       }
     ).catch(
       er=>{
-        console.log(er.body);
+        console.log(er);
       }
     )
   }

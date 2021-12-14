@@ -7,7 +7,7 @@
       <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
       <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
     </div>
-    
+
     <div class="col-lg-8" *ngIf="toggle; else hocsinh">
       <div class="mb-1">
         <button class="btn shadow-none btn-outline-info" data-bs-toggle="modal" data-bs-target="#createSection">
@@ -19,9 +19,10 @@
 
     <ng-template #hocsinh class="col-lg-8">
       <div class="col-lg-8">
-        <app-student-list [studentList]='classDetail.listStudent' [classId]='classId' (uploaded)="getClassDetail()"></app-student-list>
+        <app-student-list [studentList]='classDetail.listStudent' [classId]='classId' (uploaded)="getClassDetail()">
+        </app-student-list>
       </div>
-      
+
     </ng-template>
 
   </div>
@@ -53,8 +54,9 @@
             <div class="create-button d-flex justify-content-between">
               <button type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" data-bs-dismiss="modal"><i
                   class="fa fa-times" aria-hidden="true"></i></button>
-              <button (click)="createNewSection()" class="btn btn-sm btn-light mt-3 btn-ok" [disabled]="!sectionForm.valid"><i
-                  class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
+              <button (click)="createNewSection()" class="btn btn-sm btn-light mt-3 btn-ok"
+                [disabled]="!sectionForm.valid"><i class="fa fa-check" aria-hidden="true"
+                  data-bs-dismiss="modal"></i></button>
             </div>
 
           </form>
