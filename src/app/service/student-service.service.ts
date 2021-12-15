@@ -55,12 +55,12 @@ export class StudentServiceService {
     return this.http.get(API_LINK+"/starttest",{params: param, observe: 'response'}).toPromise();
   }
 
-  submitTest(test:TheAnswer, testId:string){
+  submitTest(test:TheAnswer[], testId:string){
     let param = new HttpParams().set("id",testId);
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.get(API_LINK+"/submittest",{ headers: header ,params: param, observe: 'response'}).toPromise();
-    return this.http.get(API_LINK+"/submittest",{params: param, observe: 'response'}).toPromise();
+      return this.http.post(API_LINK+"/submittest",test,{ headers: header ,params: param, observe: 'response', responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/submittest",test,{params: param, observe: 'response', responseType:'text'}).toPromise();
   }
 
 }

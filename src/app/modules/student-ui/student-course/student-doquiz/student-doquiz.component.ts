@@ -124,6 +124,18 @@ export class StudentDoquizComponent implements OnInit {
 
   submit(){
     console.log(this.arrayOfTheAnswer)
+    this.studentService.submitTest(this.arrayOfTheAnswer,this.testId).then(
+      (data:any)=>{
+        console.log(data)
+        this.showToastr(true,data.body)
+        this.router.navigate(["/student/test/"+this.testId])
+      }
+    ).catch(
+      er=>{
+        console.log(er)
+        this.showToastr(false,er.error.message)
+      }
+    )
   }
 
   showToastr(success: boolean, message: any) {

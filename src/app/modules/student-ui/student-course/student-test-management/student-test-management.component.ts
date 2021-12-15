@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Test } from 'src/app/models/test.model';
 import { StudentServiceService } from 'src/app/service/student-service.service';
 
@@ -22,7 +22,7 @@ export class StudentTestManagementComponent implements OnInit {
 
   testId:string = "";
 
-  constructor(private studentService:StudentServiceService, private route:ActivatedRoute) { }
+  constructor(private studentService:StudentServiceService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.testId =  this.route.snapshot.paramMap.get("testId") as string;
@@ -46,6 +46,10 @@ export class StudentTestManagementComponent implements OnInit {
         console.log(er)
       }
     )
+  }
+
+  startDoQuiz(){
+    this.router.navigate(["/student/doquiz/"+this.testId]);
   }
 
 }

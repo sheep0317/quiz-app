@@ -5,6 +5,7 @@ import { DonutChartComponent } from './donut-chart/donut-chart.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CountdownModule
   ],
   exports: [
     DonutChartComponent,
     LineChartComponent,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CountdownModule
   ]
 })
 export class UiComponentModule { }
