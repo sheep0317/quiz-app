@@ -11,7 +11,7 @@ import { CourseManagementComponent } from './student-course/course-management/co
 import { StudentTestManagementComponent } from './student-course/student-test-management/student-test-management.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
-
+import { ClipboardModule } from 'ngx-clipboard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentDoquizComponent } from './student-course/student-doquiz/student-doquiz.component';
 
@@ -32,7 +32,8 @@ import { StudentDoquizComponent } from './student-course/student-doquiz/student-
     UiComponentModule,
     TextareaAutosizeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClipboardModule,
   ]
 })
 export class StudentUiModule { }

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {BreadcrumbModule} from 'angular-crumbs';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {ClipboardModule} from 'ngx-clipboard';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { ChartsModule } from 'ng2-charts';
 
@@ -56,7 +57,8 @@ import { PagenotfoundComponent } from './modules/public/pagenotfound/pagenotfoun
     BreadcrumbModule,
     NgxPaginationModule,
     TextareaAutosizeModule,
-    ChartsModule
+    ChartsModule,
+    ClipboardModule
   ],
   providers: [
     CookieService,

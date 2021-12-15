@@ -18,6 +18,28 @@
     </div>
     <div class="col-lg-7">
       <div class="right-col">
+        <div class="id info">
+          <label for="id-code">Id <i class='fas fa-user'></i> </label>
+          <div id="id-code">
+            <input  
+                    #idValue 
+                    disabled 
+                    [class]= "showId ? 'hidden-id' : 'id-code'" 
+                    [type]="showId ? 'text' : 'password'" 
+                    value="{{userInformation.id}}">
+          </div>
+          <button class="show-hide" (click)="password()">
+            <span *ngIf = "showId ; else eyeBlock">
+              <i class='far fa-eye-slash'></i>
+            </span>
+            <ng-template #eyeBlock>
+              <i class='far fa-eye'></i>
+            </ng-template>
+          </button>
+          <div>
+            <button class="copy-btn" (click)="copyToClipboard(idValue.value)"><i class='fas fa-copy'></i></button>
+          </div>
+        </div>
         <div class="phone info">
           <label for="phone-number">Phone <i class='fas fa-phone-alt'></i> </label>
           <div id="phone-number">{{userInformation.phone}}</div>
@@ -48,6 +70,7 @@
     <h1>Activity</h1>
   </div>
 </body>
+
 
 
 <!--Edit Profile Modal-->
