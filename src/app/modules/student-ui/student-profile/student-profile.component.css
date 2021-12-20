@@ -136,3 +136,39 @@ label{
     height: 45px;
     margin: 10px 10px;
 }
+.id{
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: grid;
+    grid-template-columns: 2fr 6fr 1fr 1fr;
+}
+input.id-code{
+    width: 100%;
+    border: #2b6777 solid 1px;
+    padding: 5px 10px;
+    border-radius: 0;
+    background-color: #2b6777;
+    color: #fff;
+}
+.show-hide{
+    background-color: #2b6777;
+    color: #fff;
+    border: #2b6777 solid 1px;
+    margin-right: 10px;
+}
+.copy-btn{
+    background-color: #2b6777;
+    color: #fff;
+    border: #2b6777 solid 1px;
+    margin-right: 10px;
+    height: 100%;
+    width: 100%;
+}
+.hidden-id{
+    width: 100%;
+    border: #2b6777 solid 1px;
+    padding: 5px 10px;
+    border-radius: 0;
+    background-color: white;
+    color: #2b6777;
+}
