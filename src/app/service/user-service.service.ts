@@ -35,4 +35,13 @@ export class UserServiceService {
         newpass: credentials.newPassword
       }, {observe: 'response'});
   }
+
+  editProfile(name:string, phone: string, gender: string, address: string)
+  {
+    let body = {name:name, phone:phone, gender:gender, address:address}
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/editprofile",body,{ headers: header , observe: 'response', responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/editprofile",body,{observe: 'response',responseType:'text'}).toPromise();
+  }
 }

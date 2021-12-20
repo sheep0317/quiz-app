@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../../service/user-service.service'
-import {  Validators, FormBuilder} from '@angular/forms'
+import { Validators, FormBuilder } from '@angular/forms'
 import { User } from 'src/app/model/user.model';
 import { ObjectId } from 'bson';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-teacher-profile',
   templateUrl: './teacher-profile.component.html',
@@ -15,7 +16,7 @@ export class TeacherProfileComponent implements OnInit {
     newPassword: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
   })
-  constructor(private user: UserServiceService, public _formBuilder: FormBuilder) {
+  constructor(private user: UserServiceService, public _formBuilder: FormBuilder, private toastr: ToastrService) {
     this.userInformation = {
       name: '',
       email: '@',
@@ -26,36 +27,65 @@ export class TeacherProfileComponent implements OnInit {
       address: '',
       id: new ObjectId()
     };
-   }
+  }
   img = "https://i.ytimg.com/vi/iexyJCQiZu0/maxresdefault.jpg"
   ngOnInit(): void {
-   this.user.getInformation().subscribe(
-     data => {
-       if(data.body != null)
-       {
-        this.userInformation = data.body as User;
-       }
-       
-     },
-     err => {
-       console.log(err)
-     }
-   )
-    
-   
+    this.getInfo()
   }
-   changePassword(){
-      this.user.changePassword(this.changepassForm).subscribe(
-        data =>{
-          console.log(data)
-        },
-        err => {
-          console.log(err)
+
+  getInfo(){
+    this.user.getInformation().subscribe(
+      data => {
+        if (data.body != null) {
+          this.userInformation = data.body as User;
         }
-      )
-  
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
-  editProfile(phone: string, gender: string, birthday: string, address: string){
-    console.log(phone + gender + address + birthday)
+
+  changePassword() {
+    this.user.changePassword(this.changepassForm).subscribe(
+      data => {
+        console.log(data)
+        this.showToastr(true, data.body)
+      },
+      err => {
+        console.log(err)
+        this.showToastr(false, err.error.message)
+      }
+    )
+
+  }
+  editProfile(name: string, phone: string, gender: string, address: string) {
+    this.user.editProfile(name, phone, gender, address).then(
+      (data: any) => {
+        console.log(data)
+        this.showToastr(true, data.body)
+        this.getInfo()
+      }
+    ).catch(
+      (er: any) => {
+        console.log(er.error.message);
+        this.showToastr(false, er.error.message)
+      }
+    )
+  }
+
+  showToastr(success: boolean, message: any) {
+    if (success) {
+      this.toastr.success(message, "", {
+        timeOut: 2000,
+        progressBar: true
+      })
+    }
+    else {
+      this.toastr.error(message, "", {
+        timeOut: 2000,
+        progressBar: true
+      })
+    }
   }
 }

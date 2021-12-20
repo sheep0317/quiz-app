@@ -61,21 +61,22 @@
       </div>
       <div class="modal-body">
         <div class="edit-profile">
-          <input #phone class="" placeholder="input phone number" type="text">
+          <input #name class="" placeholder="Tên" type="text">
+          <input #phone class="" placeholder="Số điện thoại" type="number">
           <select name="gender" id="gender" #gender>
-            <option value="" selected hidden>Select Gender</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-            <option value="3">Other</option>
+            <option value="" selected hidden>Chọn giới tính</option>
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+            <option value="">Khác</option>
           </select>
-          <input #birthday class="" placeholder="birthday" type="date">
-          <textarea #address class="" placeholder="your address" type="text"></textarea>
+          
+          <textarea #address class="" placeholder="Địa chỉ" type="text"></textarea>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         <button type="button" class="btn btn-primary"
-          (click)="editProfile(phone.value, gender.value, birthday.value, address.value)">Save changes</button>
+          (click)="editProfile(name.value, phone.value, gender.value, address.value)" data-bs-dismiss="modal">Lưu</button>
       </div>
     </div>
   </div>
@@ -133,9 +134,9 @@
                 </div>
               </div>
             </div>
-            <div class="change-button">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" [disabled]="!changepassForm.valid">Sign Up</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!changepassForm.valid">Lưu</button>
             </div>
 
           </form>

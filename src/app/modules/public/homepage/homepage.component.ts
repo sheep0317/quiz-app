@@ -102,8 +102,9 @@ onLogin() {
     this.authService.login(this.loginForm.value).subscribe(
       data => {
         console.log(data)
-        this.showToastr(true, data.body.role);
+        this.showToastr(true, "Đăng nhập thành công!");
         localStorage.setItem("jwt", data.body.accessToken)
+        localStorage.setItem('username',this.loginForm.value.username);
         if (data.body.role == "student") {
           this.router.navigate(['/student']);
         }

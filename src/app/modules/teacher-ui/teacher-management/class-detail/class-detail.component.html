@@ -14,7 +14,7 @@
           Thêm chương mới
         </button>
       </div>
-      <app-test-list [sections]='classDetail.sections'></app-test-list>
+      <app-test-list [sections]='classDetail.sections' (uploaded)="getClassDetail()"></app-test-list>
     </div>
 
     <ng-template #hocsinh class="col-lg-8">

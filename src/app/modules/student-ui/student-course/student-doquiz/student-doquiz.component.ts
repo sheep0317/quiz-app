@@ -44,7 +44,8 @@ export class StudentDoquizComponent implements OnInit {
     ).catch(
       er=>{
         console.log(er)
-        this.showToastr(false,er.error.message)
+        this.showToastr(false,er.error)
+        this.router.navigate(["/student/test/"+this.testId])
       }
     )
 

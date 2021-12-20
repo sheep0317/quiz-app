@@ -1,11 +1,22 @@
 <div class="accordion class_sections" id="accordionPanelsStayOpenExample">
   <div class="accordion-item" *ngFor="let section of sections; index as i;">
     <h2 class="accordion-header" [id]="'panelsStayOpen-heading' +section.id">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+      <button class="accordion-button d-flex justify-content-between" type="button" data-bs-toggle="collapse"
         [attr.data-bs-target]="'#panelsStayOpen-collapse'+section.id" aria-expanded="true"  [attr.aria-controls]="'panelsStayOpen-collapse'+section.id">
-        <h3>
+        <h3 style="width: 90%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
           {{section.name}}
         </h3>
+        <div>
+          <button class="btn btn-sm btn-light btn-trash" title="Sửa tên chương" (click)="editSection($event,section.id)">
+            <i class="fa fa-pencil px-2" aria-hidden="true">
+            </i>
+          </button>
+          <button class="btn btn-sm btn-light btn-trash" title="Xóa" (click)="deleteSection($event,section.id)">
+            <i class="fa fa-trash px-2" aria-hidden="true">
+            </i>
+          </button>
+        </div>
+        
       </button>
     </h2>
     <div [id]="'panelsStayOpen-collapse'+section.id" class="accordion-collapse collapse show"
@@ -18,7 +29,7 @@
               <i class="fa fa-book px-2" aria-hidden="true">
               </i>
             </button>
-            <button class="btn btn-sm btn-light btn-trash" title="Xóa">
+            <button class="btn btn-sm btn-light btn-trash" title="Xóa" (click)="deleteTest(test.id)">
               <i class="fa fa-trash px-2" aria-hidden="true">
               </i>
             </button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Test } from 'src/app/models/test.model';
 import { StudentServiceService } from 'src/app/service/student-service.service';
 
@@ -22,7 +23,7 @@ export class StudentTestManagementComponent implements OnInit {
 
   testId:string = "";
 
-  constructor(private studentService:StudentServiceService, private route:ActivatedRoute, private router: Router) { }
+  constructor(private toastr: ToastrService, private studentService:StudentServiceService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.testId =  this.route.snapshot.paramMap.get("testId") as string;
@@ -49,7 +50,25 @@ export class StudentTestManagementComponent implements OnInit {
   }
 
   startDoQuiz(){
-    this.router.navigate(["/student/doquiz/"+this.testId]);
+    if(this.scores.scores.length >= this.test.numbRetry)
+      this.showToastr(false,"Số lần làm đã vượt quá mức cho phép!")
+    else
+      this.router.navigate(["/student/doquiz/"+this.testId]);
   }
 
+
+  showToastr(success: boolean, message: any) {
+    if (success) {
+      this.toastr.success(message, "", {
+        timeOut: 2000,
+        progressBar: true
+      })
+    }
+    else {
+      this.toastr.error(message, "", {
+        timeOut: 2000,
+        progressBar: true
+      })
+    }
+  }
 }

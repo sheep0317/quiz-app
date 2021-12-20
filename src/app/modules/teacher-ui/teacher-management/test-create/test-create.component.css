@@ -37,9 +37,13 @@ h1.title{
 
 
 .error-msg {
+    width: 100%;
+    max-width: 430px;
     margin: 20px 0 0 0;
     padding: 10px;
     border-radius: 0.25em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .box .left {

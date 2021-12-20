@@ -6,9 +6,9 @@
                 <p>Tên:</p>
                 <input type="text" name="testName" [(ngModel)]="test.name">
                 <p>Số lần thử:</p>
-                <input type="number" name="numRetry" [(ngModel)]="test.numbRetry">
+                <input type="number" name="numRetry" [(ngModel)]="test.numbRetry" min="1">
                 <p>Thời gian làm bài:</p>
-                <input type="number" name="time" [(ngModel)]="test.time">
+                <input type="number" name="time" [(ngModel)]="test.time" min="5">
                 <pagination-controls class="pagination" id="listing_pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""
                     [maxSize]="100">
                 </pagination-controls>
