@@ -22,18 +22,12 @@ export class UserServiceService {
   }
 
   changePassword(credentials: any){
+    let body = { oldpass: credentials.currentPassword,
+      newpass: credentials.newPassword}
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.post(API_LINK+"/changepass", 
-        {
-          oldpass: credentials.currentPassword,
-          newpass: credentials.newPassword
-        }, { headers: header, observe: 'response' });
-    return this.http.post(API_LINK+"/changepass", 
-      {
-        oldpass: credentials.currentPassword, 
-        newpass: credentials.newPassword
-      }, {observe: 'response'});
+      return this.http.post(API_LINK+"/changepass", body, { headers: header, observe: 'response' ,responseType:'text'});
+    return this.http.post(API_LINK+"/changepass", body, {observe: 'response', responseType:'text'});
   }
 
   editProfile(name:string, phone: string, gender: string, address: string)

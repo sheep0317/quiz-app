@@ -47,7 +47,8 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   changePassword() {
-    this.user.changePassword(this.changepassForm).subscribe(
+    console.log(this.changepassForm.value)
+    this.user.changePassword(this.changepassForm.value).subscribe(
       data => {
         console.log(data)
         this.showToastr(true, data.body)

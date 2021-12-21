@@ -92,7 +92,7 @@ export class TestCreateComponent implements OnInit {
       console.log(this.test);
       this.teacherService.createNewTest(this.test, this.sectionId).then(
         (data:any)=>{
-          this.router.navigate(["/teacher"]);
+          this.router.navigate(["/teacher/course"]);
           this.showToastr(true, data)
         }
       ).catch(

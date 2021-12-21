@@ -50,9 +50,6 @@ export class StudentTestManagementComponent implements OnInit {
   }
 
   startDoQuiz(){
-    if(this.scores.scores.length >= this.test.numbRetry)
-      this.showToastr(false,"Số lần làm đã vượt quá mức cho phép!")
-    else
       this.router.navigate(["/student/doquiz/"+this.testId]);
   }
 
