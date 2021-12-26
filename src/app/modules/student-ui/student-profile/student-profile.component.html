@@ -97,16 +97,16 @@
       </div>
       <div class="modal-body">
         <div class="edit-profile">
-          <input #name class="" placeholder="Tên" type="text">
-          <input #phone class="" placeholder="Số điện thoại" type="number">
-          <select name="gender" id="gender" #gender>
+          <input #name class="" placeholder="Tên" type="text" value="{{userInformation.name}}">
+          <input #phone class="" placeholder="Số điện thoại" type="number" value="{{userInformation.phone}}">
+          <select name="gender" id="gender" #gender value="{{userInformation.gender}}">
             <option value="" selected hidden>Chọn giới tính</option>
             <option value="true">Nam</option>
             <option value="false">Nữ</option>
             <option value="">Khác</option>
           </select>
 
-          <textarea #address class="" placeholder="Địa chỉ" type="text"></textarea>
+          <textarea #address class="" placeholder="Địa chỉ" type="text" value="{{userInformation.address}}"></textarea>
         </div>
       </div>
       <div class="modal-footer">

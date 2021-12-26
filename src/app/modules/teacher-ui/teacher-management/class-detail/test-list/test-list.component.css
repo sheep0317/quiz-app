@@ -7,10 +7,14 @@
     width: 40px;
     min-width: min-content;
     box-shadow: none;
+    border: 1px solid #2b6777;
     border-radius: 10px;
+    margin: 5px;
 
 }
-
+.fa-trash{
+    color: red;
+}
 .btn-ok {
     background-color: #52ab98;
 }

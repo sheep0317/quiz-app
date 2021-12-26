@@ -68,6 +68,30 @@
     border: transparent;
 }
 
+.bg{
+    background-color: #EB4956;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary{
+    background-color: #2b6777;
+    border: #2b6777;
+}
+.modal-body{
+    font-size: 16pt;
+    font-weight: 500;
+    height: 100px;
+    padding-top: 35px;
+}
+.modal-footer .btn{
+    height: 45px;
+    margin-left: 20px;
+}
+.modal-content{
+    border: none;
+}
 /* .sidebar nav .btn-a:focus {
     outline: none !important;
      transition: ; 

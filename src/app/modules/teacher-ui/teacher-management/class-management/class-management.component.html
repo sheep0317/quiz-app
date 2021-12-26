@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <!--  -->
   <div class="title d-flex flex-wrap justify-content-between align-items-center">
-    <h2>Hoạt động gần đây</h2>
+    <h3>Hoạt động gần đây</h3>
   </div>
   <div class="grid mb-5">
-    <div class="class-card" *ngFor="let rClass of recentClass.reverse() | slice:0:5">
+    <div class="class-card-sm" *ngFor="let rClass of recentClass.reverse() | slice:0:5">
       <div class="test-glass" [routerLink]="[rClass.id]">
         <img class="shape" [src]='rClass.imgUrl'
           onerror="this.src='https://media.sketchfab.com/models/7d40f94be37d458e98365e89dcdcae11/thumbnails/6bbd665875d94ff981f54e4c1a445617/81b45ea904ad4cfd95234ca9d3ac525d.jpeg'">

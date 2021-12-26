@@ -38,7 +38,15 @@
     width: 300px;
     transition: transform .3s;
 }
-
+.grid .class-card-sm {
+    border: none;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border-radius: 20px;
+    width: 300px;
+    height: 200px;
+    transition: transform .3s;
+}
 .grid .class-card:hover {
     transform: translateY(10px);
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.3);
