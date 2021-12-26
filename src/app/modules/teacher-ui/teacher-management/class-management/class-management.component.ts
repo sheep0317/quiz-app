@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Class } from 'src/app/model/Class';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-class-management',
@@ -19,6 +20,8 @@ export class ClassManagementComponent implements OnInit {
   listQuiz: Class[] = [
   ]
 
+  recentClass: Class[]= []
+
   classForm: FormGroup;
 
   wantedDel:string = "";
@@ -26,7 +29,7 @@ export class ClassManagementComponent implements OnInit {
 
 
 
-  constructor(private teacherService: TeacherServiceService, private toastr: ToastrService, private router: Router) {
+  constructor(private userService: UserServiceService,private teacherService: TeacherServiceService, private toastr: ToastrService, private router: Router) {
     this.classForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
@@ -37,6 +40,7 @@ export class ClassManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListClass();
+    this.getRecentClass();
   }
 
   createNewClass() {
@@ -55,6 +59,21 @@ export class ClassManagementComponent implements OnInit {
       }
     )
 
+  }
+
+  getRecentClass(){
+    this.userService.getActivity().then(
+      (data:any)=>{
+        console.log(data)
+        this.recentClass = data.body as Class[]
+      }
+    ).catch( 
+      er=>{
+        console.log(er)
+        this.showToastr(false,er.error.message);
+        
+      }
+    )
   }
 
   getListClass() {

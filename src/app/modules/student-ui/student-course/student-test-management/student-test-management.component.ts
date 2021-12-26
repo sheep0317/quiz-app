@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Test } from 'src/app/models/test.model';
 import { StudentServiceService } from 'src/app/service/student-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-student-test-management',
@@ -23,7 +24,7 @@ export class StudentTestManagementComponent implements OnInit {
 
   testId:string = "";
 
-  constructor(private toastr: ToastrService, private studentService:StudentServiceService, private route:ActivatedRoute, private router: Router) { }
+  constructor(private toastr: ToastrService, private studentService:StudentServiceService, private userService:UserServiceService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.testId =  this.route.snapshot.paramMap.get("testId") as string;
@@ -53,17 +54,29 @@ export class StudentTestManagementComponent implements OnInit {
       this.router.navigate(["/student/doquiz/"+this.testId]);
   }
 
+  backToClass(){
+    this.userService.backToClassFromTest(this.testId).then(
+      (data:any)=>
+      {
+        this.router.navigate(["/student/course/"+data.body]);
+      }
+    ).catch(
+      er=>{
+        this.showToastr(false,er.error)
+      }
+    )
+  }
 
   showToastr(success: boolean, message: any) {
     if (success) {
       this.toastr.success(message, "", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true
       })
     }
     else {
       this.toastr.error(message, "", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true
       })
     }

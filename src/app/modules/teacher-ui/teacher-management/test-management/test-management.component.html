@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="title d-flex flex-wrap justify-content-between align-items-center">
-        <h1>Bài kiểm tra {{test.id}}</h1>
+        <h1>Bài kiểm tra</h1>
         <div class="btn-group shadow-none " role="group" aria-label="Basic radio toggle button group">
             <input (change)="toggle(true)" type="radio" class="btn-check btn-outline-info" name="btnradio" id="btnradio1" autocomplete="off" [checked]="toggleShow" value="true">
             <label class="btn shadow-none btn-outline-info mb-0" for="btnradio1">Bài kiểm tra</label>
@@ -12,16 +12,16 @@
     <form class="box" *ngIf="toggleShow; else danhsachdiem">
         <div class="left">
             <div class="test-detail">
-                <p>Tên:</p>
-                <input type="text" name="testName"  [(ngModel)]="test.name">
-                <p>Số lần thử:</p>
+                <p class="mb-0">Tên:</p>
+                <input type="text" name="testName"  [(ngModel)]="test.name" maxlength="30">
+                <p class="mb-0">Số lần thử:</p>
                 <input type="number" name="numRetry" min="1" [(ngModel)]="test.numbRetry">
-                <p>Thời gian làm bài:</p>
+                <p class="mb-0">Thời gian làm bài:</p>
                 <input type="number" name="time" min="5" step="5" [(ngModel)]="test.time">
-                <pagination-controls class="pagination" id="listing_pagination" (pageChange)="p = $event"
+                <pagination-controls class="pagination mt-3" id="listing_pagination" (pageChange)="p = $event"
                     previousLabel="" nextLabel="" [maxSize]="100">
                 </pagination-controls>
-                <button class="btn btn-sm btn-light mt-3 btn-submit" (click)="onCreateNewTest()">
+                <button class="btn btn-sm btn-light mt-3 btn-submit" (click)="onEditTest()">
                     <i class="fa fa-check px-2" aria-hidden="true">
                         <span class="px-2 h6">Lưu</span>
                     </i></button>
@@ -30,6 +30,8 @@
                         <span class="px-2 h6">Thêm</span>
                     </i>
                 </button>
+                <br>
+                <button class="btn btn-sm btn-outline-info mt-3 p-1" (click)="backToClass()">Trở về lớp học</button>
 
                 <p *ngIf='isErr' class="bg-danger text-white error-msg" [innerHTML]="errormsg">ERROR</p>
             </div>

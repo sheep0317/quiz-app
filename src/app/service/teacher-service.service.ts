@@ -62,6 +62,14 @@ export class TeacherServiceService {
     return this.http.post(API_LINK+"/deleteTest",{}, {params: param,observe: 'response', responseType:'text'}).toPromise();
   }
 
+  editTest(test:Test, testId:string){
+    let param = new HttpParams().set("testId",testId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/editTest",test, { headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/editTest",test, {params: param, responseType:'text'}).toPromise();
+  }
+
   getClassDetail(id:string){
     let param = new HttpParams().set("id",id);
     let header = this.getHeaders();
@@ -114,8 +122,8 @@ export class TeacherServiceService {
     let param = new HttpParams().set("id",classId);
     let header = this.getHeaders();
     if (header instanceof HttpHeaders)
-      return this.http.post(API_LINK+"/delete-student-in-class",{studentId:studentId},{ headers: header ,params: param, responseType:'text'}).toPromise();
-    return this.http.post(API_LINK+"/delete-student-in-class",{studentId:studentId},{params: param, responseType:'text'}).toPromise();
+      return this.http.post(API_LINK+"/remove-student-from-class",{studentId:studentId},{ headers: header ,params: param, responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/remove-student-from-class",{studentId:studentId},{params: param, responseType:'text'}).toPromise();
   }
 
 }

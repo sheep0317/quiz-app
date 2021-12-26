@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChartDataSets } from 'chart.js';
 import { Label, MultiDataSet } from 'ng2-charts';
 import { ToastrService } from 'ngx-toastr';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 import { AnswerT } from '../../../../models/answerT.model';
 import { Quiz } from '../../../../models/quiz.model';
 import { Test } from '../../../../models/test.model';
@@ -29,8 +30,8 @@ export class TestManagementComponent implements OnInit {
   test: Test = {
     id: '',
     name: '',
-    time: 0,
-    numbRetry: 0,
+    time: 5,
+    numbRetry: 1,
     quizs: []
   };
   p: number = 1;
@@ -41,7 +42,7 @@ export class TestManagementComponent implements OnInit {
 
   scores:any;
 
-  constructor(private toastr: ToastrService, private teacherService: TeacherServiceService, private route:ActivatedRoute) {
+  constructor(private toastr: ToastrService, private userService:UserServiceService, private teacherService: TeacherServiceService, private route:ActivatedRoute, private router:Router) {
     this.quizPush();
   }
 
@@ -125,12 +126,35 @@ export class TestManagementComponent implements OnInit {
 
   }
 
-  onCreateNewTest() {
+  onEditTest() {
     this.isErr = !this.validateTest(this.test);
 
     if (!this.isErr) {
       console.log(this.test);
+      this.teacherService.editTest(this.test,this.test.id!).then(
+        (data:any)=>{
+          console.log(data)
+          this.showToastr(true, data)
+        }
+      ).catch(
+        er=>{
+          this.showToastr(false, er)
+        }
+      )
     }
+  }
+
+  backToClass() {
+    this.userService.backToClassFromTest(this.testId).then(
+      (data:any)=>
+      {
+        this.router.navigate(["/teacher/course/"+data.body]);
+      }
+    ).catch(
+      er=>{
+        this.showToastr(false,er.error)
+      }
+    )
   }
 
   validateTest(test: Test): Boolean {

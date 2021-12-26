@@ -13,17 +13,17 @@
             <button class="btn btn-a" type="button" [routerLink]="'profile'" routerLinkActive="active">
                 <i class="fa fa-user"></i>
                 <span *ngIf='isOpen'>
-                    Profile
+                    Hồ sơ cá nhân
                 </span>
             </button>
             <button class="btn btn-a" type="button" [routerLink]="'course'" routerLinkActive="active">
                 <i class="fa fa-book"></i>
-                <span *ngIf='isOpen'>Manage</span>
+                <span *ngIf='isOpen'>Lớp học</span>
             </button>
 
             <button class="btn btn-a" type="button" data-bs-toggle="modal" data-bs-target="#Logout">
                 <i class="fa fa-sign-out"></i>
-                <span *ngIf='isOpen'>Sign out</span>
+                <span *ngIf='isOpen'>Đăng xuất</span>
             </button>
         </div>
 
@@ -35,7 +35,7 @@
 <div class="modal fade" id="Logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-warning">
                 <h5 class="modal-title" id="exampleModalLabel">Đăng xuất</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

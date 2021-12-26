@@ -63,4 +63,6 @@ export class StudentServiceService {
     return this.http.post(API_LINK+"/submittest",test,{params: param, observe: 'response', responseType:'text'}).toPromise();
   }
 
+  
+
 }

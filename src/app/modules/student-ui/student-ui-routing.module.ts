@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'student',
     component: StudentUiComponent,
-    data: { breadcrumb: 'Student' },
+    data: { breadcrumb: 'Trang chủ' },
     children: [
       {
         path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [
       {
         path: 'course',
         component: StudentCourseComponent,
-        data: { breadcrumb: 'Course' },
+        data: { breadcrumb: 'Danh sách lớp' },
         children: [
           {
             path: '',
@@ -30,24 +30,24 @@ const routes: Routes = [
           {
             path: ':classId',
             component: StudentClassDetailComponent,
-            data: { breadcrumb: 'Detail' }
+            data: { breadcrumb: 'Lớp' }
           },
         ],
       },
       {
         path: 'profile',
         component: StudentProfileComponent,
-        data: { breadcrumb: 'Profile' }
+        data: { breadcrumb: 'Hồ sơ' }
       },
       {
         path:'test/:testId',
         component: StudentTestManagementComponent,
-        data: { breadcrumb: 'Test'}
+        data: { breadcrumb: 'Bài kiểm tra'}
       },
       {
         path:'doquiz/:testId',
         component: StudentDoquizComponent,
-        data: { breadcrumb: 'Test'}
+        data: { breadcrumb: 'Làm bài kiểm tra'}
       },
     ],
 

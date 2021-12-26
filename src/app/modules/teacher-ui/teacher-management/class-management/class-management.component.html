@@ -1,4 +1,23 @@
 <div class="container-fluid">
+  <!--  -->
+  <div class="title d-flex flex-wrap justify-content-between align-items-center">
+    <h2>Hoạt động gần đây</h2>
+  </div>
+  <div class="grid mb-5">
+    <div class="class-card" *ngFor="let rClass of recentClass.reverse() | slice:0:5">
+      <div class="test-glass" [routerLink]="[rClass.id]">
+        <img class="shape" [src]='rClass.imgUrl'
+          onerror="this.src='https://media.sketchfab.com/models/7d40f94be37d458e98365e89dcdcae11/thumbnails/6bbd665875d94ff981f54e4c1a445617/81b45ea904ad4cfd95234ca9d3ac525d.jpeg'">
+        <div class="card">
+          <p>Xem chi tiết</p>
+        </div>
+      </div>
+      <div class="card-title d-flex justify-content-center align-items-center">
+        <p #name class="text-truncate" [innerHTML]="rClass.name"></p>
+      </div>
+    </div>
+  </div>
+  <!--  -->
   <div class="title d-flex flex-wrap justify-content-between align-items-center">
     <h1>Danh sách lớp học</h1>
     <button class="btn btn-sm btn-light mt-3 btn-ok" data-bs-toggle="modal" data-bs-target="#createClass">
@@ -7,7 +26,6 @@
       </i>
     </button>
   </div>
-
   <div class="grid">
     <div class="class-card" *ngFor="let quiz of listQuiz">
       <div class="test-glass" [routerLink]="[quiz.id]">
@@ -32,6 +50,8 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="listQuiz.length <= 0"> Chưa có lớp học nào. </div>
 </div>
 
 
@@ -40,7 +60,7 @@
 <div class="modal fade" id="createClass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-header">
         <h5 class="modal-title" id="exampleModalLabel">Tạo lớp mới</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -49,7 +69,7 @@
           <form [formGroup]='classForm'>
             <div class="form-group">
               <label for="current-password">Tên lớp:</label>
-              <input type="text" class="form-control" placeholder="Tên lớp" formControlName="name">
+              <input type="text" class="form-control" placeholder="Tên lớp" formControlName="name" maxlength="30">
               <div class="invalid-feedback">
                 <div *ngIf="classForm.controls['name'].hasError('required')">
                   Tên lớp không được để trống
@@ -79,7 +99,7 @@
 <div class="modal fade" id="createClass"  aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display': isOpenDialog ? 'block' : 'none', 'opacity': 1}">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header mt-3">
+      <div class="modal-header mt-3 bg-warning">
         <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa lớp?</h5>
         <button type="button" class="btn-close" (click)="openModal(false)"></button>
       </div>

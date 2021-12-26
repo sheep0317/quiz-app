@@ -60,6 +60,13 @@
     font-size: 20px;
 }
 
+.bg-header{
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #2b6777;
+    color: white;
+}
+
 
 @media(max-width: 500px) {
 

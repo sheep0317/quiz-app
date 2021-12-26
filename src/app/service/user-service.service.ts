@@ -38,4 +38,29 @@ export class UserServiceService {
       return this.http.post(API_LINK+"/editprofile",body,{ headers: header , observe: 'response', responseType:'text'}).toPromise();
     return this.http.post(API_LINK+"/editprofile",body,{observe: 'response',responseType:'text'}).toPromise();
   }
+
+  getActivity()
+  {
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/get-activities" , { headers: header , observe: 'response'}).toPromise();
+    return this.http.get(API_LINK+"/get-activities", {observe: 'response'}).toPromise();
+  }
+
+  backToClassFromTest(testId: string){
+    let param = new HttpParams().set("testId",testId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/back-to-class-from-test",{ headers: header ,params: param, observe: 'response', responseType:'text'}).toPromise();
+    return this.http.get(API_LINK+"/back-to-class-from-test",{params: param, observe: 'response', responseType:'text'}).toPromise();
+  }
+
+  backToClassFromSection(sectionId:string){
+    let param = new HttpParams().set("sectionId",sectionId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.get(API_LINK+"/back-to-class-from-section",{ headers: header ,params: param, observe: 'response', responseType:'text'}).toPromise();
+    return this.http.get(API_LINK+"/back-to-class-from-section",{params: param, observe: 'response', responseType:'text'}).toPromise();
+  }
+
 }

@@ -4,6 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms'
 import { User } from 'src/app/model/user.model';
 import { ObjectId } from 'bson';
 import { ToastrService } from 'ngx-toastr';
+import { Class } from 'src/app/model/Class';
 @Component({
   selector: 'app-teacher-profile',
   templateUrl: './teacher-profile.component.html',
@@ -25,7 +26,8 @@ export class TeacherProfileComponent implements OnInit {
       birthday: '',
       role: 'role',
       address: '',
-      id: new ObjectId()
+      id: new ObjectId(),
+      recentClass: []
     };
   }
   img = "https://i.ytimg.com/vi/iexyJCQiZu0/maxresdefault.jpg"
@@ -37,6 +39,7 @@ export class TeacherProfileComponent implements OnInit {
     this.user.getInformation().subscribe(
       data => {
         if (data.body != null) {
+          console.log(data)
           this.userInformation = data.body as User;
         }
       },
@@ -47,10 +50,11 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   changePassword() {
-    console.log(this.changepassForm.value)
+    
     this.user.changePassword(this.changepassForm.value).subscribe(
       data => {
         console.log(data)
+        this.changepassForm.reset()
         this.showToastr(true, data.body)
       },
       err => {

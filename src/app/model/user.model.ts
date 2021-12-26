@@ -1,4 +1,5 @@
 import { ObjectId } from 'bson'
+import { Class } from './Class';
 export interface User {
     id?: ObjectId,
     name: String,
@@ -8,6 +9,6 @@ export interface User {
     birthday: String,
     role: String,
     address: String
-
+    recentClass: Class[]
 
 }

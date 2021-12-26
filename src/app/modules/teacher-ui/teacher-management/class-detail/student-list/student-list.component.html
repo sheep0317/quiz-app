@@ -18,7 +18,7 @@
                         Email: {{student.email}}
                     </p>
                 </div>
-                <button class="btn btn-sm btn-light btn-trash" title="Xem điểm">
+                <button class="btn btn-sm btn-light btn-trash" title="Xóa" (click)="removeStudent(student.id)">
                     <i class="fa fa-trash px-2" aria-hidden="true">
                     </i>
                 </button>
@@ -27,5 +27,6 @@
         </div>
     </div>
 
+    <div *ngIf='studentList.length <= 0'> Chưa có học sinh nào trong lớp. </div>
 
 </div>

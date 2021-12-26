@@ -3,6 +3,7 @@ import { Test } from 'src/app/models/test.model';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherServiceService } from 'src/app/service/teacher-service.service';
+import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-test-create',
@@ -15,8 +16,8 @@ export class TestCreateComponent implements OnInit {
 
   test: Test = {
     name: '',
-    time: 0,
-    numbRetry: 0,
+    time: 5,
+    numbRetry: 1,
     quizs: []
   };
   p: number = 1;
@@ -24,7 +25,7 @@ export class TestCreateComponent implements OnInit {
   isErr: Boolean = false;
   sectionId: string = "";
 
-  constructor(private teacherService:TeacherServiceService,private toastr: ToastrService, private route: ActivatedRoute, private router: Router) {
+  constructor(private teacherService:TeacherServiceService, private userService:UserServiceService,private toastr: ToastrService, private route: ActivatedRoute, private router: Router) {
     this.quizPush();
   }
 
@@ -92,7 +93,7 @@ export class TestCreateComponent implements OnInit {
       console.log(this.test);
       this.teacherService.createNewTest(this.test, this.sectionId).then(
         (data:any)=>{
-          this.router.navigate(["/teacher/course"]);
+          this.backToClass()
           this.showToastr(true, data)
         }
       ).catch(
@@ -101,6 +102,19 @@ export class TestCreateComponent implements OnInit {
         }
       )
     }
+  }
+
+  backToClass() {
+    this.userService.backToClassFromSection(this.sectionId).then(
+      (data:any)=>
+      {
+        this.router.navigate(["/teacher/course/"+data.body]);
+      }
+    ).catch(
+      er=>{
+        this.showToastr(false,er.error)
+      }
+    )
   }
 
   validateTest(test: Test): Boolean {

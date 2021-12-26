@@ -172,3 +172,119 @@ input.id-code{
     background-color: white;
     color: #2b6777;
 }
+
+.grid {
+    margin: 20px 40px 0px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-row-gap: 30px;
+    grid-column-gap: 30px;
+    justify-content: flex-start;
+}
+
+.grid .class-card {
+    border: none;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border-radius: 20px;
+    width: 300px;
+    transition: transform .3s;
+}
+
+.grid .class-card:hover {
+    transform: translateY(10px);
+    box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.grid .class-card .img-container img {
+    max-width: 300px;
+}
+
+.grid .class-card .img-container {
+    background: white;
+    opacity: 0.3;
+    backdrop-filter: blur(10px);
+}
+
+.grid .class-card .card-title {
+    margin-top: 20px;
+    padding: 0px 20px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.grid .class-card .card-title p,
+.grid .class-card .card-title form{
+    margin: 0 5px 0 0;
+}
+
+.test-glass {
+    width: 300px;
+    position: relative;
+    margin: 0;
+    background: #edc0bf;
+    background: linear-gradient(90deg, #edc0bf 0, #c4caef 58%);
+    font-family: 'Inter', sans-serif;
+    border: none;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.shape {
+    position: absolute;
+    width: 300px;
+    top: 0%;
+    left: 0%;
+    transition: transform .5s ease;
+}
+
+.card {
+    width: 300px;
+    height: 154.5px;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.test-glass:hover .card {
+    visibility: visible;
+    opacity: 1;
+}
+
+.test-glass:hover .shape {
+    transform: scale(1.5);
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+
+/* responsive */
+@media(max-width: 500px) {
+    .grid {
+        width: 100%;
+        margin: 0 0 30px 0;
+        padding: 0;
+    }
+    .grid .class-card {
+        width: 90%;
+        margin: auto;
+    }
+    .test-glass {
+        width: 100%;
+    }
+    .shape{
+        width: 100%;
+    }
+}

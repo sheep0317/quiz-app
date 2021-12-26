@@ -7,29 +7,25 @@
         </div>
         <h1 class="name">{{userInformation.name}}</h1>
         <div class="email-contact">
-          <h2 class="email"><span class="email-img">@</span>{{userInformation.email}}</h2>
+          <h2 class="email"><span class="email-img"></span>{{userInformation.email}}</h2>
         </div>
         <div class="function">
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfile">Chỉnh sửa thông tin</button>
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#changePassword">Đổi mật khẩu</button>
         </div>
       </div>
-      
+
     </div>
     <div class="col-lg-7">
       <div class="right-col">
         <div class="id info">
           <label for="id-code">Id <i class='fas fa-user'></i> </label>
           <div id="id-code">
-            <input  
-                    #idValue 
-                    disabled 
-                    [class]= "showId ? 'hidden-id' : 'id-code'" 
-                    [type]="showId ? 'text' : 'password'" 
-                    value="{{userInformation.id}}">
+            <input #idValue disabled [class]="showId ? 'hidden-id' : 'id-code'" [type]="showId ? 'text' : 'password'"
+              value="{{userInformation.id}}">
           </div>
           <button class="show-hide" (click)="password()">
-            <span *ngIf = "showId ; else eyeBlock">
+            <span *ngIf="showId ; else eyeBlock">
               <i class='far fa-eye-slash'></i>
             </span>
             <ng-template #eyeBlock>
@@ -37,7 +33,8 @@
             </ng-template>
           </button>
           <div>
-            <button data-bs-toggle="tooltip" title="Sao chép" class="copy-btn" (click)="copyToClipboard(idValue.value)"><i class='fas fa-copy'></i></button>
+            <button data-bs-toggle="tooltip" title="Sao chép" class="copy-btn"
+              (click)="copyToClipboard(idValue.value)"><i class='fas fa-copy'></i></button>
           </div>
         </div>
         <div class="phone info">
@@ -49,7 +46,9 @@
           <div *ngIf="userInformation.gender == true; else elseBlock">
             <div id="gender">Male</div>
           </div>
-          <ng-template #elseBlock><div id="gender">Female</div></ng-template>
+          <ng-template #elseBlock>
+            <div id="gender">Female</div>
+          </ng-template>
         </div>
         <div class="day-of-birth info">
           <label for="birthday">birthday <i class='far fa-calendar-alt'></i></label>
@@ -68,62 +67,122 @@
   </div>
   <div class="row" id="activity">
     <h1>Activity</h1>
+    <div class="grid">
+      <div class="class-card" *ngFor="let quiz of userInformation.recentClass.reverse() | slice:0:4">
+        <div class="test-glass" [routerLink]="['/student/course/'+quiz.id]">
+          <img class="shape" [src]='quiz.imgUrl'
+            onerror="this.src='https://media.sketchfab.com/models/7d40f94be37d458e98365e89dcdcae11/thumbnails/6bbd665875d94ff981f54e4c1a445617/81b45ea904ad4cfd95234ca9d3ac525d.jpeg'">
+          <div class="card">
+            <p>Xem chi tiết</p>
+          </div>
+        </div>
+        <div class="card-title d-flex justify-content-center align-items-center">
+          <p #name class="text-truncate" [innerHTML]="quiz.name"></p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="userInformation.recentClass.length <= 0"> Chưa có lớp học nào. </div>
   </div>
 </body>
 
 
-
 <!--Edit Profile Modal-->
 <div class="modal fade" id="editProfile" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="edit-profile">
-            <input #phone class="" placeholder="input phone number" type="text">
-            <select name="gender" id="gender" #gender >
-              <option value="" selected hidden>Select Gender</option>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-              <option value="3">Other</option>
-            </select>
-            <input #birthday class="" placeholder="birthday" type="date"> 
-            <textarea #address class="" placeholder="your address" type="text"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="editProfile(phone.value, gender.value, birthday.value, address.value)">Save changes</button>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa thông tin cá nhân</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="edit-profile">
+          <input #name class="" placeholder="Tên" type="text">
+          <input #phone class="" placeholder="Số điện thoại" type="number">
+          <select name="gender" id="gender" #gender>
+            <option value="" selected hidden>Chọn giới tính</option>
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+            <option value="">Khác</option>
+          </select>
+
+          <textarea #address class="" placeholder="Địa chỉ" type="text"></textarea>
         </div>
       </div>
-    </div>
-</div>
-
-<!--Change Password Modal-->
-<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><strong>Change Password</strong></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="change-password">
-           
-            <input #curPass class="" placeholder="current password" type="password" required minlength="6">
-            
-            <input #newPass class="" placeholder="new password" type="password" required minlength="6">
-            
-            <input #cfPass class="" placeholder="confirm password" type="password" required minlength="6"> 
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="changePassword(curPass.value, newPass.value, cfPass.value)">Save changes</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary"
+          (click)="editProfile(name.value, phone.value, gender.value, address.value)"
+          data-bs-dismiss="modal">Lưu</button>
       </div>
     </div>
   </div>
+</div>
+<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><strong>Đổi mật khẩu</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="change-password">
+          <form [formGroup]='changepassForm' (ngSubmit)="changePassword()">
+            <div class="form-group">
+              <label for="current-password">Mật khẩu cũ</label>
+              <input type="password" class="form-control" id="current-password" placeholder="Mật khẩu cũ"
+                formControlName="currentPassword">
+              <div class="invalid-feedback">
+                <div *ngIf="changepassForm.controls['currentPassword'].hasError('required')">
+                  Current Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['currentPassword'].hasError('minlength')">
+                  Current Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="new-password">Mật khẩu mới</label>
+              <input type="password" class="form-control" id="new-password" placeholder="Mật khẩu mới"
+                formControlName="newPassword">
+              <div class="invalid-feedback">
+                <div *ngIf="changepassForm.controls['newPassword'].hasError('required')">
+                  New Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['newPassword'].hasError('minlength')">
+                  New Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Nhập lại mật khẩu</label>
+              <input type="password" class="form-control" id="confirm-password" placeholder="Nhập lại mật khẩu"
+                formControlName="confirmPassword">
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="changepassForm.controls['confirmPassword'].hasError('required') && (changepassForm.controls.confirmPassword.touched || changepassForm.controls['confirmPassword'].touched)">
+                  Confirm Password is required
+                </div>
+                <div *ngIf="changepassForm.controls['confirmPassword'].hasError('minlength')">
+                  Confirm Password must be at least 6 characters
+                </div>
+                <div *ngIf="changepassForm.controls['confirmPassword'].hasError('mismatchedPasswords')">
+                  Password does not match
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                [disabled]="!changepassForm.valid">Lưu</button>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

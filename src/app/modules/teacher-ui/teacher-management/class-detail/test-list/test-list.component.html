@@ -3,7 +3,7 @@
     <h2 class="accordion-header" [id]="'panelsStayOpen-heading' +section.id">
       <button class="accordion-button d-flex justify-content-between" type="button" data-bs-toggle="collapse"
         [attr.data-bs-target]="'#panelsStayOpen-collapse'+section.id" aria-expanded="true"  [attr.aria-controls]="'panelsStayOpen-collapse'+section.id">
-        <h3 style="width: 90%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+        <h3>
           {{section.name}}
         </h3>
         <div>
@@ -44,4 +44,6 @@
   </div>
   
 </div>
+
+<div *ngIf="sections.length <= 0"> Chưa có chương kiểm tra nào. </div>
 

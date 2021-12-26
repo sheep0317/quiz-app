@@ -24,16 +24,32 @@ export class StudentListComponent implements OnInit {
       (data:any)=>{
         console.log(data)
         this.uploaded.emit("");
-        this.showToastr(true,data.body);
+        this.showToastr(true,data);
       }
     ).catch(
       er=>{
         console.log(er)
         this.uploaded.emit("");
-        this.showToastr(false,er.error.message);
+        this.showToastr(false,er.error);
       }
     )
     input.value = ""
+  }
+
+  removeStudent(id:string){
+    this.teacherService.deleteStudentFromClass(id,this.classId).then(
+      (data:any)=>{
+        console.log(data)
+        this.uploaded.emit("");
+        this.showToastr(true,data);
+      }
+    ).catch(
+      er=>{
+        console.log(er)
+        this.uploaded.emit("");
+        this.showToastr(false,er);
+      }
+    )
   }
 
   showToastr(success: boolean, message: any) {

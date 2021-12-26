@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path:'teacher',
     component:TeacherUiComponent,
-    data: { breadcrumb: 'Teacher'},
+    data: { breadcrumb: 'Trang chủ'},
     children:[
       {
         path:'',
@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path:'course',
         component: TeacherManagementComponent,
-        data: { breadcrumb: 'Course'},
+        data: { breadcrumb: 'Danh sách lớp học'},
         children:[
           {
             path:'',
@@ -34,24 +34,24 @@ const routes: Routes = [
           
             path:':section/create_test',
             component: TestCreateComponent,
-            data: { breadcrumb: 'Create Test'}
+            data: { breadcrumb: 'Tạo bài kiểm tra'}
           },
           {
             path: ':classId',
             component: ClassDetailComponent,
-            data: { breadcrumb: 'Detail'}
+            data: { breadcrumb: 'Lớp học'}
           }
         ]
       },
       {
         path:'profile',
         component:TeacherProfileComponent,
-        data: { breadcrumb: 'Profile'}
+        data: { breadcrumb: 'Hồ sơ'}
       },
       {
         path:'test/:testId',
         component: TestManagementComponent,
-        data: { breadcrumb: 'Test'}
+        data: { breadcrumb: 'Bài kiểm tra'}
       },
       
     ]

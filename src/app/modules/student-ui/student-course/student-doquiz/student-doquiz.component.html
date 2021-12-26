@@ -27,15 +27,16 @@
                     <h2>Câu hỏi {{p}}</h2>
                 </div>
                 <div class="quiz-box card-body">
-                    <textarea class="quiz-content" type="text" name="quizname{{p-1}}"
-                        [ngModel]="quiz.content" disabled></textarea>
+                    <textarea class="quiz-content" type="text" name="quizname{{p-1}}" [ngModel]="quiz.content"
+                        disabled></textarea>
                     <div class="answers" *ngFor="let answerContent of quiz.answers; let j = index">
                         <div class="answer-box">
                             <label>{{listChar[j]}}</label>
                             <textarea type="text" name="answerContent{{p-1}}-{{j}}"
                                 [ngModel]="test.quizs[p-1].answers[j].answer" autosize
                                 placeholder="Nội dung câu trả lời" disabled></textarea>
-                            <input class="" [type]="quiz.quizType?'checkbox':'radio'" [checked]="checkExistInArrayAnswer(p-1,answerContent.id)"
+                            <input class="" [type]="quiz.quizType?'checkbox':'radio'"
+                                [checked]="checkExistInArrayAnswer(p-1,answerContent.id)"
                                 (change)="onItemChange(quiz.quizType,quiz.id,answerContent.id)">
                         </div>
                     </div>
@@ -43,3 +44,4 @@
             </div>
         </div>
     </form>
+</div>
