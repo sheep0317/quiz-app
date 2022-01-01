@@ -1,23 +1,67 @@
 <div class="container-fluid">
-    <h1 class="class-name">
-      {{classDetail.name}}
-    </h1>
-    <div class="class-detail row">
-      <div class="col-lg-4 d-flex flex-column mb-3">
-        <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
-        <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
+  <h1 class="class-name">
+    {{classDetail.name}}
+  </h1>
+  <div class="class-detail row">
+    <div class="col-lg-4 d-flex flex-column mb-3">
+      <p class="option m-0" [ngClass]="toggle?'active':''" (click)="toggleChild(true)">Bài kiểm tra</p>
+      <p class="option m-0" [ngClass]="!toggle?'active':''" (click)="toggleChild(false)">Danh sách học sinh</p>
+      <p class="option btn-quit mt-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Rút khỏi lớp
+      </p>
+    </div>
+
+    <div class="col-lg-8" *ngIf="toggle; else hocsinh">
+      <app-student-test-list [sections]='classDetail.sections'></app-student-test-list>
+    </div>
+
+    <ng-template #hocsinh class="col-lg-8">
+      <div class="col-lg-8">
+        <app-student-student-list [studentList]='classDetail.listStudent' [classId]='classId'>
+        </app-student-student-list>
       </div>
-      
-      <div class="col-lg-8" *ngIf="toggle; else hocsinh">
-        <app-student-test-list [sections]='classDetail.sections'></app-student-test-list>
+
+    </ng-template>
+
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc muốn rút khỏi lớp học này?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-  
-      <ng-template #hocsinh class="col-lg-8">
-        <div class="col-lg-8">
-          <app-student-student-list [studentList]='classDetail.listStudent' [classId]='classId'></app-student-student-list>
-        </div>
-        
-      </ng-template>
-  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" data-bs-dismiss="modal"><i
+            class="fa fa-times" aria-hidden="true"></i></button>
+        <button (click)="quit()" class="btn btn-sm btn-light mt-3 btn-ok"><i class="fa fa-check" aria-hidden="true"
+            data-bs-dismiss="modal"></i></button>
+      </div>
     </div>
   </div>
+</div>
+
+<!-- <div class="modal fade in bd-example-modal-sm" id="quitClass"  aria-labelledby="exampleModalLabel" aria-hidden="true" [ngStyle]="{'display': isOpenDialog ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header mt-3 bg-warning">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn thoát khỏi lớp?</h5>
+        <button type="button" class="btn-close" (click)="openModal(false)"></button>
+      </div>
+      <div class="modal-body">
+        <div class="change-password">
+          <div class="create-button d-flex justify-content-between">
+            <button (click)="openModal(false)" type="button" class="btn btn-sm btn-light mt-3 btn-not-ok" ><i
+                class="fa fa-times" aria-hidden="true"></i></button>
+            <button (click)="quit()" class="btn btn-sm btn-light mt-3 btn-ok"><i
+                class="fa fa-check" aria-hidden="true" data-bs-dismiss="modal"></i></button>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->

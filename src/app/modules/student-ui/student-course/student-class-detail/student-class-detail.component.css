@@ -40,6 +40,11 @@
     color: white;
     font-weight: 500;
 }
+.option.btn-quit {
+    border-radius: 10px;
+    color: #FFC107;
+    font-weight: 500;
+}
 
 .btn-ok {
     background-color: #52ab98;

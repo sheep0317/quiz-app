@@ -38,28 +38,28 @@
           </div>
         </div>
         <div class="phone info">
-          <label for="phone-number">Phone <i class='fas fa-phone-alt'></i> </label>
+          <label for="phone-number">Điện thoại <i class='fas fa-phone-alt'></i> </label>
           <div id="phone-number">{{userInformation.phone}}</div>
         </div>
         <div class="gender info">
-          <label for="gender">Gender <i class='fas fa-transgender-alt'></i></label>
+          <label for="gender">Giới tính <i class='fas fa-transgender-alt'></i></label>
           <div *ngIf="userInformation.gender == true; else elseBlock">
-            <div id="gender">Male</div>
+            <div id="gender">Nam</div>
           </div>
           <ng-template #elseBlock>
-            <div id="gender">Female</div>
+            <div id="gender">Nữ</div>
           </ng-template>
         </div>
         <div class="day-of-birth info">
-          <label for="birthday">birthday <i class='far fa-calendar-alt'></i></label>
+          <label for="birthday">Ngày sinh <i class='far fa-calendar-alt'></i></label>
           <div id="birthday">{{userInformation.birthday}}</div>
         </div>
         <div class="role info">
-          <label for="role">Role <i class='fas fa-user'></i></label>
+          <label for="role">Chức <i class='fas fa-user'></i></label>
           <div id="role">{{userInformation.role}}</div>
         </div>
         <div class="address info-xl">
-          <label for="address">Address <i class='fas fa-address-book'></i></label>
+          <label for="address">Địa chỉ <i class='fas fa-address-book'></i></label>
           <div id="address">{{userInformation.address}}</div>
         </div>
       </div>

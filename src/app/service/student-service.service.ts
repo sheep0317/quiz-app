@@ -63,6 +63,14 @@ export class StudentServiceService {
     return this.http.post(API_LINK+"/submittest",test,{params: param, observe: 'response', responseType:'text'}).toPromise();
   }
 
+  withdrawFromClass(classId:string){
+    let param = new HttpParams().set("id",classId);
+    let header = this.getHeaders();
+    if (header instanceof HttpHeaders)
+      return this.http.post(API_LINK+"/withdraw-from-class",{},{ headers: header ,params: param, observe: 'response', responseType:'text'}).toPromise();
+    return this.http.post(API_LINK+"/withdraw-from-class",{},{params: param, observe: 'response', responseType:'text'}).toPromise();
+  
+  }
   
 
 }

@@ -97,8 +97,11 @@
                         <td>{{score.retry}}</td>
                         <td>{{score.numbCorrect}}/{{scores.numberOfQuiz}}</td>
                       </tr>
+                      
                     </tbody>
+                    
                   </table>
+                  <span *ngIf='scores.scores.length <= 0'>Chưa có học sinh nào làm bài</span>
             </div>
             
         </div>

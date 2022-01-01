@@ -17,6 +17,7 @@ export class StudentClassDetailComponent implements OnInit {
   classDetail: any;
   listStudent: any;
   sectionForm: FormGroup;
+  isOpenDialog:boolean = false;
 
   constructor(private route: ActivatedRoute, private studentService: StudentServiceService, private router: Router, private toastr: ToastrService) {
     this.sectionForm = new FormGroup({
@@ -51,6 +52,22 @@ export class StudentClassDetailComponent implements OnInit {
     this.toggle = value;
   }
 
+  quit(){
+    this.studentService.withdrawFromClass(this.classId).then(
+      data=>{
+        this.showToastr(true, data.body)
+        this.router.navigate(["/student/course"])
+      }
+    ).catch(
+      er=>{
+        this.showToastr(false, er.error)
+      }
+    )
+  }
+
+  openModal(input:boolean){
+    this.isOpenDialog = input;
+  }
 
 
   showToastr(success: boolean, message: any) {

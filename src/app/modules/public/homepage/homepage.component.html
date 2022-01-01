@@ -23,13 +23,13 @@
         <a href="#"><img src="./../../../../assets/img/pain_tako.png" class="logo"></a>
         <ul>
             <li><a href="#">Github</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Info</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Thông tin</a></li>
         </ul>
     </header>
     <div class="content">
         <div class="textBox">
-            <h2>Just do it<br>Believe in your self and <br><span>Just Do Quiz</span></h2>
+            <h4><span>QuizOnline</span><br>Trang web quản lý và làm bài kiểm tra trắc nghiệm trực tuyến <br></h4>
         </div>
         <div class="login-card">
             
@@ -42,56 +42,54 @@
             <form [formGroup]='loginForm' *ngIf="isLogin" @fadeInOut (ngSubmit)="onLogin()">
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username <small *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.touched || isSubmit[0])" class="text-danger">*required, min length is 6</small></label>
+                    <label>Tên đăng nhập <small *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.touched || isSubmit[0])" class="text-danger">*Bắt buộc, ít nhất 6 ký tự</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required formControlName="password">
-                    <label>Password <small *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmit[0])" class="text-danger">*required, min length is 8</small></label>
+                    <label>Mật khẩu <small *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || isSubmit[0])" class="text-danger">*Bắt buộc, ít nhất 8 ký tự</small></label>
                 </div>
-                <input class="btn" type="submit" name="btnLogin" value="Log in" >
+                <input class="btn" type="submit" name="btnLogin" value="Đăng nhập" >
             </form>
             <form [formGroup]='registerForm' *ngIf="!isLogin" @fadeInOut (ngSubmit)="onRegiste()">
                 <div class="inputBox">
                     <input type="text" name="username" required autocomplete="off" formControlName="username">
-                    <label>Username <small *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.touched || isSubmit[1])" class="text-danger">*required, min length is 6</small></label>
+                    <label>Tên đăng nhập <small *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.touched || isSubmit[1])" class="text-danger">*Bắt buộc, ít nhất 6 ký tự</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="text" name="fullname" required autocomplete="off" formControlName="fullname">
-                    <label>Full name <small *ngIf="registerForm.get('fullname')?.invalid && (registerForm.get('fullname')?.touched || isSubmit[1])" class="text-danger">*required</small></label>
+                    <label>Họ và tên <small *ngIf="registerForm.get('fullname')?.invalid && (registerForm.get('fullname')?.touched || isSubmit[1])" class="text-danger">*Bắt buộc</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="email" name="email" required autocomplete="off" formControlName="email">
-                    <label>Email <small *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || isSubmit[1])" class="text-danger" >*required, email format</small></label>
+                    <label>Email <small *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || isSubmit[1])" class="text-danger" >*Bắt buộc</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password" required autocomplete="off" formControlName="password">
-                    <label>Password <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || isSubmit[1])" class="text-danger">*required, min length is 8</small></label>
+                    <label>Mật khẩu <small *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || isSubmit[1])" class="text-danger">Bắt buộc, ít nhất 8 ký tự</small></label>
                 </div>
                 <div class="inputBox">
                     <input type="password" name="password2" required autocomplete="off" formControlName="repeatpassword">
-                    <label>Repeat password <small *ngIf="registerForm.get('repeatpassword')?.invalid && (registerForm.get('repeatpassword')?.touched || isSubmit[1])" class="text-danger">*required, min length is 8</small></label>
+                    <label>Nhập lại mật khẩu <small *ngIf="registerForm.get('repeatpassword')?.invalid && (registerForm.get('repeatpassword')?.touched || isSubmit[1])" class="text-danger">Bắt buộc, ít nhất 8 ký tự</small></label>
                 </div>
                 <div class="radioBox">
-                    <label>Gender: </label>
                     
                     <input type="radio" name="gender" required checked value="true" formControlName="gender">
-                    <span>Male</span>
+                    <span>Nam</span>
                  
                     <input type="radio" name="gender" required value="false" formControlName="gender">
-                    <span>Female</span>
+                    <span>Nữ</span>
                     
                 </div>
                 <div class="radioBox">
-                    <label>Role: </label>
                    
                     <input type="radio" name="role" required checked value="student" formControlName="role">
-                    <span>Student</span>
+                    <span>Học sinh</span>
                     
                     <input type="radio" name="role" required value="teacher" formControlName="role">
-                    <span>Teacher</span>
+                    <span>Giáo viên</span>
                     
                 </div>
-                <input class="btn" type="submit" name="btnRegister" value="Submit">
+                <input class="btn" type="submit" name="btnRegister" value="Đăng ký">
             </form>
         </div>
     </div>

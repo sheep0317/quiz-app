@@ -59,7 +59,7 @@ export class StudentProfileComponent implements OnInit {
       },
       err => {
         console.log(err)
-        this.showToastr(false, err.error.message)
+        this.showToastr(false, err.error)
       }
     )
 
@@ -74,7 +74,7 @@ export class StudentProfileComponent implements OnInit {
     ).catch(
       (er: any) => {
         console.log(er.error.message);
-        this.showToastr(false, er.error.message)
+        this.showToastr(false, er.error)
       }
     )
   }
